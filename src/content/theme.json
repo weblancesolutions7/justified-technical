@@ -5,11 +5,11 @@
   },
   "colors": {
     "brand": "#3B3C89",
-    "brandHover": "#5455B3",
+    "brandHover": "#5253B3",
     "brandDark": "#9FA0CD",
-    "background": "#3B3C89",
-    "backgroundDarker": "#2C2D6D",
+    "background": "#0A0C14",
+    "backgroundDarker": "#05060A",
     "foreground": "#FBFCFD",
-    "graySoft": "#9FA0CD"
+    "graySoft": "#8F91A2"
   }
 }

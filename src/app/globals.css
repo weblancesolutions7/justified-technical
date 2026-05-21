@@ -2,12 +2,12 @@
 
 @theme {
   --color-brand: #3B3C89;
-  --color-brand-hover: #5455B3;
+  --color-brand-hover: #5253B3;
   --color-brand-dark: #9FA0CD;
-  --color-dark: #9FA0CD;
-  --color-darker: #FBFCFD;
+  --color-dark: #0A0C14;
+  --color-darker: #05060A;
   --color-light: #FBFCFD;
-  --color-gray-soft: #9FA0CD;
+  --color-gray-soft: #8F91A2;
 
   --font-sans: var(--font-inter);
   --font-heading: var(--font-space-grotesk);
@@ -31,7 +31,7 @@
     font-family: var(--font-heading), sans-serif;
     font-weight: 700;
     line-height: 1.1;
-    color: #3B3C89;
+    color: var(--foreground);
   }
 }
 
