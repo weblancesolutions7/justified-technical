@@ -1,0 +1,28 @@
+{
+  "name": "Justified Technical",
+  "shortName": "Justified Tech",
+  "established": 2018,
+  "locations": ["Sharjah", "Ajman", "Abu Dhabi"],
+  "contact": {
+    "sales": "+971 50 7056397, +971 55 6805573",
+    "accounts": "+971 56 5204834",
+    "tel": "+971 2 5507626",
+    "email": "justtech@eim.ae",
+    "rentalEmail": "justtech@eim.ae",
+    "linkedin": "https://www.linkedin.com/company/justified-technical",
+    "youtube": "https://www.youtube.com/@justified-technical",
+    "openingHours": "Mon-Sat: 9am-5pm",
+    "address": {
+      "office": "Dubai/Abu Dhabi Office",
+      "poBox": "5475",
+      "city": "AJMAN/SHARJAH, UAE"
+    }
+  },
+  "stats": {
+    "capacity": "1250+ kVA",
+    "support": "24/7"
+  },
+  "vision": "To be the leading provider of reliable, high-performance machinery and power solutions across the UAE and beyond.",
+  "mission": "Empowering industries with cutting-edge equipment, unwavering support, and a commitment to safety, integrity, and operational excellence.",
+  "coreValues": ["Reliability", "Safety First", "Integrity"]
+}
