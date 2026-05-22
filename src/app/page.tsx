@@ -702,10 +702,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. WHY CHOOSE US SECTION (Elegant Dark Flank Layout) */}
+      {/* 7. WHY CHOOSE US SECTION (Bento Grid + Worker Showcase) */}
       <section className="py-28 bg-[#0A0C14] relative overflow-hidden border-b border-white/5">
+        {/* Ambient glow effects */}
+        <div className="absolute top-[20%] left-[-15%] w-[600px] h-[600px] bg-[#3B3C89] opacity-[0.04] rounded-full blur-[150px] pointer-events-none" />
+        <div className="absolute bottom-[10%] right-[-10%] w-[500px] h-[500px] bg-[#3B3C89] opacity-[0.03] rounded-full blur-[130px] pointer-events-none" />
+
         <div className="container mx-auto px-6 md:px-8 max-w-7xl relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-20">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-[#9FA0CD] font-black uppercase tracking-[0.4em] text-[10px] md:text-xs block mb-4">
               Our Core Strengths
             </span>
@@ -713,77 +718,115 @@ export default function Home() {
               Why engineers trust <br />
               <span className="text-[#9FA0CD]">Justified Technical</span>
             </h2>
+            <p className="text-white/40 text-xs md:text-sm font-semibold max-w-xl mx-auto leading-relaxed">
+              Six pillars of operational excellence that set us apart in the UAE heavy machinery and power solutions industry.
+            </p>
           </div>
 
-          <div className="relative flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-0 pb-16">
+          {/* Bento Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              {
+                title: "Expert Mechanical Division",
+                desc: "A highly-qualified field engineering team with deep GCC standard expertise and rigorous tooling.",
+                num: "01",
+                icon: <Settings size={20} />,
+                size: "default"
+              },
+              {
+                title: "UAE-Wide Depot Network",
+                desc: "Central machinery depots positioned optimally across Ajman, Dubai, and Abu Dhabi for rapid dispatch.",
+                num: "02",
+                icon: <MapPin size={20} />,
+                size: "default"
+              },
+              {
+                title: "Strict 24/7 Support Service",
+                desc: "Active telemetry dispatch ensuring instantaneous field assistance to avoid downtime completely.",
+                num: "03",
+                icon: <PhoneCall size={20} />,
+                size: "default",
+                highlight: true
+              },
+              {
+                title: "Strategic Load Profile Auditing",
+                desc: "Professional technical modeling to determine exact synchronization needs for complex builds.",
+                num: "04",
+                icon: <Zap size={20} />,
+                size: "default",
+                highlight: true
+              },
+              {
+                title: "Complete Site Logistics Flow",
+                desc: "Full turn-key power setups covering synchronized boards, cabling blocks, and safety testing.",
+                num: "05",
+                icon: <ShieldCheck size={20} />,
+                size: "default"
+              },
+              {
+                title: "Adaptive Commercial Leases",
+                desc: "Tailored monthly, quarterly, or long-term operational leases built strictly around client parameters.",
+                num: "06",
+                icon: <ArrowRight size={20} />,
+                size: "default"
+              }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.08, duration: 0.5 }}
+                className={`group relative p-7 md:p-8 rounded-2xl transition-all duration-500 border overflow-hidden ${
+                  item.highlight
+                    ? "bg-[#3B3C89] border-[#3B3C89]/60 shadow-lg shadow-[#3B3C89]/10"
+                    : "bg-[#111424]/50 border-white/[0.06] hover:border-[#3B3C89]/30 hover:bg-[#111424]/80"
+                }`}
+              >
+                {/* Corner accent on hover */}
+                <div className={`absolute top-0 right-0 w-24 h-24 rounded-bl-[60px] transition-opacity duration-500 ${
+                  item.highlight ? "bg-white/[0.06] opacity-100" : "bg-[#3B3C89]/[0.06] opacity-0 group-hover:opacity-100"
+                }`} />
 
-            {/* Center Worker Image Cutout (Visual Stage on Dark Base) */}
-            <div className="hidden lg:flex w-[450px] justify-center relative h-[600px] z-30 absolute left-1/2 -translate-x-1/2 bottom-0 pointer-events-none">
-              <div className="absolute bottom-[2%] w-[80%] h-[30px] bg-[#3B3C89]/20 rounded-full blur-[10px]" />
-              <Image
-                src="/images/13.jpg.png"
-                alt="Justified Technical Site Engineer Cutout"
-                fill
-                sizes="450px"
-                unoptimized
-                className="object-contain object-bottom scale-[1.3] origin-bottom drop-shadow-[0_20px_40px_rgba(59,60,137,0.25)] filter brightness-95"
-                priority
-              />
-            </div>
+                {/* Top row: Icon + Number */}
+                <div className="flex items-center justify-between mb-6 relative z-10">
+                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                    item.highlight
+                      ? "bg-white/15 text-white"
+                      : "bg-[#3B3C89]/15 text-[#9FA0CD] group-hover:bg-[#3B3C89]/30 group-hover:text-white"
+                  }`}>
+                    {item.icon}
+                  </div>
+                  <span className={`font-sans font-black text-sm tabular-nums ${
+                    item.highlight ? "text-white/30" : "text-white/10 group-hover:text-[#9FA0CD]/40"
+                  } transition-colors duration-300`}>
+                    {item.num}
+                  </span>
+                </div>
 
-            {/* Left Advantage Cards */}
-            <div className="flex flex-col gap-6 w-full lg:w-[38%] z-20 text-left">
-              {[
-                { title: "Expert Mechanical Division", desc: "A highly-qualified field engineering team with deep GCC standard expertise and rigorous tooling." },
-                { title: "Strict 24/7 Support Service", desc: "Active telemetry dispatch ensuring instantaneous field assistance to avoid downtime completely.", highlight: true },
-                { title: "Complete Site Logistics Flow", desc: "Full turn-key power setups covering synchronized boards, cabling blocks, and safety testing." }
-              ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className={`p-6 md:p-8 rounded-3xl shadow-2xl transition-all duration-300 hover:scale-[1.01] border ${item.highlight
-                      ? "bg-[#3B3C89] border-transparent text-white lg:translate-x-4 shadow-[#3B3C89]/10"
-                      : "bg-[#111424]/40 border-white/5 text-white hover:border-[#3B3C89]/25 lg:-translate-x-2"
-                    }`}
-                >
-                  <h3 className="text-xl font-sans font-black mb-3 leading-tight uppercase tracking-tight">{item.title}</h3>
-                  <p className={`font-semibold leading-relaxed text-xs md:text-sm ${item.highlight ? "text-white/80" : "text-white/50"}`}>
+                {/* Content */}
+                <div className="relative z-10">
+                  <h3 className="text-lg md:text-xl font-sans font-black mb-3 leading-tight uppercase tracking-tight text-white">
+                    {item.title}
+                  </h3>
+                  <p className={`font-semibold leading-relaxed text-xs md:text-sm ${
+                    item.highlight ? "text-white/70" : "text-white/40 group-hover:text-white/55"
+                  } transition-colors duration-300`}>
                     {item.desc}
                   </p>
-                </motion.div>
-              ))}
-            </div>
+                </div>
 
-            {/* Right Advantage Cards */}
-            <div className="flex flex-col gap-6 w-full lg:w-[38%] z-20 text-left lg:text-right mt-6 lg:mt-0">
-              {[
-                { title: "UAE-Wide Depot Network", desc: "Central machinery depots positioned optimally across Ajman, Dubai, and Abu Dhabi for rapid dispatch." },
-                { title: "Strategic Load Profile Auditing", desc: "Professional technical modeling to determine exact synchronization needs for complex builds.", highlight: true },
-                { title: "Adaptive Commercial Leases", desc: "Tailored monthly, quarterly, or long-term operational leases built strictly around client parameters." }
-              ].map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                  className={`p-6 md:p-8 rounded-3xl shadow-2xl transition-all duration-300 hover:scale-[1.01] border ${item.highlight
-                      ? "bg-[#3B3C89] border-transparent text-white lg:-translate-x-4 shadow-[#3B3C89]/10"
-                      : "bg-[#111424]/40 border-white/5 text-white hover:border-[#3B3C89]/25 lg:translate-x-2"
-                    }`}
-                >
-                  <h3 className="text-xl font-sans font-black mb-3 leading-tight uppercase tracking-tight">{item.title}</h3>
-                  <p className={`font-semibold leading-relaxed text-xs md:text-sm ${item.highlight ? "text-white/80" : "text-white/50"}`}>
-                    {item.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-
+                {/* Bottom accent line */}
+                <div className={`absolute bottom-0 left-0 right-0 h-[2px] transition-all duration-500 ${
+                  item.highlight
+                    ? "bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    : "bg-gradient-to-r from-transparent via-[#3B3C89]/0 to-transparent group-hover:via-[#3B3C89]/30"
+                }`} />
+              </motion.div>
+            ))}
           </div>
+
+
         </div>
       </section>
 
@@ -802,7 +845,7 @@ export default function Home() {
           >
             <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#3B3C89]/30 to-transparent pointer-events-none" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-stretch relative z-10">
 
               {/* Left Column: Direct Corporate Contacts */}
               <div className="lg:col-span-6 flex flex-col gap-8 text-left">
@@ -889,8 +932,8 @@ export default function Home() {
               </div>
 
               {/* Right Column: Secure Callback form */}
-              <div className="lg:col-span-6 w-full">
-                <div className="bg-[#0A0C14]/60 border border-white/5 rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-2xl backdrop-blur-md">
+              <div className="lg:col-span-6 w-full flex flex-col">
+                <div className="bg-[#0A0C14]/60 border border-white/5 rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-2xl backdrop-blur-md flex flex-col flex-1">
                   <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#3B3C89]/20 to-transparent" />
 
                   <div className="mb-8 text-left">
@@ -906,7 +949,7 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <form className="flex flex-col gap-5">
+                  <form className="flex flex-col gap-5 flex-1">
                     {/* Grid Name and Email */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5 text-left">
@@ -977,7 +1020,7 @@ export default function Home() {
 
                     <button
                       type="submit"
-                      className="bg-[#3B3C89] hover:bg-[#5253B3] text-white font-black uppercase tracking-widest py-5 rounded-xl hover:scale-[1.01] active:scale-95 transition-all shadow-xl shadow-[#3B3C89]/20 mt-4 text-[10px] flex items-center justify-center gap-2 group cursor-pointer"
+                      className="bg-[#3B3C89] hover:bg-[#5253B3] text-white font-black uppercase tracking-widest py-5 rounded-xl hover:scale-[1.01] active:scale-95 transition-all shadow-xl shadow-[#3B3C89]/20 mt-auto text-[10px] flex items-center justify-center gap-2 group cursor-pointer"
                     >
                       Submit Project Inquiry
                     </button>
