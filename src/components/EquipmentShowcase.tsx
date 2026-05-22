@@ -29,21 +29,28 @@ export default function EquipmentShowcase({ industries }: { industries: Industry
         </p>
       </div>
 
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
         
         {/* Left Column: Asymmetric Vertical Navigation Tabs (4 cols) */}
-        <div className="lg:col-span-3 flex flex-col gap-3 justify-center">
-          <span className="text-white/30 font-black text-[9px] uppercase tracking-widest block mb-2 px-2">
-            SELECT WORK SECTOR
-          </span>
+        <div className="lg:col-span-3 flex flex-row overflow-x-auto gap-3 pb-3 scrollbar-hide lg:flex-col lg:overflow-visible lg:pb-0 justify-start lg:justify-center">
           {industries.map((ind) => {
             const isActive = ind.id === activeId;
             return (
               <button
                 key={ind.id}
                 onClick={() => setActiveId(ind.id)}
-                className={`relative w-full text-left px-6 py-5 rounded-2xl transition-all duration-300 border flex flex-col justify-center cursor-pointer ${
+                className={`relative flex-shrink-0 w-[240px] sm:w-[280px] lg:w-full text-left px-6 py-5 rounded-2xl transition-all duration-300 border flex flex-col justify-center cursor-pointer ${
                   isActive
                     ? "bg-[#3B3C89] border-transparent shadow-lg shadow-[#3B3C89]/20"
                     : "bg-[#111424]/40 border-white/5 hover:border-[#3B3C89]/30 hover:bg-[#111424]/80"

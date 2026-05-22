@@ -25,6 +25,11 @@ export const metadata: Metadata = {
   },
   description: companyData.mission,
   keywords: ["Machinery rental UAE", "Generator rental Dubai", "Construction equipment rental UAE", "Equipment hire Sharjah"],
+  icons: {
+    icon: "/images/justified-logo.jpeg",
+    shortcut: "/images/justified-logo.jpeg",
+    apple: "/images/justified-logo.jpeg",
+  }
 };
 
 export default function RootLayout({
@@ -57,7 +62,7 @@ export default function RootLayout({
         
         {/* Floating WhatsApp Button */}
         <a 
-          href={`https://wa.me/${companyData.contact.sales.replace(/[-+\s]/g, '')}`}
+          href={`https://wa.me/${companyData.contact.sales.replace(/[-+\s]/g, '').split(',')[0]}`}
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:scale-110 transition-transform"
