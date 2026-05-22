@@ -1,5 +1,10 @@
 {
   "name": "Justified Technical",
+  "legalName": {
+    "lines": ["JUSTIFIED TECHNICAL", "SOLUTIONS SOLE", "PROPRIETORSHIP L.L.C"],
+    "full": "Justified Technical Solutions Sole Proprietorship L.L.C"
+  },
+  "tagline": "Power and performance you can rely on... anytime, anywhere.",
   "shortName": "Justified Tech",
   "established": 2018,
   "locations": ["Sharjah", "Ajman", "Abu Dhabi"],

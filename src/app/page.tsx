@@ -6,11 +6,12 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ShieldCheck, Clock, Headset, Award, Calendar, Zap,
-  MapPin, PhoneCall, Mail, ArrowRight, CheckCircle2,
-  Settings, UserCheck, CheckSquare, Sparkles, Network,
+  MapPin, PhoneCall, Mail, ArrowRight,   CheckCircle2,
+  UserCheck, CheckSquare, Network,
   Smartphone
 } from "lucide-react";
 import companyData from "@/content/company.json";
+import { PageHero } from "@/components/PageHero";
 
 export default function Home() {
   // Callback Form State
@@ -35,27 +36,32 @@ export default function Home() {
     setIsSubmitted(false);
   };
 
+  const navy = "#001C55";
+  const iconClass = "w-7 h-7 shrink-0 stroke-[1.5]";
+  const formInputClass =
+    "w-full bg-white border border-[#d1d5db] rounded-md px-4 py-3 text-[#374151] text-sm placeholder-[#9ca3af] focus:outline-none focus:border-[#001C55] focus:ring-1 focus:ring-[#001C55] transition-colors";
+
   // Trust Badges Data
   const trustBadges = [
     {
       title: "High Quality Equipment",
       desc: "You Can Trust",
-      icon: <ShieldCheck className="text-[#3B3C89] w-6 h-6 md:w-7 md:h-7" />
+      icon: <ShieldCheck className={iconClass} style={{ color: navy }} />
     },
     {
       title: "UAE Wide Coverage",
       desc: "Fast & Reliable Service",
-      icon: <Clock className="text-[#3B3C89] w-6 h-6 md:w-7 md:h-7" />
+      icon: <Clock className={iconClass} style={{ color: navy }} />
     },
     {
       title: "24/7 Support",
       desc: "Always Here For You",
-      icon: <Headset className="text-[#3B3C89] w-6 h-6 md:w-7 md:h-7" />
+      icon: <Headset className={iconClass} style={{ color: navy }} />
     },
     {
       title: "Safe & Compliant",
       desc: "Built To Highest Standards",
-      icon: <Award className="text-[#3B3C89] w-6 h-6 md:w-7 md:h-7" />
+      icon: <Award className={iconClass} style={{ color: navy }} />
     }
   ];
 
@@ -334,106 +340,62 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-[#FAF9F6] text-slate-800 min-h-screen relative font-sans overflow-x-hidden">
+    <div className="bg-white text-[#4a5568] min-h-screen relative font-sans overflow-x-hidden">
+
+      <PageHero
+        desktopVariant="white"
+        imageSrc="/images/Right side home page.png"
+        imageAlt="UAE Skyline and Soundproof Generator"
+        imageObjectPosition="18% center"
+        eyebrow={
+          <span className="font-sans font-bold text-[11px] md:text-xs tracking-[0.22em] uppercase text-inherit">
+            Powering Today.
+          </span>
+        }
+        title={
+          <h1 className="text-[1.75rem] sm:text-4xl md:text-[2.75rem] lg:text-[2.85rem] xl:text-5xl font-sans font-extrabold leading-[1.15] tracking-tight uppercase break-words">
+            Reliable Solutions. Stronger Future.
+          </h1>
+        }
+        description="We provide high-performance equipment and technical solutions that power industries and drive progress across the UAE and beyond."
+        actions={
+          <>
+            <Link
+              href="#complete-solutions"
+              className="bg-[#001C55] hover:bg-[#002d7a] text-white px-7 py-3.5 rounded-md font-bold text-[11px] tracking-wider uppercase transition-colors duration-200 flex items-center gap-2"
+            >
+              Explore Services <ArrowRight size={14} />
+            </Link>
+            <Link
+              href="/contact"
+              className="bg-white border-2 border-[#001C55] text-[#001C55] hover:bg-[#f4f5f7] max-md:bg-white/15 max-md:border-white max-md:text-white max-md:hover:bg-white/25 max-md:shadow-[0_2px_8px_rgba(0,0,0,0.4)] px-7 py-3.5 rounded-md font-bold text-[11px] tracking-wider uppercase transition-colors duration-200 flex items-center gap-2"
+            >
+              Contact Us
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+            </Link>
+          </>
+        }
+      />
 
       {/* ═══════════════════════════════════════════════════════
-          1. HERO SECTION (White Modern Split with UAE Skyline Backdrop)
+          2. TRUST BAR — flat row under hero
       ═══════════════════════════════════════════════════════ */}
-      <section className="relative min-h-[92vh] flex flex-col justify-center pt-28 pb-10 lg:pb-16 bg-white overflow-hidden border-b border-slate-100">
-
-        {/* Subtle geometric lines */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30 pointer-events-none z-0" />
-
-        {/* Diagonal Masked Image for Desktop */}
-        <div
-          className="absolute right-0 top-0 bottom-0 w-[58%] xl:w-[55%] hidden lg:block z-10"
-          style={{ clipPath: "polygon(8% 0, 100% 0, 100% 100%, 0% 100%)" }}
-        >
-          <Image
-            src="/images/Right side home page.png"
-            alt="UAE Skyline and Soundproof Generator"
-            fill
-            sizes="(min-width: 768px) 55vw"
-            className="object-cover object-[22%_center]"
-            priority
-          />
-        </div>
-
-        <div className="container mx-auto px-6 md:px-12 max-w-8xl relative z-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-
-            {/* Left Content Column */}
-            <div className="lg:col-span-6 flex flex-col items-start text-left">
-              <span className="text-[#0046C7] font-sans font-black text-xs md:text-sm tracking-[0.25em] uppercase mb-4">
-                Powering Today.
-              </span>
-
-              <h1 className="text-4xl md:text-5xl lg:text-[50px] xl:text-6xl font-sans font-black leading-[1.08] tracking-tight uppercase mb-6 text-[#0B1E43] text-left">
-                Reliable Solutions.<br />
-                <span className="text-[#0046C7]">Stronger Future.</span>
-              </h1>
-
-              <p className="text-slate-500 text-sm md:text-base font-semibold leading-relaxed max-w-xl mb-9">
-                We provide high-performance equipment and technical solutions that power industries and drive progress across the UAE and beyond.
-              </p>
-
-              <div className="flex flex-wrap gap-4 items-center">
-                <Link
-                  href="#complete-solutions"
-                  className="bg-[#0B1E43] hover:bg-[#0046C7] text-white px-8 py-4 rounded-xl font-bold text-xs tracking-wider uppercase transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95 flex items-center gap-2"
-                >
-                  Explore Services <ArrowRight size={14} />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="bg-white border-2 border-[#0B1E43] hover:bg-[#0B1E43]/5 text-[#0B1E43] px-8 py-4 rounded-xl font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center gap-2 hover:scale-[1.02] active:scale-95"
-                >
-                  Contact Us
-                  <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                </Link>
-              </div>
-            </div>
-
-            {/* Right column: mobile image + desktop spacer */}
-            <div className="lg:col-span-6 relative w-full flex items-center justify-center">
-              {/* Mobile Image (hidden on desktop) */}
-              <div className="w-full lg:hidden relative h-[320px] rounded-3xl overflow-hidden shadow-xl border border-slate-100 bg-slate-50">
-                <Image
-                  src="/images/Right side home page.png"
-                  alt="UAE Skyline and Soundproof Generator"
-                  fill
-                  sizes="100vw"
-                  className="object-cover object-[20%_center]"
-                  priority
-                />
-              </div>
-              {/* Desktop Spacer */}
-              <div className="hidden lg:block w-full h-[500px]" />
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════
-          2. TRUST BADGES ROW (Horizontal Bar)
-      ═══════════════════════════════════════════════════════ */}
-      <section className="relative z-20 -mt-14 lg:-mt-20 px-6 md:px-12 max-w-8xl mx-auto">
-        <div className="bg-white border border-slate-100 rounded-[2rem] py-6 px-6 md:px-10 shadow-xl shadow-slate-100/50">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-8">
+      <section className="bg-white border-y border-[#e8eaed]">
+        <div className="container mx-auto px-6 md:px-12 max-w-[1400px] py-7 md:py-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {trustBadges.map((badge, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-4 text-left border-slate-100 last:border-0 lg:border-r lg:pr-6 pr-2"
+                className={`flex items-center gap-4 text-left ${
+                  idx < trustBadges.length - 1 ? "lg:border-r lg:border-[#e8eaed] lg:pr-8" : ""
+                }`}
               >
-                <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center flex-shrink-0 shadow-inner">
-                  {badge.icon}
-                </div>
+                {badge.icon}
                 <div>
-                  <h4 className="text-[#0B1E43] font-sans font-bold text-xs md:text-sm leading-tight">
+                  <h4 className="font-sans font-bold text-sm leading-tight" style={{ color: navy }}>
                     {badge.title}
                   </h4>
-                  <span className="text-slate-400 font-bold text-[9px] md:text-[10px] tracking-wide block mt-0.5 uppercase">
+                  <span className="text-[#6b7280] font-medium text-xs block mt-0.5">
                     {badge.desc}
                   </span>
                 </div>
@@ -444,89 +406,90 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          3. COMPLETE SOLUTIONS GRID & WHY CHOOSE US
+          3. SERVICES + WHY CHOOSE US (gray section, 8/4 split)
       ═══════════════════════════════════════════════════════ */}
-      <section id="complete-solutions" className="pt-4 md:pt-6 pb-12 max-w-8xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+      <section id="complete-solutions" className="bg-[#f4f5f7] py-10 md:py-14">
+        <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
 
-          {/* Left Column (8 Services Grid) */}
-          <div className="lg:col-span-8 bg-white border border-slate-100 rounded-3xl p-6 lg:p-8 shadow-xl shadow-slate-100/50 flex flex-col justify-between text-left">
-            <div>
-              <span className="text-[#0046C7] font-sans font-black text-xs tracking-[0.25em] uppercase block mb-3">
+            {/* Left — services grid */}
+            <div className="lg:col-span-8 flex flex-col text-left">
+              <span
+                className="font-sans font-bold text-[11px] tracking-[0.22em] uppercase block mb-2"
+                style={{ color: navy }}
+              >
                 OUR SERVICES
               </span>
-              <h2 className="text-2xl md:text-3xl lg:text-[34px] font-sans font-black text-[#0B1E43] leading-none uppercase tracking-tight mb-6">
+              <h2
+                className="text-2xl md:text-[1.65rem] lg:text-[1.85rem] font-sans font-extrabold leading-tight uppercase tracking-tight mb-7"
+                style={{ color: navy }}
+              >
                 COMPLETE SOLUTIONS UNDER ONE ROOF
               </h2>
 
-              {/* 4x2 Grid of service cards */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mb-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
                 {services.map((srv, idx) => (
                   <Link
                     href="/equipment-services"
                     key={idx}
-                    className="group bg-white border border-slate-200/80 rounded-2xl p-2 pb-3 transition-all duration-300 flex flex-col justify-between hover:shadow-md hover:scale-[1.02] active:scale-95"
+                    className="group bg-white border border-[#e2e5ea] rounded-sm overflow-hidden transition-shadow duration-200 hover:shadow-md"
                   >
-                    {/* Image Area (Nested image container with rounded corners and border) */}
-                    <div className="relative aspect-[1.7] w-full rounded-xl overflow-hidden bg-slate-50 mb-2 border border-slate-100">
+                    <div className="relative aspect-[1.65] w-full bg-[#f8f9fb] border-b border-[#e8eaed]">
                       <Image
                         src={srv.image}
                         alt={srv.title}
                         fill
-                        sizes="(max-width: 768px) 50vw, 20vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 50vw, 18vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
                     </div>
-
-                    {/* Text Title Badge */}
-                    <div className="text-center flex flex-col justify-center items-center">
-                      <h4 className="text-[#0B1E43] font-sans font-extrabold text-[10px] md:text-xs uppercase tracking-wider leading-tight">
+                    <div className="px-2 py-3 text-center">
+                      <h4
+                        className="font-sans font-bold text-[10px] md:text-[11px] uppercase tracking-wide leading-tight"
+                        style={{ color: navy }}
+                      >
                         {srv.title}
                       </h4>
                       {srv.subtitle ? (
-                        <span className="text-slate-400 font-bold text-[8px] md:text-[9px] tracking-wide block mt-0.5 uppercase leading-none">
+                        <span className="text-[#6b7280] font-medium text-[9px] md:text-[10px] block mt-1">
                           {srv.subtitle}
                         </span>
-                      ) : (
-                        <span className="text-transparent font-bold text-[8px] md:text-[9px] tracking-wide block mt-0.5 uppercase leading-none">
-                          &nbsp;
-                        </span>
-                      )}
+                      ) : null}
                     </div>
                   </Link>
                 ))}
               </div>
+
+              <div className="flex justify-center">
+                <Link
+                  href="/equipment-services"
+                  className="bg-white border-2 border-[#001C55] text-[#001C55] hover:bg-[#001C55] hover:text-white px-8 py-3 rounded-md font-bold text-[11px] tracking-wider uppercase transition-colors duration-200 flex items-center gap-2"
+                >
+                  View All Services <ArrowRight size={14} />
+                </Link>
+              </div>
             </div>
 
-            <div className="flex justify-center">
-              <Link
-                href="/equipment-services"
-                className="bg-white border-2 border-[#0B1E43] hover:bg-[#0B1E43] hover:text-white text-[#0B1E43] px-8 py-3 rounded-md font-bold text-xs tracking-wider uppercase transition-all duration-300 flex items-center gap-2 hover:shadow-md hover:scale-[1.02] active:scale-95"
-              >
-                View All Services <ArrowRight size={14} />
-              </Link>
-            </div>
-          </div>
-
-          {/* Right Column (Why Choose Us panel) */}
-          <div className="lg:col-span-4 bg-[#0B1E43] rounded-3xl p-6 lg:p-8 shadow-2xl relative overflow-hidden flex flex-col justify-center text-left">
-            <div>
-              <span className="text-white font-sans font-black text-lg lg:text-xl tracking-wider uppercase mb-6 lg:mb-8 block">
+            {/* Right — why choose us */}
+            <div
+              className="lg:col-span-4 rounded-xl p-6 lg:p-8 flex flex-col justify-center text-left"
+              style={{ backgroundColor: navy }}
+            >
+              <h3 className="text-white font-sans font-extrabold text-lg lg:text-xl tracking-wide uppercase mb-6 lg:mb-8">
                 WHY CHOOSE US?
-              </span>
+              </h3>
 
-              {/* Bullet list of strengths */}
-              <div className="space-y-5 lg:space-y-7">
+              <div className="space-y-5 lg:space-y-6">
                 {strengths.map((str, idx) => (
-                  <div key={idx} className="flex gap-4 items-start">
-                    <div className="w-11 h-11 rounded-full border border-white/35 bg-white/5 flex items-center justify-center flex-shrink-0 text-white shadow-md">
+                  <div key={idx} className="flex gap-3.5 items-start">
+                    <div className="w-10 h-10 rounded-full border border-white/50 flex items-center justify-center shrink-0 text-white">
                       {str.icon}
                     </div>
                     <div>
-                      <h4 className="text-white font-sans font-bold text-sm md:text-base leading-tight">
+                      <h4 className="text-white font-sans font-bold text-sm leading-tight">
                         {str.title}
                       </h4>
-                      <p className="text-slate-300 font-medium text-xs md:text-sm leading-normal mt-1">
+                      <p className="text-white/75 font-normal text-xs leading-snug mt-1">
                         {str.desc}
                       </p>
                     </div>
@@ -534,31 +497,30 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          4. DYNAMIC STATISTICS BAR
+          4. STATS BAR — solid navy
       ═══════════════════════════════════════════════════════ */}
-      <section className="relative bg-gradient-to-r from-[#0B1E43] via-[#0E2E72] to-[#0B1E43] py-8 md:py-10 text-white shadow-xl">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(255,255,255,0.03),transparent_100%)] pointer-events-none" />
-        <div className="container mx-auto px-6 md:px-12 max-w-8xl relative z-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-4 lg:gap-x-8">
+      <section className="py-9 md:py-11 text-white" style={{ backgroundColor: navy }}>
+        <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6">
             {stats.map((st, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-4 lg:gap-5 justify-center lg:justify-start lg:border-r border-white/10 last:border-0 px-4 lg:px-8"
+                className={`flex items-center gap-4 justify-center lg:justify-start ${
+                  idx < stats.length - 1 ? "lg:border-r lg:border-white/15 lg:pr-8" : ""
+                }`}
               >
-                <div className="flex-shrink-0 text-white">
-                  {st.icon}
-                </div>
+                <div className="shrink-0 opacity-95">{st.icon}</div>
                 <div className="flex flex-col text-left">
-                  <span className="text-2xl lg:text-[28px] font-sans font-black text-white leading-none tracking-tight">
+                  <span className="text-2xl lg:text-[26px] font-sans font-extrabold text-white leading-none">
                     {st.value}
                   </span>
-                  <span className="text-slate-300 font-sans font-semibold text-[10px] md:text-xs tracking-wide mt-1 block">
+                  <span className="text-white/70 font-medium text-xs mt-1">
                     {st.label}
                   </span>
                 </div>
@@ -569,46 +531,47 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          5. POWERING EVERY INDUSTRY (Cinematic Fade Backdrop)
+          5. INDUSTRIES WE SERVE
       ═══════════════════════════════════════════════════════ */}
-      <section id="industries" className="relative py-16 md:py-20 overflow-hidden bg-white text-[#0B1E43] text-left">
-        {/* Background construction sunset image on the right half */}
-        <div className="absolute inset-y-0 right-0 w-full lg:w-[48%] z-0">
+      <section id="industries" className="relative py-14 md:py-20 overflow-hidden bg-white text-[#001C55]">
+        <div className="absolute inset-y-0 right-0 w-full md:w-[52%] lg:w-[50%] z-0">
           <Image
             src="/images/Powering every industry.png"
-            alt="Powering Every Industry"
+            alt="Construction skyline at dusk"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover object-center"
-            priority
           />
-          {/* Subtle overlay for mobile */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-transparent lg:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white from-35% via-white/90 via-55% to-transparent md:hidden" />
         </div>
 
-        {/* Gradient Overlay from Solid White/Light-Blue to Transparent (Left to Right) */}
-        <div className="absolute inset-y-0 left-0 right-0 bg-gradient-to-r from-white via-white via-[48%] lg:via-[55%] to-transparent z-10 pointer-events-none hidden lg:block" />
+        <div
+          className="absolute inset-y-0 left-0 right-0 z-[1] pointer-events-none hidden md:block"
+          style={{
+            background:
+              "linear-gradient(to right, #ffffff 0%, #ffffff 42%, rgba(255,255,255,0.92) 52%, rgba(255,255,255,0.55) 62%, transparent 78%)",
+          }}
+        />
 
-        <div className="container mx-auto px-6 md:px-12 max-w-8xl relative z-20">
-          <div className="w-full lg:max-w-[62%] xl:max-w-[58%] text-left">
-            <span className="text-[#0046C7] font-sans font-black text-[10px] md:text-xs tracking-[0.25em] uppercase block mb-3">
+        <div className="container mx-auto px-6 md:px-12 max-w-[1400px] relative z-10">
+          <div className="w-full md:max-w-[68%] lg:max-w-[62%]">
+            <span className="text-[#1a56db] font-sans font-bold text-[11px] tracking-[0.22em] uppercase block mb-2">
               INDUSTRIES WE SERVE
             </span>
-            <h2 className="text-2xl md:text-3xl lg:text-[34px] font-sans font-black text-[#0B1E43] uppercase tracking-tight mb-12 leading-none">
+            <h2 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-extrabold text-[#001C55] uppercase tracking-tight mb-10 md:mb-12 leading-tight">
               POWERING EVERY INDUSTRY
             </h2>
 
-            {/* Single horizontal line of all 8 industries with tight gap spacing, placed purely on the left */}
-            <div className="grid grid-cols-4 sm:grid-cols-8 gap-y-4 gap-x-1.5 sm:gap-x-3 lg:gap-x-4">
+            <div className="grid grid-cols-4 md:flex md:flex-wrap md:justify-between gap-y-6 gap-x-2 md:gap-x-3 lg:gap-x-4">
               {industries.map((ind, idx) => (
                 <div
                   key={idx}
-                  className="flex flex-col items-center group cursor-pointer text-[#0B1E43] hover:text-[#0046C7] transition-all duration-300"
+                  className="flex flex-col items-center text-[#001C55] md:flex-1 md:min-w-0 md:max-w-[120px]"
                 >
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 mb-2.5 transition-all duration-300 group-hover:scale-110 text-current flex items-center justify-center">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 mb-2.5 flex items-center justify-center">
                     {ind.svg}
                   </div>
-                  <h4 className="font-sans font-bold text-[8px] sm:text-[9px] md:text-[10px] lg:text-[11px] leading-tight text-center tracking-wide transition-colors text-current max-w-[70px] sm:max-w-[85px] md:max-w-[100px]">
+                  <h4 className="font-sans font-bold text-[8px] sm:text-[9px] md:text-[10px] leading-tight text-center">
                     {ind.name}
                   </h4>
                 </div>
@@ -619,248 +582,215 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════
-          6. DIRECT CONTACT DIRECTORY & GET A CALL BACK
+          6. CONTACT + GET A CALL BACK
       ═══════════════════════════════════════════════════════ */}
-      <section className="py-12 md:py-16 bg-[#0B1E43] relative overflow-hidden text-white">
-        {/* Subtle Dotted World Map Graphic */}
-        <div className="absolute inset-0 z-0 pointer-events-none select-none opacity-[0.06] hidden lg:block">
-          <svg className="w-full h-full object-cover" viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <section className="py-12 md:py-16 bg-[#001C55] relative overflow-hidden text-white">
+        <div className="absolute inset-y-0 left-0 w-[55%] z-0 pointer-events-none select-none opacity-[0.09] hidden lg:block">
+          <svg className="h-full w-full" viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <defs>
-              <pattern id="dotPattern" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
+              <pattern id="homeDotPattern" x="0" y="0" width="12" height="12" patternUnits="userSpaceOnUse">
                 <circle cx="2" cy="2" r="1.5" fill="#ffffff" />
               </pattern>
             </defs>
-            {/* Greenland */}
-            <path d="M 280,60 C 310,50 330,60 340,80 C 320,100 300,110 280,90 C 260,70 270,65 280,60 Z" fill="url(#dotPattern)" />
-            {/* North America */}
-            <path d="M 80,120 C 120,100 160,90 220,100 C 260,110 280,130 290,160 C 260,180 240,190 220,210 C 210,225 180,240 160,260 C 150,270 140,290 120,290 C 110,290 105,270 100,250 C 95,230 75,210 70,180 C 65,150 70,130 80,120 Z" fill="url(#dotPattern)" />
-            {/* South America */}
-            <path d="M 220,280 C 240,280 260,300 270,320 C 280,350 250,420 220,460 C 200,480 180,490 170,480 C 160,470 165,440 170,410 C 175,380 180,340 190,320 C 200,300 210,280 220,280 Z" fill="url(#dotPattern)" />
-            {/* Eurasia */}
-            <path d="M 380,110 C 430,90 510,80 590,90 C 670,100 750,90 830,120 C 880,140 910,170 900,210 C 880,250 850,280 830,310 C 790,350 730,370 680,350 C 650,340 620,320 590,320 C 560,320 530,340 500,350 C 450,370 410,340 400,300 C 390,260 400,200 380,170 C 370,150 360,130 380,110 Z" fill="url(#dotPattern)" />
-            {/* Africa */}
-            <path d="M 420,220 C 460,200 500,210 530,230 C 560,250 570,280 550,320 C 530,350 520,380 500,420 C 480,450 460,460 450,450 C 440,440 445,410 440,380 C 435,350 420,330 410,300 C 400,270 405,240 420,220 Z" fill="url(#dotPattern)" />
-            {/* Australia */}
-            <path d="M 780,360 C 810,350 840,360 860,380 C 870,400 860,430 840,440 C 810,450 780,430 770,410 C 760,390 765,370 780,360 Z" fill="url(#dotPattern)" />
+            <path d="M 280,60 C 310,50 330,60 340,80 C 320,100 300,110 280,90 C 260,70 270,65 280,60 Z" fill="url(#homeDotPattern)" />
+            <path d="M 80,120 C 120,100 160,90 220,100 C 260,110 280,130 290,160 C 260,180 240,190 220,210 C 210,225 180,240 160,260 C 150,270 140,290 120,290 C 110,290 105,270 100,250 C 95,230 75,210 70,180 C 65,150 70,130 80,120 Z" fill="url(#homeDotPattern)" />
+            <path d="M 220,280 C 240,280 260,300 270,320 C 280,350 250,420 220,460 C 200,480 180,490 170,480 C 160,470 165,440 170,410 C 175,380 180,340 190,320 C 200,300 210,280 220,280 Z" fill="url(#homeDotPattern)" />
+            <path d="M 380,110 C 430,90 510,80 590,90 C 670,100 750,90 830,120 C 880,140 910,170 900,210 C 880,250 850,280 830,310 C 790,350 730,370 680,350 C 650,340 620,320 590,320 C 560,320 530,340 500,350 C 450,370 410,340 400,300 C 390,260 400,200 380,170 C 370,150 360,130 380,110 Z" fill="url(#homeDotPattern)" />
+            <path d="M 420,220 C 460,200 500,210 530,230 C 560,250 570,280 550,320 C 530,350 520,380 500,420 C 480,450 460,460 450,450 C 440,440 445,410 440,380 C 435,350 420,330 410,300 C 400,270 405,240 420,220 Z" fill="url(#homeDotPattern)" />
+            <path d="M 780,360 C 810,350 840,360 860,380 C 870,400 860,430 840,440 C 810,450 780,430 770,410 C 760,390 765,370 780,360 Z" fill="url(#homeDotPattern)" />
           </svg>
         </div>
 
-        <div className="container mx-auto px-6 md:px-12 max-w-8xl relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="container mx-auto px-6 md:px-12 max-w-[1400px] relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
 
-            {/* Left Part: Direct Corporate Contacts */}
-            <div className="lg:col-span-5 flex flex-col justify-between text-left">
-              <div>
-                <h3 className="text-2xl md:text-[30px] lg:text-[34px] font-sans font-black text-white uppercase tracking-tight leading-[1.1] mb-2 font-display">
-                  NEED POWER. NEED SOLUTIONS.
-                </h3>
-                <h3 className="text-2xl md:text-[30px] lg:text-[34px] font-sans font-black text-white uppercase tracking-tight leading-[1.1] mb-8 md:mb-10 font-display">
-                  WE'RE HERE TO HELP.
-                </h3>
+            <div className="lg:col-span-5 flex flex-col justify-center text-left">
+              <h2 className="text-xl sm:text-2xl md:text-[1.65rem] lg:text-[1.85rem] font-sans font-extrabold text-white uppercase tracking-tight leading-[1.15] mb-8 md:mb-10">
+                NEED POWER. NEED SOLUTIONS.
+                <br />
+                WE&apos;RE HERE TO HELP.
+              </h2>
 
-                {/* Directory Contact items - 2x2 Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 md:gap-y-8 gap-x-8">
-                  {/* Customer Service */}
-                  <div className="flex gap-4 items-start z-10 relative">
-                    <div className="text-white mt-1.5 flex-shrink-0">
-                      <PhoneCall size={26} strokeWidth={1.5} className="text-white" />
-                    </div>
-                    <div>
-                      <a href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, '')}`} className="text-white hover:text-[#9FA0CD] font-sans font-black text-base md:text-[17px] tracking-wide block leading-tight transition-colors">
-                        {companyData.contact.tel}
-                      </a>
-                      <span className="text-[#9FA0CD] font-sans font-bold text-[10px] md:text-xs tracking-wider uppercase mt-1 block">
-                        Customer Service
-                      </span>
-                    </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-7">
+                <div className="flex gap-3.5 items-start">
+                  <PhoneCall size={24} strokeWidth={1.5} className="shrink-0 mt-0.5" />
+                  <div>
+                    <a
+                      href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
+                      className="text-white hover:text-white/80 font-bold text-[15px] md:text-base leading-snug block transition-colors"
+                    >
+                      {companyData.contact.tel}
+                    </a>
+                    <span className="text-white/65 font-medium text-[11px] uppercase tracking-wide mt-1 block">
+                      Customer Service
+                    </span>
                   </div>
+                </div>
 
-                  {/* Sales Department */}
-                  <div className="flex gap-4 items-start z-10 relative">
-                    <div className="text-white mt-1.5 flex-shrink-0">
-                      <Smartphone size={26} strokeWidth={1.5} className="text-white" />
+                <div className="flex gap-3.5 items-start">
+                  <Smartphone size={24} strokeWidth={1.5} className="shrink-0 mt-0.5" />
+                  <div>
+                    <div className="flex flex-col gap-0.5">
+                      {companyData.contact.sales.split(", ").map((num, i) => (
+                        <a
+                          key={i}
+                          href={`tel:${num.replace(/\s+/g, "")}`}
+                          className="text-white hover:text-white/80 font-bold text-[15px] md:text-base leading-snug block transition-colors"
+                        >
+                          {num}
+                        </a>
+                      ))}
                     </div>
-                    <div>
-                      <div className="flex flex-col gap-1">
-                        {companyData.contact.sales.split(", ").map((num, i) => (
-                          <a
-                            key={i}
-                            href={`tel:${num.replace(/\s+/g, "")}`}
-                            className="text-white hover:text-[#9FA0CD] font-sans font-black text-base md:text-[17px] tracking-wide block leading-tight transition-colors"
-                          >
-                            {num}
-                          </a>
-                        ))}
-                      </div>
-                      <span className="text-[#9FA0CD] font-sans font-bold text-[10px] md:text-xs tracking-wider uppercase mt-1 block">
-                        Sales Department
-                      </span>
-                    </div>
+                    <span className="text-white/65 font-medium text-[11px] uppercase tracking-wide mt-1 block">
+                      Sales Department
+                    </span>
                   </div>
+                </div>
 
-                  {/* Email Us */}
-                  <div className="flex gap-4 items-start z-10 relative">
-                    <div className="text-white mt-1.5 flex-shrink-0">
-                      <Mail size={26} strokeWidth={1.5} className="text-white" />
-                    </div>
-                    <div>
-                      <a href={`mailto:${companyData.contact.email}`} className="text-white hover:text-[#9FA0CD] font-sans font-black text-base md:text-[17px] tracking-wide block leading-tight transition-colors break-all">
-                        {companyData.contact.email}
-                      </a>
-                      <span className="text-[#9FA0CD] font-sans font-bold text-[10px] md:text-xs tracking-wider uppercase mt-1 block">
-                        Send Us An E-mail
-                      </span>
-                    </div>
+                <div className="flex gap-3.5 items-start">
+                  <Mail size={24} strokeWidth={1.5} className="shrink-0 mt-0.5" />
+                  <div>
+                    <a
+                      href={`mailto:${companyData.contact.email}`}
+                      className="text-white hover:text-white/80 font-bold text-[15px] md:text-base leading-snug block transition-colors break-all"
+                    >
+                      {companyData.contact.email}
+                    </a>
+                    <span className="text-white/65 font-medium text-[11px] uppercase tracking-wide mt-1 block">
+                      Send Us An E-mail
+                    </span>
                   </div>
+                </div>
 
-                  {/* Office Address */}
-                  <div className="flex gap-4 items-start z-10 relative">
-                    <div className="text-white mt-1.5 flex-shrink-0">
-                      <MapPin size={26} strokeWidth={1.5} className="text-white" />
-                    </div>
-                    <div>
-                      <p className="text-white font-sans font-black text-base md:text-[17px] tracking-wide block leading-tight">
-                        PO BOX: {companyData.contact.address.poBox}
-                      </p>
-                      <p className="text-white font-sans font-black text-base md:text-[17px] tracking-wide block leading-tight mt-0.5">
-                        {companyData.contact.address.city}
-                      </p>
-                      <span className="text-[#9FA0CD] font-sans font-bold text-[10px] md:text-xs tracking-wider uppercase mt-1.5 block">
-                        Head Office Address
-                      </span>
-                    </div>
+                <div className="flex gap-3.5 items-start">
+                  <MapPin size={24} strokeWidth={1.5} className="shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-white font-bold text-[15px] md:text-base leading-snug">
+                      PO BOX: {companyData.contact.address.poBox} {companyData.contact.address.city}
+                    </p>
+                    <span className="text-white/65 font-medium text-[11px] uppercase tracking-wide mt-1 block">
+                      Head Office Address
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Part: Get A Call Back form (White Card) */}
-            <div className="lg:col-span-7 bg-white rounded-[2rem] p-5 sm:p-8 md:p-10 shadow-2xl relative flex flex-col justify-between text-left text-slate-800 z-10">
-              <div>
-                <h3 className="text-xl md:text-[24px] font-sans font-black text-[#0B1E43] uppercase tracking-tight mb-1.5">
-                  GET A CALL BACK
-                </h3>
-                <p className="text-slate-500 text-xs md:text-sm font-semibold leading-relaxed mb-6">
-                  Fill out the form below and our team will call you back within 2 hours.
-                </p>
+            <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 md:p-9 text-[#4a5568] shadow-lg">
+              <h3 className="text-lg md:text-xl font-sans font-extrabold text-[#001C55] uppercase tracking-tight mb-1">
+                GET A CALL BACK
+              </h3>
+              <p className="text-[#6b7280] text-xs md:text-sm font-normal leading-relaxed mb-6">
+                Fill out the form below and our team will call you back within 2 hours.
+              </p>
 
-                <AnimatePresence mode="wait">
-                  {isSubmitted ? (
-                    <motion.div
-                      key="callback-success"
-                      initial={{ opacity: 0, scale: 0.96 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.96 }}
-                      className="bg-emerald-50 border border-emerald-100 rounded-2xl p-6 md:p-8 text-center flex flex-col items-center gap-4 my-4"
+              <AnimatePresence mode="wait">
+                {isSubmitted ? (
+                  <motion.div
+                    key="callback-success"
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    className="bg-[#f4f5f7] border border-[#e2e5ea] rounded-lg p-6 md:p-8 text-center flex flex-col items-center gap-4"
+                  >
+                    <div className="w-11 h-11 rounded-full bg-[#001C55]/10 flex items-center justify-center text-[#001C55]">
+                      <CheckCircle2 size={22} />
+                    </div>
+                    <h4 className="text-[#001C55] font-extrabold text-base uppercase tracking-wide">
+                      Request Received
+                    </h4>
+                    <p className="text-[#6b7280] text-sm max-w-sm leading-relaxed">
+                      Thank you, <span className="text-[#001C55] font-bold">{formName}</span>. We&apos;ll call you at{" "}
+                      <span className="text-[#001C55] font-bold">{formPhone}</span> about{" "}
+                      <span className="text-[#001C55] font-bold">{formService || "your inquiry"}</span> shortly.
+                    </p>
+                    <button
+                      onClick={resetForm}
+                      type="button"
+                      className="mt-2 border border-[#e2e5ea] hover:bg-[#f4f5f7] text-[#4a5568] px-6 py-2.5 rounded-md font-bold text-[11px] tracking-wider uppercase transition-colors"
                     >
-                      <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 shadow-inner">
-                        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <h4 className="text-[#0B1E43] font-sans font-black text-lg uppercase tracking-wider">
-                        Request Received
-                      </h4>
-                      <p className="text-slate-500 text-xs font-semibold max-w-sm leading-relaxed">
-                        Thank you, <span className="text-[#0B1E43] font-bold">{formName}</span>. Your inquiry for <span className="text-[#0B1E43] font-bold">{formService || "our services"}</span> is authenticated. A logistics coordinator will contact you at <span className="text-[#0B1E43] font-bold">{formPhone}</span> shortly.
-                      </p>
-                      <button
-                        onClick={resetForm}
-                        type="button"
-                        className="mt-4 border border-slate-200 hover:bg-slate-50 text-slate-600 px-6 py-2.5 rounded-full font-bold text-[10px] tracking-widest uppercase transition-all duration-300"
-                      >
-                        Submit Another Request
-                      </button>
-                    </motion.div>
-                  ) : (
-                    <motion.form
-                      key="callback-form"
-                      onSubmit={handleFormSubmit}
-                      className="space-y-4"
-                    >
-                      {/* Name & Email Row */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="flex flex-col">
-                          <input
-                            type="text"
-                            required
-                            value={formName}
-                            onChange={(e) => setFormName(e.target.value)}
-                            placeholder="Your Name"
-                            className="bg-white border border-slate-200 focus:border-[#0B1E43] rounded-xl px-4 py-3.5 text-slate-800 text-sm font-semibold placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#0B1E43] transition-all"
-                          />
-                        </div>
-                        <div className="flex flex-col">
-                          <input
-                            type="email"
-                            required
-                            value={formEmail}
-                            onChange={(e) => setFormEmail(e.target.value)}
-                            placeholder="Email Address"
-                            className="bg-white border border-slate-200 focus:border-[#0B1E43] rounded-xl px-4 py-3.5 text-slate-800 text-sm font-semibold placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#0B1E43] transition-all"
-                          />
-                        </div>
-                      </div>
+                      Submit Another Request
+                    </button>
+                  </motion.div>
+                ) : (
+                  <motion.form
+                    key="callback-form"
+                    onSubmit={handleFormSubmit}
+                    className="space-y-3.5"
+                  >
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                      <input
+                        type="text"
+                        required
+                        value={formName}
+                        onChange={(e) => setFormName(e.target.value)}
+                        placeholder="Your Name"
+                        className={formInputClass}
+                      />
+                      <input
+                        type="email"
+                        required
+                        value={formEmail}
+                        onChange={(e) => setFormEmail(e.target.value)}
+                        placeholder="Email Address"
+                        className={formInputClass}
+                      />
+                    </div>
 
-                      {/* Phone & Service Selector Row */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="flex flex-col">
-                          <input
-                            type="tel"
-                            required
-                            value={formPhone}
-                            onChange={(e) => setFormPhone(e.target.value)}
-                            placeholder="Phone Number"
-                            className="bg-white border border-slate-200 focus:border-[#0B1E43] rounded-xl px-4 py-3.5 text-slate-800 text-sm font-semibold placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#0B1E43] transition-all"
-                          />
-                        </div>
-                        <div className="flex flex-col relative">
-                          <select
-                            required
-                            value={formService}
-                            onChange={(e) => setFormService(e.target.value)}
-                            className="w-full bg-white border border-slate-200 focus:border-[#0B1E43] rounded-xl px-4 py-3.5 text-slate-800 text-sm font-semibold focus:outline-none focus:ring-1 focus:ring-[#0B1E43] appearance-none cursor-pointer placeholder-slate-400"
-                          >
-                            <option value="" disabled>Select Service</option>
-                            <option value="Generators">Silent Generators</option>
-                            <option value="Air Compressors">Air Compressors</option>
-                            <option value="Cables">Cables Up to 5000 Meter</option>
-                            <option value="Distribution Boards">Distribution Boards</option>
-                            <option value="Tower Lights">Tower Lights</option>
-                            <option value="Diesel Tanks">Diesel Tanks</option>
-                            <option value="Load Bank">Load Bank</option>
-                            <option value="Maintenance Support">Maintenance & Support</option>
-                          </select>
-                          <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-slate-400">
-                            <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                            </svg>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Project Details textarea */}
-                      <div className="flex flex-col">
-                        <textarea
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                      <input
+                        type="tel"
+                        required
+                        value={formPhone}
+                        onChange={(e) => setFormPhone(e.target.value)}
+                        placeholder="Phone Number"
+                        className={formInputClass}
+                      />
+                      <div className="relative">
+                        <select
                           required
-                          value={formDetails}
-                          onChange={(e) => setFormDetails(e.target.value)}
-                          rows={3}
-                          placeholder="Project Details"
-                          className="bg-white border border-slate-200 focus:border-[#0B1E43] rounded-xl px-4 py-3.5 text-slate-800 text-sm font-semibold placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-[#0B1E43] transition-all resize-none"
-                        ></textarea>
+                          value={formService}
+                          onChange={(e) => setFormService(e.target.value)}
+                          className={`${formInputClass} appearance-none cursor-pointer pr-10`}
+                        >
+                          <option value="" disabled>
+                            Select Service
+                          </option>
+                          <option value="Generators">Silent Generators</option>
+                          <option value="Air Compressors">Air Compressors</option>
+                          <option value="Cables">Cables Up to 5000 Meter</option>
+                          <option value="Distribution Boards">Distribution Boards</option>
+                          <option value="Tower Lights">Tower Lights</option>
+                          <option value="Diesel Tanks">Diesel Tanks</option>
+                          <option value="Load Bank">Load Bank</option>
+                          <option value="Maintenance Support">Maintenance & Support</option>
+                        </select>
+                        <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-[#9ca3af]">
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 20 20" aria-hidden>
+                            <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                          </svg>
+                        </div>
                       </div>
+                    </div>
 
-                      <button
-                        type="submit"
-                        className="w-full bg-[#0B1E43] hover:bg-[#152e5d] text-white font-sans font-extrabold py-3.5 rounded-xl hover:scale-[1.01] active:scale-95 transition-all duration-300 mt-2 text-sm md:text-base flex items-center justify-center gap-2 shadow-lg shadow-[#0B1E43]/15"
-                      >
-                        Request a Call Back <ArrowRight size={16} className="ml-1" />
-                      </button>
-                    </motion.form>
-                  )}
-                </AnimatePresence>
-              </div>
+                    <textarea
+                      required
+                      value={formDetails}
+                      onChange={(e) => setFormDetails(e.target.value)}
+                      rows={4}
+                      placeholder="Project Details"
+                      className={`${formInputClass} resize-none`}
+                    />
+
+                    <button
+                      type="submit"
+                      className="w-full bg-[#001C55] hover:bg-[#002d7a] text-white font-bold py-3.5 rounded-md text-sm md:text-[15px] flex items-center justify-center gap-2 transition-colors mt-1"
+                    >
+                      Request a Call Back <ArrowRight size={16} />
+                    </button>
+                  </motion.form>
+                )}
+              </AnimatePresence>
             </div>
 
           </div>

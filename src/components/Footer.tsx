@@ -1,120 +1,115 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Globe, MapPin, Phone, Smartphone } from "lucide-react";
 import companyData from "@/content/company.json";
 
+const NAVY = "#001030";
+const NAVY_BORDER = "rgba(255,255,255,0.12)";
+
 const LinkedInIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
   </svg>
 );
 
 const YoutubeIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
     <path d="M23.498 6.163c-.272-.98-1.04-1.748-2.02-2.02C19.716 3.645 12 3.645 12 3.645s-7.716 0-9.478.498c-.98.272-1.748 1.04-2.02 2.02C0 7.925 0 11.666 0 11.666s0 3.742.498 5.503c.272.98 1.04 1.748 2.02 2.02 1.762.498 9.478.498 9.478.498s7.716 0 9.478-.498c.98-.272 1.748-1.04 2.02-2.02.498-1.761.498-5.503.498-5.503s0-3.741-.498-5.503zM9.545 15.568V7.763l6.818 3.903-6.818 3.902z" />
   </svg>
 );
 
 const WhatsAppIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.733-1.458L0 24zm6.704-4.248c1.601.95 3.115 1.485 4.908 1.487 5.379 0 9.751-4.373 9.754-9.759.001-2.61-1.011-5.064-2.848-6.903C16.68 2.73 14.216 1.719 11.611 1.719 6.236 1.719 1.861 6.091 1.858 11.48c-.001 1.859.489 3.411 1.464 5.01l-.995 3.636 3.73-.974z" />
   </svg>
 );
 
-const PhoneIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-  </svg>
-);
-
-const MailIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-    <polyline points="22,6 12,13 2,6" />
-  </svg>
-);
-
-const MapPinIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-    <circle cx="12" cy="10" r="3" />
-  </svg>
-);
+const salesPrimary = companyData.contact.sales.split(", ")[0];
 
 export default function Footer() {
   const quickLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Services", href: "/equipment-services" },
-    { name: "Contact", href: "/contact" }
+    { name: "Contact", href: "/contact" },
   ];
 
   const servicesLinks = [
-    { name: "Sound Proof Generators (5 KVA - 1500 KVA)", href: "/equipment-services" },
-    { name: "Cables Up to 5000 Meter", href: "/equipment-services" },
-    { name: "Distribution Board & Change Over Switch Board", href: "/equipment-services" },
-    { name: "Air Compressors (150 CFM - 950 CFM)", href: "/equipment-services" },
-    { name: "Tower Lights", href: "/equipment-services" },
-    { name: "Diesel Tanks", href: "/equipment-services" },
-    { name: "Load Bank", href: "/equipment-services" },
-    { name: "Maintenance & Support", href: "/equipment-services" }
+    "Sound Proof Generators (5 KVA - 1500 KVA)",
+    "Cables Up to 5000 Meter",
+    "Distribution Board & Change Over Switch Board",
+    "Air Compressors (150 CFM - 950 CFM)",
+    "Tower Lights",
+    "Diesel Tanks",
+    "Load Bank",
+    "Maintenance & Support",
   ];
 
   return (
-    <footer className="bg-[#081329] border-t border-slate-800 text-white z-25 relative pt-16 pb-6">
-      <div className="container mx-auto px-6 md:px-12 max-w-8xl">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-x-8 gap-y-12 mb-12">
-          
-          {/* Column 1: Company Logo, Text & Socials dynamically bound to companyData */}
-          <div className="lg:col-span-4 flex flex-col items-start text-left">
-            <div className="flex items-center gap-3.5 mb-6 group">
-              <div className="relative h-14 w-14 rounded-full overflow-hidden flex-shrink-0 bg-white border border-slate-800 shadow-inner">
+    <footer className="relative text-white overflow-hidden" style={{ backgroundColor: NAVY }}>
+      <div
+        className="absolute inset-0 opacity-[0.04] pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
+          backgroundSize: "18px 18px",
+        }}
+        aria-hidden
+      />
+
+      <div className="container mx-auto px-6 md:px-10 lg:px-12 max-w-[1400px] relative z-10 pt-12 md:pt-14 pb-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[minmax(260px,1.2fr)_max-content_minmax(0,1.15fr)_minmax(0,1fr)] gap-10 lg:gap-0">
+          {/* Column 1 — Brand */}
+          <div
+            className="lg:pr-8 lg:border-r flex flex-col"
+            style={{ borderColor: NAVY_BORDER }}
+          >
+            <div className="flex items-start gap-3.5 mb-5">
+              <div className="relative h-14 w-14 rounded-full overflow-hidden shrink-0 border-2 border-white/30 bg-white">
                 <Image
                   src="/images/justified-logo.jpeg"
-                  alt={`${companyData.name} Logo`}
+                  alt={`${companyData.legalName.full} logo`}
                   fill
                   sizes="56px"
                   className="object-cover"
                 />
               </div>
-              <div className="flex flex-col text-left leading-none font-sans select-none">
-                <span className="text-white font-black text-[15px] md:text-[17px] tracking-wide leading-tight uppercase font-sans">
-                  {companyData.name}
-                </span>
-                <span className="text-[#9FA0CD] font-black text-[9px] tracking-[0.25em] uppercase mt-1 opacity-80">
-                  Power & Solutions
-                </span>
+              <div className="flex flex-col leading-[1.2] pt-0.5">
+                {companyData.legalName.lines.map((line) => (
+                  <span key={line} className="font-bold text-[11px] md:text-xs tracking-wide uppercase text-white">
+                    {line}
+                  </span>
+                ))}
               </div>
             </div>
-            
-            <p className="text-slate-400 text-sm font-semibold leading-relaxed mb-6 max-w-sm">
-              Power and performance you can rely on... anytime, anywhere.
+
+            <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-xs">
+              {companyData.tagline}
             </p>
-            
-            {/* Social icons list in styled circles using dynamic links */}
-            <div className="flex gap-4 items-center">
-              <a 
-                href={companyData.contact.linkedin} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-9 h-9 rounded-full bg-[#0077B5] hover:bg-[#0077B5]/85 text-white flex items-center justify-center hover:scale-110 transition-all shadow-md"
+
+            <div className="flex gap-3 items-center mt-auto">
+              <a
+                href={companyData.contact.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-[#0077B5] text-white flex items-center justify-center hover:opacity-90 transition-opacity"
                 aria-label="LinkedIn"
               >
                 <LinkedInIcon />
               </a>
-              <a 
-                href={companyData.contact.youtube} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-9 h-9 rounded-full bg-[#FF0000] hover:bg-[#FF0000]/85 text-white flex items-center justify-center hover:scale-110 transition-all shadow-md"
+              <a
+                href={companyData.contact.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-[#FF0000] text-white flex items-center justify-center hover:opacity-90 transition-opacity"
                 aria-label="YouTube"
               >
                 <YoutubeIcon />
               </a>
-              <a 
-                href={`https://wa.me/${companyData.contact.sales.replace(/[-+\s]/g, '').split(',')[0]}`} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-9 h-9 rounded-full bg-[#25D366] hover:bg-[#25D366]/85 text-white flex items-center justify-center hover:scale-110 transition-all shadow-md"
+              <a
+                href={`https://wa.me/${salesPrimary.replace(/[-+\s]/g, "")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 transition-opacity"
                 aria-label="WhatsApp"
               >
                 <WhatsAppIcon />
@@ -122,18 +117,16 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="lg:col-span-2 flex flex-col items-start text-left">
-            <h4 className="text-[#9FA0CD] font-bold text-[12px] uppercase tracking-[0.25em] mb-6 font-sans">
-              QUICK LINKS
-            </h4>
-            <ul className="space-y-3.5">
+          {/* Column 2 — Quick Links (narrow) */}
+          <div
+            className="lg:px-6 lg:border-r flex flex-col w-full lg:w-auto lg:min-w-[7.5rem] lg:max-w-[9.5rem]"
+            style={{ borderColor: NAVY_BORDER }}
+          >
+            <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-5">QUICK LINKS</h4>
+            <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-slate-400 hover:text-white font-semibold text-sm transition-colors block"
-                  >
+                  <Link href={link.href} className="text-white text-sm hover:text-white/80 transition-colors">
                     {link.name}
                   </Link>
                 </li>
@@ -141,110 +134,84 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Our Services */}
-          <div className="lg:col-span-3 flex flex-col items-start text-left">
-            <h4 className="text-[#9FA0CD] font-bold text-[12px] uppercase tracking-[0.25em] mb-6 font-sans">
-              OUR SERVICES
-            </h4>
-            <ul className="space-y-3.5">
-              {servicesLinks.map((link) => (
-                <li key={link.name}>
+          {/* Column 3 — Services */}
+          <div
+            className="lg:px-8 lg:border-r flex flex-col"
+            style={{ borderColor: NAVY_BORDER }}
+          >
+            <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-5">OUR SERVICES</h4>
+            <ul className="space-y-2.5">
+              {servicesLinks.map((name) => (
+                <li key={name}>
                   <Link
-                    href={link.href}
-                    className="text-slate-400 hover:text-white font-semibold text-sm transition-colors block leading-snug"
+                    href="/equipment-services"
+                    className="text-white text-sm leading-snug hover:text-white/80 transition-colors block"
                   >
-                    {link.name}
+                    {name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Column 4: Contact Us dynamically bound to previous data */}
-          <div className="lg:col-span-3 flex flex-col items-start text-left">
-            <h4 className="text-[#9FA0CD] font-bold text-[12px] uppercase tracking-[0.25em] mb-6 font-sans">
-              CONTACT US
-            </h4>
-            <div className="space-y-5 w-full">
-              {/* Contact Item 1: Telephone */}
-              <div className="flex gap-3.5 items-start">
-                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 text-[#9FA0CD]">
-                  <PhoneIcon />
-                </div>
+          {/* Column 4 — Contact */}
+          <div className="lg:pl-8 flex flex-col">
+            <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-5">CONTACT US</h4>
+            <ul className="flex flex-col gap-5">
+              <li className="flex gap-3 items-start">
+                <Phone size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
                 <div>
-                  <a href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, '')}`} className="text-white hover:text-[#9FA0CD] font-bold text-sm transition-colors block leading-tight">
+                  <a
+                    href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
+                    className="text-white font-semibold text-sm leading-snug block hover:text-white/80"
+                  >
                     {companyData.contact.tel}
                   </a>
-                  <span className="text-slate-500 font-bold text-[10px] tracking-wider uppercase block mt-0.5">
-                    Telephone
-                  </span>
                 </div>
-              </div>
+              </li>
 
-              {/* Contact Item 2: Email Us */}
-              <div className="flex gap-3.5 items-start">
-                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 text-[#9FA0CD]">
-                  <MailIcon />
-                </div>
+              <li className="flex gap-3 items-start">
+                <Globe size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
                 <div>
-                  <a href={`mailto:${companyData.contact.email}`} className="text-white hover:text-[#9FA0CD] font-bold text-sm transition-colors block leading-tight break-all">
+                  <a
+                    href={`mailto:${companyData.contact.email}`}
+                    className="text-white font-semibold text-sm leading-snug block hover:text-white/80 break-all"
+                  >
                     {companyData.contact.email}
                   </a>
-                  <span className="text-slate-500 font-bold text-[10px] tracking-wider uppercase block mt-0.5">
-                    Email Us
-                  </span>
+                  <span className="text-white/60 text-[11px] mt-1 block">Sales Department</span>
                 </div>
-              </div>
+              </li>
 
-              {/* Contact Item 3: Sales Department */}
-              <div className="flex gap-3.5 items-start">
-                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 text-[#9FA0CD]">
-                  <PhoneIcon />
-                </div>
+              <li className="flex gap-3 items-start">
+                <Smartphone size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
                 <div>
-                  <div className="flex flex-col gap-1">
-                    {companyData.contact.sales.split(", ").map((num, i) => (
-                      <a
-                        key={i}
-                        href={`tel:${num.replace(/\s+/g, "")}`}
-                        className="text-white hover:text-[#9FA0CD] font-bold text-sm transition-colors block leading-tight"
-                      >
-                        {num}
-                      </a>
-                    ))}
-                  </div>
-                  <span className="text-slate-500 font-bold text-[10px] tracking-wider uppercase block mt-0.5">
-                    Sales Department
-                  </span>
+                  <a
+                    href={`tel:${salesPrimary.replace(/\s+/g, "")}`}
+                    className="text-white font-semibold text-sm leading-snug block hover:text-white/80"
+                  >
+                    {salesPrimary}
+                  </a>
+                  <span className="text-white/60 text-[11px] mt-1 block">Sales Department</span>
                 </div>
-              </div>
+              </li>
 
-              {/* Contact Item 4: Address */}
-              <div className="flex gap-3.5 items-start">
-                <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 text-[#9FA0CD]">
-                  <MapPinIcon />
-                </div>
+              <li className="flex gap-3 items-start">
+                <MapPin size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
                 <div>
-                  <p className="text-white font-bold text-sm leading-tight">
-                    {companyData.contact.address.office}
-                  </p>
-                  <p className="text-slate-300 font-bold text-xs leading-tight mt-1">
+                  <p className="text-white font-semibold text-sm leading-snug">
                     PO BOX: {companyData.contact.address.poBox} {companyData.contact.address.city}
                   </p>
-                  <span className="text-slate-500 font-bold text-[10px] tracking-wider uppercase block mt-0.5">
-                    Head Office Address
-                  </span>
+                  <span className="text-white/60 text-[11px] mt-1 block">Head Office Address</span>
                 </div>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
-
         </div>
 
-        {/* Bottom copyright line dynamic */}
-        <div className="border-t border-slate-800/80 pt-6 mt-10 flex flex-col items-center justify-center gap-4">
-          <p className="text-slate-500 font-semibold text-xs tracking-wider text-center">
-            &copy; {new Date().getFullYear()} {companyData.name}. All Rights Reserved.
+        <div className="border-t mt-12 py-5 text-center" style={{ borderColor: NAVY_BORDER }}>
+          <p className="text-white/80 text-xs md:text-[13px]">
+            &copy; {new Date().getFullYear()} {companyData.legalName.full}. All Rights Reserved.
           </p>
         </div>
       </div>

@@ -8,6 +8,10 @@
   --color-darker: #05060A;
   --color-light: #FBFCFD;
   --color-gray-soft: #8F91A2;
+  --color-navy: #001c55;
+  --color-navy-hover: #002d7a;
+  --color-section: #f4f5f7;
+  --color-body: #4a5568;
 
   --font-sans: var(--font-inter);
   --font-heading: var(--font-space-grotesk);
