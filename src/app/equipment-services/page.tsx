@@ -25,6 +25,7 @@ import {
 import companyData from "@/content/company.json";
 import { HeroEyebrowLabel, HeroOutlineButton, PageHero } from "@/components/PageHero";
 import { ACCENT, NAVY } from "@/lib/theme";
+import { type } from "@/lib/typography";
 
 const services = [
   {
@@ -117,7 +118,7 @@ export default function EquipmentServicesPage() {
         imageAlt="Generator with UAE skyline"
         eyebrow={<HeroEyebrowLabel>OUR SERVICES</HeroEyebrowLabel>}
         title={
-          <h1 className="text-2xl sm:text-3xl md:text-[2.35rem] lg:text-[2.6rem] font-extrabold uppercase tracking-tight leading-[1.12]">
+          <h1 className={type.hero}>
             Complete Solutions
             <br />
             Under <span style={{ color: ACCENT }}>One Roof</span>
@@ -137,15 +138,15 @@ export default function EquipmentServicesPage() {
           <div className="text-center max-w-2xl mx-auto mb-12 md:mb-14">
             <div className="flex items-center justify-center gap-4 mb-3">
               <span className="h-px w-12 bg-[#d1d5db]" />
-              <span className="font-bold text-[11px] tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
+              <span className={type.eyebrow} style={{ color: ACCENT }}>
                 WHAT WE OFFER
               </span>
               <span className="h-px w-12 bg-[#d1d5db]" />
             </div>
-            <h2 className="text-2xl md:text-[2rem] font-extrabold uppercase tracking-tight mb-4" style={{ color: NAVY }}>
+            <h2 className={`${type.sectionTitle} mb-4`} style={{ color: NAVY }}>
               OUR SERVICES
             </h2>
-            <p className="text-sm text-[#6b7280] leading-relaxed">
+            <p className={`${type.body} text-[#6b7280]`}>
               We offer a wide range of high-performance equipment and technical solutions tailored to meet the needs of various industries and projects.
             </p>
           </div>
@@ -176,20 +177,20 @@ export default function EquipmentServicesPage() {
                 </div>
 
                 <div className="px-4 pt-8 pb-5 flex flex-col flex-1">
-                  <h3 className="font-extrabold text-xs uppercase tracking-wide leading-tight mb-0.5" style={{ color: NAVY }}>
+                  <h3 className={`${type.cardTitle} mb-0.5`} style={{ color: NAVY }}>
                     {srv.title}
                   </h3>
                   {srv.subtitle ? (
-                    <span className="font-bold text-[10px] uppercase tracking-wide mb-2 block" style={{ color: ACCENT }}>
+                    <span className={`${type.micro} mb-2 block`} style={{ color: ACCENT }}>
                       {srv.subtitle}
                     </span>
                   ) : (
                     <span className="block h-4 mb-2" aria-hidden />
                   )}
-                  <p className="text-[12px] text-[#6b7280] leading-relaxed mb-4 flex-1">{srv.desc}</p>
+                  <p className={`${type.body} text-[#6b7280] mb-4 flex-1`}>{srv.desc}</p>
                   <Link
                     href={`#${srv.id}`}
-                    className="inline-flex items-center gap-1 text-[12px] font-bold underline underline-offset-2 w-fit"
+                    className={`inline-flex items-center gap-1 ${type.caption} font-bold underline underline-offset-2 w-fit`}
                     style={{ color: ACCENT }}
                   >
                     Learn More <ArrowRight size={12} />
@@ -204,7 +205,7 @@ export default function EquipmentServicesPage() {
       {/* Why choose us */}
       <section className="py-12 md:py-14" style={{ backgroundColor: "#eef2f7" }}>
         <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
-          <h3 className="text-center font-extrabold text-sm uppercase tracking-[0.2em] mb-10" style={{ color: NAVY }}>
+          <h3 className={`text-center ${type.cardTitle} tracking-[0.2em] mb-10`} style={{ color: NAVY }}>
             WHY CHOOSE US?
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6">
@@ -218,10 +219,10 @@ export default function EquipmentServicesPage() {
                 <div className="mb-4" style={{ color: ACCENT }}>
                   {item.icon}
                 </div>
-                <h4 className="font-bold text-[11px] uppercase tracking-wide mb-2 leading-tight" style={{ color: NAVY }}>
+                <h4 className={`${type.micro} mb-2`} style={{ color: NAVY }}>
                   {item.title}
                 </h4>
-                <p className="text-[11px] text-[#6b7280] leading-snug max-w-[140px]">{item.desc}</p>
+                <p className={`${type.caption} text-[#6b7280] max-w-[140px]`}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -244,13 +245,13 @@ export default function EquipmentServicesPage() {
         <div className="container mx-auto px-6 md:px-12 max-w-[1400px] relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 py-10 md:py-12 items-center">
             <div className="lg:col-span-5 text-white text-left">
-              <p className="text-[11px] font-bold uppercase tracking-wider mb-1" style={{ color: ACCENT }}>
+              <p className={`${type.eyebrow} mb-1`} style={{ color: ACCENT }}>
                 NEED A POWER SOLUTION?
               </p>
-              <h3 className="text-xl md:text-2xl font-extrabold uppercase tracking-tight leading-tight mb-4">
+              <h3 className={`${type.panelTitle} text-white mb-4`}>
                 WE&apos;RE HERE TO HELP!
               </h3>
-              <p className="text-sm text-white/80 leading-relaxed max-w-sm">
+              <p className={`${type.body} text-white/80 max-w-sm`}>
                 Get in touch with our team for the right equipment and expert support for your project.
               </p>
             </div>
@@ -261,10 +262,10 @@ export default function EquipmentServicesPage() {
                   <PhoneCall size={18} strokeWidth={1.5} />
                 </div>
                 <div className="text-left">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-white/60 block">Call Us</span>
+                  <span className={`${type.contactLabel} text-white/60 block`}>Call Us</span>
                   <a
                     href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
-                    className="font-bold text-sm md:text-base hover:text-white/80 transition-colors"
+                    className={`${type.contactValue} text-white hover:text-white/80 transition-colors`}
                   >
                     {companyData.contact.tel}
                   </a>
@@ -275,7 +276,7 @@ export default function EquipmentServicesPage() {
                   <Mail size={18} strokeWidth={1.5} />
                 </div>
                 <div className="text-left">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-white/60 block">Email Us</span>
+                  <span className={`${type.contactLabel} text-white/60 block`}>Email Us</span>
                   <a
                     href={`mailto:${companyData.contact.email}`}
                     className="font-bold text-sm md:text-base hover:text-white/80 transition-colors break-all"
@@ -289,12 +290,12 @@ export default function EquipmentServicesPage() {
             <div className="lg:col-span-3 flex flex-col items-center lg:items-end text-center lg:text-right">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 text-white font-bold text-sm px-8 py-4 rounded-lg w-full sm:w-auto transition-opacity hover:opacity-90 shadow-lg"
+                className={`inline-flex items-center justify-center gap-2 text-white ${type.btn} px-8 py-4 rounded-lg w-full sm:w-auto transition-opacity hover:opacity-90 shadow-lg`}
                 style={{ backgroundColor: ACCENT }}
               >
                 Get a Quote Now <ArrowRight size={16} />
               </Link>
-              <p className="text-white/60 text-[11px] mt-3 uppercase tracking-wide">Quick response within 2 hours.</p>
+              <p className={`text-white/60 ${type.caption} mt-3 uppercase tracking-wide`}>Quick response within 2 hours.</p>
             </div>
           </div>
 
@@ -310,8 +311,8 @@ export default function EquipmentServicesPage() {
                 >
                   <div className="opacity-90 shrink-0">{item.icon}</div>
                   <div>
-                    <p className="text-xl font-extrabold leading-none">{item.value}</p>
-                    <p className="text-white/65 text-xs mt-1">{item.label}</p>
+                    <p className={type.stat}>{item.value}</p>
+                    <p className={`text-white/65 ${type.caption} mt-1`}>{item.label}</p>
                   </div>
                 </div>
               ))}

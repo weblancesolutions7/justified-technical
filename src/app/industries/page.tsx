@@ -22,6 +22,7 @@ import { industriesList } from "@/content/industries";
 import companyData from "@/content/company.json";
 import { HeroEyebrowLabel, HeroOutlineButton, PageHero } from "@/components/PageHero";
 import { ACCENT, NAVY } from "@/lib/theme";
+import { type } from "@/lib/typography";
 const PANEL = "#eef2f7";
 
 const salesPrimary = companyData.contact.sales.split(", ")[0];
@@ -41,7 +42,7 @@ export default function IndustriesPage() {
         imageAlt="Construction skyline at dusk"
         eyebrow={<HeroEyebrowLabel>INDUSTRIES WE SERVE</HeroEyebrowLabel>}
         title={
-          <h1 className="text-2xl sm:text-3xl md:text-[2.35rem] lg:text-[2.6rem] font-extrabold uppercase tracking-tight leading-[1.12]">
+          <h1 className={type.hero}>
             Powering Every
             <br />
             <span style={{ color: ACCENT }}>Industry</span>
@@ -60,15 +61,15 @@ export default function IndustriesPage() {
         <div className="container mx-auto px-6 md:px-12 max-w-[1400px] text-center">
           <div className="flex items-center justify-center gap-4 mb-3">
             <span className="h-px w-12 bg-[#d1d5db]" />
-            <span className="font-bold text-[11px] tracking-[0.2em] uppercase" style={{ color: ACCENT }}>
+            <span className={type.eyebrow} style={{ color: ACCENT }}>
               SECTORS WE SUPPORT
             </span>
             <span className="h-px w-12 bg-[#d1d5db]" />
           </div>
-          <h2 className="text-2xl md:text-[2rem] font-extrabold uppercase tracking-tight mb-4" style={{ color: NAVY }}>
+          <h2 className={`${type.sectionTitle} mb-4`} style={{ color: NAVY }}>
             POWERING EVERY INDUSTRY
           </h2>
-          <p className="text-sm text-[#6b7280] leading-relaxed max-w-2xl mx-auto">
+          <p className={`${type.body} text-[#6b7280] max-w-2xl mx-auto`}>
             We partner with leading organizations across the UAE — providing generators, machinery, and technical support wherever reliable power is essential.
           </p>
         </div>
@@ -103,12 +104,12 @@ export default function IndustriesPage() {
                   </div>
 
                   <h3
-                    className="font-extrabold text-[11px] sm:text-xs uppercase tracking-wide leading-tight mb-2.5 mt-1"
+                    className={`${type.micro} mb-2.5 mt-1`}
                     style={{ color: NAVY }}
                   >
                     {ind.name}
                   </h3>
-                  <p className="text-[12px] sm:text-[13px] text-[#4a5568] leading-relaxed px-1">
+                  <p className={`${type.body} text-[#4a5568] px-1`}>
                     {ind.cardDescription}
                   </p>
                 </div>
@@ -123,19 +124,19 @@ export default function IndustriesPage() {
         <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
-              <span className="font-bold text-[11px] tracking-[0.2em] uppercase block mb-2" style={{ color: ACCENT }}>
+              <span className={`${type.eyebrow} block mb-2`} style={{ color: ACCENT }}>
                 WHAT WE DELIVER
               </span>
-              <h2 className="text-2xl md:text-[1.75rem] font-extrabold uppercase tracking-tight mb-4" style={{ color: NAVY }}>
+              <h2 className={`${type.sectionTitle} mb-4`} style={{ color: NAVY }}>
                 Complete Solutions For Every Sector
               </h2>
               <span className="block w-12 h-[3px] mb-6" style={{ backgroundColor: ACCENT }} />
-              <p className="text-sm text-[#6b7280] leading-relaxed mb-6">
+              <p className={`${type.body} text-[#6b7280] mb-6`}>
                 No matter your industry, our team brings the right equipment, rapid deployment, and round-the-clock support to keep your operations running.
               </p>
               <Link
                 href="/equipment-services"
-                className="inline-flex items-center gap-2 text-white text-[11px] font-bold tracking-wider uppercase px-7 py-3.5 rounded-md transition-opacity hover:opacity-90"
+                className={`inline-flex items-center gap-2 text-white ${type.btn} px-7 py-3.5 rounded-md transition-opacity hover:opacity-90`}
                 style={{ backgroundColor: NAVY }}
               >
                 View Our Services <ArrowRight size={14} />
@@ -148,7 +149,7 @@ export default function IndustriesPage() {
                   className="flex items-start gap-3 p-4 rounded-lg border border-[#e8ecf1] bg-[#f8f9fb]"
                 >
                   <CheckCircle2 size={18} className="shrink-0 mt-0.5" style={{ color: ACCENT }} />
-                  <span className="text-sm font-medium text-[#4a5568] leading-snug">{item}</span>
+                  <span className={`${type.body} text-[#4a5568]`}>{item}</span>
                 </li>
               ))}
             </ul>
@@ -159,7 +160,7 @@ export default function IndustriesPage() {
       {/* Why choose us */}
       <section className="py-12 md:py-14" style={{ backgroundColor: PANEL }}>
         <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
-          <h3 className="text-center font-extrabold text-sm uppercase tracking-[0.2em] mb-10" style={{ color: NAVY }}>
+          <h3 className={`text-center ${type.cardTitle} tracking-[0.2em] mb-10`} style={{ color: NAVY }}>
             WHY PARTNER WITH US?
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
@@ -180,10 +181,10 @@ export default function IndustriesPage() {
                 <div className="mb-3" style={{ color: ACCENT }}>
                   {item.icon}
                 </div>
-                <h4 className="font-bold text-[11px] uppercase tracking-wide mb-1.5" style={{ color: NAVY }}>
+                <h4 className={`${type.micro} mb-1.5`} style={{ color: NAVY }}>
                   {item.title}
                 </h4>
-                <p className="text-[11px] text-[#6b7280]">{item.desc}</p>
+                <p className={`${type.caption} text-[#6b7280]`}>{item.desc}</p>
               </div>
             ))}
           </div>
@@ -208,8 +209,8 @@ export default function IndustriesPage() {
               >
                 <div className="shrink-0 opacity-95">{item.icon}</div>
                 <div>
-                  <p className="text-xl font-extrabold leading-none">{item.value}</p>
-                  <p className="text-white/70 text-xs mt-1">{item.label}</p>
+                  <p className={`${type.stat} text-white`}>{item.value}</p>
+                  <p className={`text-white/70 ${type.caption} mt-1`}>{item.label}</p>
                 </div>
               </div>
             ))}
@@ -225,15 +226,15 @@ export default function IndustriesPage() {
               className="lg:w-[33%] p-8 md:p-10 text-white flex flex-col justify-center"
               style={{ backgroundColor: NAVY }}
             >
-              <h3 className="text-xl md:text-[1.65rem] font-extrabold leading-tight mb-3">
+              <h3 className={`${type.panelTitle} text-white mb-3`}>
                 Let&apos;s Power Your Success
               </h3>
-              <p className="text-sm text-white/90 leading-relaxed mb-8 max-w-xs">
+              <p className={`${type.body} text-white/90 mb-8 max-w-xs`}>
                 Tell us about your industry and project — we&apos;ll recommend the right equipment and support.
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-white font-bold text-sm px-6 py-3 rounded-lg w-fit hover:opacity-90 transition-opacity"
+                className={`inline-flex items-center gap-2 bg-white ${type.btn} px-6 py-3 rounded-lg w-fit hover:opacity-90 transition-opacity`}
                 style={{ color: NAVY }}
               >
                 Get a Quote <ArrowRight size={15} />
@@ -245,7 +246,7 @@ export default function IndustriesPage() {
                   icon: <Phone size={22} strokeWidth={1.5} />,
                   label: "Customer Service",
                   content: (
-                    <a href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`} className="font-bold text-sm md:text-[15px]" style={{ color: NAVY }}>
+                    <a href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`} className={type.contactValue} style={{ color: NAVY }}>
                       {companyData.contact.tel}
                     </a>
                   ),
@@ -254,7 +255,7 @@ export default function IndustriesPage() {
                   icon: <Smartphone size={22} strokeWidth={1.5} />,
                   label: "Sales Department",
                   content: (
-                    <a href={`tel:${salesPrimary.replace(/\s+/g, "")}`} className="font-bold text-sm md:text-[15px]" style={{ color: NAVY }}>
+                    <a href={`tel:${salesPrimary.replace(/\s+/g, "")}`} className={type.contactValue} style={{ color: NAVY }}>
                       {salesPrimary}
                     </a>
                   ),
@@ -263,7 +264,7 @@ export default function IndustriesPage() {
                   icon: <Mail size={22} strokeWidth={1.5} />,
                   label: "Email Us",
                   content: (
-                    <a href={`mailto:${companyData.contact.email}`} className="font-bold text-sm md:text-[15px] break-all" style={{ color: NAVY }}>
+                    <a href={`mailto:${companyData.contact.email}`} className={`${type.contactValue} break-all`} style={{ color: NAVY }}>
                       {companyData.contact.email}
                     </a>
                   ),
@@ -272,7 +273,7 @@ export default function IndustriesPage() {
                   icon: <MapPin size={22} strokeWidth={1.5} />,
                   label: "Head Office",
                   content: (
-                    <p className="font-bold text-sm md:text-[15px] leading-snug" style={{ color: NAVY }}>
+                    <p className={type.contactValue} style={{ color: NAVY }}>
                       PO BOX: {companyData.contact.address.poBox}
                       <br />
                       {companyData.contact.address.city.replace("/", " / ")}
@@ -284,7 +285,7 @@ export default function IndustriesPage() {
                   <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "#e8f1fa", color: NAVY }}>
                     {item.icon}
                   </div>
-                  <span className="text-[11px] font-bold mb-1.5" style={{ color: NAVY }}>
+                  <span className={`${type.contactLabel} mb-1.5`} style={{ color: NAVY }}>
                     {item.label}
                   </span>
                   {item.content}

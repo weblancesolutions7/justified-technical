@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Industry } from "@/content/industries";
 import { ShieldCheck, ArrowRight, CheckCircle2 } from "lucide-react";
+import { type } from "@/lib/typography";
 
 export default function EquipmentShowcase({ industries }: { industries: Industry[] }) {
   const [activeId, setActiveId] = useState(industries[0].id);
@@ -16,15 +17,15 @@ export default function EquipmentShowcase({ industries }: { industries: Industry
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
         <div>
-          <span className="text-[#9FA0CD] font-black uppercase tracking-[0.4em] text-[10px] md:text-xs block mb-4">
+          <span className={`text-[#9FA0CD] ${type.eyebrow} tracking-[0.4em] block mb-4`}>
             Custom Industrial Sync
           </span>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-sans font-black text-white leading-none uppercase tracking-tight">
+          <h2 className={`${type.sectionTitle} text-white`}>
             Sector-Specific <br />
             <span className="text-[#9FA0CD]">Power & Fleet Solutions</span>
           </h2>
         </div>
-        <p className="text-white/50 text-xs md:text-sm font-semibold max-w-md leading-relaxed">
+        <p className={`text-white/50 ${type.body} max-w-md`}>
           We engineer custom equipment sync profiles tailored specifically to the compliance standards, safety requirements, and operational capacities of each UAE core sector.
         </p>
       </div>
@@ -57,7 +58,7 @@ export default function EquipmentShowcase({ industries }: { industries: Industry
                 }`}
               >
                 <div className="flex justify-between items-center w-full">
-                  <span className="font-sans font-black uppercase tracking-wider text-xs md:text-sm text-white">
+                  <span className={`${type.cardTitle} text-white`}>
                     {ind.title}
                   </span>
                   {isActive && (
@@ -68,7 +69,7 @@ export default function EquipmentShowcase({ industries }: { industries: Industry
                   )}
                 </div>
                 <span
-                  className={`text-[8.5px] uppercase tracking-widest font-black mt-1 ${
+                  className={`${type.micro} uppercase tracking-widest mt-1 ${
                     isActive ? "text-[#9FA0CD]" : "text-white/30"
                   }`}
                 >
@@ -95,30 +96,30 @@ export default function EquipmentShowcase({ industries }: { industries: Industry
               <div>
                 {/* Sector Spec Headers */}
                 <div className="flex items-center gap-2 mb-6">
-                  <span className="bg-[#3B3C89]/30 border border-[#3B3C89]/40 text-[#9FA0CD] px-2.5 py-0.5 rounded text-[8px] font-black uppercase tracking-widest">
+                  <span className={`bg-[#3B3C89]/30 border border-[#3B3C89]/40 text-[#9FA0CD] px-2.5 py-0.5 rounded ${type.micro} uppercase tracking-widest`}>
                     GCC COMPLIANCE ACTIVE
                   </span>
-                  <span className="text-white/20 font-black text-[8px] uppercase tracking-widest">
+                  <span className={`text-white/20 ${type.micro} uppercase tracking-widest`}>
                     DEPOT: DXB_CENTRAL
                   </span>
                 </div>
 
-                <h3 className="text-white font-sans font-black text-2xl uppercase tracking-tight mb-4">
+                <h3 className={`text-white ${type.panelTitle} mb-4`}>
                   {activeIndustry.title} Operations
                 </h3>
-                <p className="text-white/60 text-xs md:text-sm font-semibold leading-relaxed mb-8">
+                <p className={`text-white/60 ${type.body} mb-8`}>
                   {activeIndustry.description}
                 </p>
 
                 {/* Checklist Features */}
                 <div className="space-y-4">
-                  <span className="text-white/30 font-black text-[8px] uppercase tracking-widest block mb-2">
+                  <span className={`text-white/30 ${type.micro} uppercase tracking-widest block mb-2`}>
                     SECTOR CAPABILITY MATRIX
                   </span>
                   {activeIndustry.features.map((feat, idx) => (
                     <div key={idx} className="flex items-start gap-3">
                       <CheckCircle2 size={16} className="text-[#9FA0CD] mt-0.5 flex-shrink-0" />
-                      <span className="text-white/80 text-xs font-bold leading-tight">
+                      <span className={`text-white/80 ${type.caption} font-bold`}>
                         {feat}
                       </span>
                     </div>
@@ -129,8 +130,8 @@ export default function EquipmentShowcase({ industries }: { industries: Industry
               {/* B2B Call to Action link */}
               <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center">
                 <div className="flex flex-col">
-                  <span className="text-[7.5px] font-black uppercase tracking-widest text-white/30">SPECIFICATION PROFILE</span>
-                  <span className="text-white text-[10px] font-black uppercase tracking-wider">SEC_COMPLIANT_V4.PDF</span>
+                  <span className={`${type.micro} uppercase tracking-widest text-white/30`}>SPECIFICATION PROFILE</span>
+                  <span className={`text-white ${type.micro} uppercase tracking-wider`}>SEC_COMPLIANT_V4.PDF</span>
                 </div>
                 <button
                   onClick={() => {
@@ -139,7 +140,7 @@ export default function EquipmentShowcase({ industries }: { industries: Industry
                       contactSection.scrollIntoView({ behavior: "smooth" });
                     }
                   }}
-                  className="flex items-center gap-1.5 text-white hover:text-[#9FA0CD] font-black uppercase tracking-widest text-[9px] transition-colors cursor-pointer"
+                  className={`flex items-center gap-1.5 text-white hover:text-[#9FA0CD] ${type.micro} uppercase tracking-widest transition-colors cursor-pointer`}
                 >
                   Consult Sector Leads <ArrowRight size={12} className="text-[#3B3C89]" />
                 </button>
@@ -183,8 +184,8 @@ export default function EquipmentShowcase({ industries }: { industries: Industry
           <div className="w-full bg-[#0A0C14]/80 border border-white/5 rounded-2xl p-4 relative z-10">
             <div className="flex justify-between items-center">
               <div>
-                <span className="text-[7.5px] font-black uppercase tracking-widest text-[#9FA0CD] block mb-0.5">ACTIVE DISPATCH DEPLOYMENT</span>
-                <span className="text-white font-sans font-black text-xs uppercase tracking-wider">{activeIndustry.title} Fleet</span>
+                <span className={`${type.micro} uppercase tracking-widest text-[#9FA0CD] block mb-0.5`}>ACTIVE DISPATCH DEPLOYMENT</span>
+                <span className={`text-white ${type.cardTitle}`}>{activeIndustry.title} Fleet</span>
               </div>
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse border border-emerald-500 shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
             </div>

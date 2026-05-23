@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import { ACCENT, NAVY } from "@/lib/theme";
+import { type } from "@/lib/typography";
 
 export type PageHeroDesktopVariant = "white" | "navy";
 
@@ -20,7 +21,7 @@ export type PageHeroProps = {
 export function HeroEyebrowLabel({ children }: { children: ReactNode }) {
   return (
     <div className="flex items-center gap-3 mb-4">
-      <span className="text-[11px] md:text-xs font-bold tracking-[0.2em] uppercase text-[#001C55] lg:text-inherit">
+      <span className={`${type.eyebrow} text-[#001C55] lg:text-inherit`}>
         {children}
       </span>
       <span className="w-8 h-[3px] shrink-0" style={{ backgroundColor: ACCENT }} aria-hidden />
@@ -41,7 +42,7 @@ export function HeroOutlineButton({
   return (
     <a
       href={href}
-      className={`inline-flex items-center gap-2 border-2 border-[#001C55] text-[#001C55] hover:bg-[#f4f5f7] lg:border-white lg:text-white lg:hover:bg-white/10 text-[11px] font-bold tracking-wider uppercase px-6 py-3 rounded-md transition-colors ${className}`}
+      className={`inline-flex items-center gap-2 border-2 border-[#001C55] text-[#001C55] hover:bg-[#f4f5f7] lg:border-white lg:text-white lg:hover:bg-white/10 ${type.btn} px-6 py-3 rounded-md transition-colors ${className}`}
     >
       {children}
     </a>
@@ -170,7 +171,7 @@ export function PageHero({
 
             {description ? (
               <div
-                className={`mt-4 md:mt-5 text-sm md:text-[15px] leading-relaxed w-full max-w-none md:max-w-md text-white md:text-[#4a5568] ${
+                className={`mt-4 md:mt-5 ${type.body} w-full max-w-none md:max-w-md text-white md:text-[#4a5568] ${
                   !isWhite ? "lg:text-white/90" : ""
                 }`}
               >

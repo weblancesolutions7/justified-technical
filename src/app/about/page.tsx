@@ -25,8 +25,9 @@ import {
   Zap,
 } from "lucide-react";
 import companyData from "@/content/company.json";
-import { PageHero } from "@/components/PageHero";
+import { HeroEyebrowLabel, HeroOutlineButton, PageHero } from "@/components/PageHero";
 import { ACCENT, NAVY } from "@/lib/theme";
+import { type } from "@/lib/typography";
 const PANEL = "#eef2f7";
 
 const salesPrimary = companyData.contact.sales.split(", ")[0];
@@ -88,45 +89,42 @@ export default function About() {
       <PageHero
         imageSrc="/images/About us hero.png"
         imageAlt="Generator with UAE skyline"
-        eyebrow={
-          <p className="text-[11px] md:text-xs font-semibold tracking-[0.15em] uppercase text-[#001C55] lg:text-white/90">
-            <Link href="/" className="hover:underline lg:hover:text-white">
-              HOME
-            </Link>
-            <span className="mx-2 text-[#9ca3af] lg:text-white/50">&gt;</span>
-            ABOUT US
-          </p>
-        }
+        eyebrow={<HeroEyebrowLabel>ABOUT US</HeroEyebrowLabel>}
         title={
+          <h1 className={type.hero}>
+            POWER YOU CAN
+            <br />
+            <span style={{ color: ACCENT }}>RELY ON</span>
+          </h1>
+        }
+        description={
           <>
-            <h1 className="text-3xl md:text-[2.5rem] lg:text-[2.75rem] font-extrabold uppercase tracking-tight leading-tight">
-              ABOUT US
-            </h1>
-            <div className="flex items-start gap-3 mt-4 md:mt-5">
-              <span className="w-10 h-[3px] shrink-0 mt-2" style={{ backgroundColor: ACCENT }} aria-hidden />
-              <div className="text-sm md:text-[15px] font-medium leading-relaxed text-[#4a5568] lg:text-white/95">
-                <p>Power you can rely on.</p>
-                <p>People you can trust.</p>
-              </div>
-            </div>
+            Power you can rely on.
+            <br />
+            People you can trust.
           </>
+        }
+        actions={
+          <HeroOutlineButton href="#about-intro">
+            Learn More <ArrowRight size={14} />
+          </HeroOutlineButton>
         }
       />
 
       {/* ── Intro + Our Story ── */}
-      <section className="py-14 md:py-16 bg-white">
+      <section id="about-intro" className="py-14 md:py-16 bg-white">
         <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
             <div>
-              <span className="font-bold text-[11px] tracking-[0.2em] uppercase block mb-2" style={{ color: ACCENT }}>
+              <span className={`${type.eyebrow} block mb-2`} style={{ color: ACCENT }}>
                 ABOUT JUSTIFIED TECHNICAL SOLUTIONS
               </span>
-              <h2 className="text-2xl md:text-[2rem] font-extrabold uppercase tracking-tight leading-tight mb-4" style={{ color: NAVY }}>
+              <h2 className={`${type.sectionTitle} mb-4`} style={{ color: NAVY }}>
                 Power &amp; Performance You Can Rely On.
               </h2>
               <span className="block w-12 h-[3px] mb-6" style={{ backgroundColor: ACCENT }} />
 
-              <div className="space-y-5 text-sm md:text-[15px] leading-relaxed text-[#4a5568] mb-8 max-w-xl">
+              <div className={`space-y-5 ${type.body} text-[#4a5568] mb-8 max-w-xl`}>
                 <p>
                   As a leading provider of machinery and power solutions in the UAE, we deliver high-performance equipment and services tailored to meet demanding project needs.
                 </p>
@@ -140,7 +138,7 @@ export default function About() {
 
               <Link
                 href="/equipment-services"
-                className="inline-flex items-center gap-2 text-white text-[11px] font-bold tracking-wider uppercase px-7 py-3.5 rounded-md transition-colors hover:opacity-90"
+                className={`inline-flex items-center gap-2 text-white ${type.btn} px-7 py-3.5 rounded-md transition-colors hover:opacity-90`}
                 style={{ backgroundColor: NAVY }}
               >
                 Our Services <ArrowRight size={14} />
@@ -148,7 +146,7 @@ export default function About() {
             </div>
 
             <div className="rounded-xl p-7 md:p-9" style={{ backgroundColor: PANEL }}>
-              <h3 className="text-base md:text-lg font-extrabold uppercase tracking-wide mb-2" style={{ color: NAVY }}>
+              <h3 className={`${type.panelTitle} mb-2`} style={{ color: NAVY }}>
                 OUR STORY
               </h3>
               <span className="block w-10 h-[3px] mb-7" style={{ backgroundColor: ACCENT }} />
@@ -164,10 +162,10 @@ export default function About() {
                       >
                         {item.icon}
                       </div>
-                      <h4 className="font-bold text-sm uppercase tracking-tight mb-1" style={{ color: NAVY }}>
+                      <h4 className={`${type.cardTitle} mb-1`} style={{ color: NAVY }}>
                         {item.title}
                       </h4>
-                      <p className="text-[13px] leading-relaxed text-[#6b7280]">{item.desc}</p>
+                      <p className={`${type.body} text-[#6b7280]`}>{item.desc}</p>
                     </li>
                   ))}
                 </ul>
@@ -182,25 +180,25 @@ export default function About() {
         <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             <div className="lg:col-span-3 bg-white rounded-xl border border-[#e2e8f0] p-6 md:p-7">
-              <h3 className="flex items-center gap-2 font-extrabold text-sm uppercase tracking-wide mb-6" style={{ color: NAVY }}>
+              <h3 className={`flex items-center gap-2 ${type.cardTitle} mb-6`} style={{ color: NAVY }}>
                 <Eye size={18} style={{ color: ACCENT }} />
                 VISION
               </h3>
               <div className="space-y-5 text-left">
                 <div>
-                  <h4 className="font-bold text-sm mb-2" style={{ color: NAVY }}>
+                  <h4 className={`${type.cardTitle} mb-2`} style={{ color: NAVY }}>
                     Short-Term Vision
                   </h4>
-                  <p className="text-[13px] leading-relaxed text-[#6b7280]">
+                  <p className={`${type.body} text-[#6b7280]`}>
                     To expand our equipment fleet with advanced and efficient machinery while maintaining high service standards and fast response across the UAE.
                   </p>
                 </div>
                 <span className="block w-8 h-[2px]" style={{ backgroundColor: ACCENT }} />
                 <div>
-                  <h4 className="font-bold text-sm mb-2" style={{ color: NAVY }}>
+                  <h4 className={`${type.cardTitle} mb-2`} style={{ color: NAVY }}>
                     Long-Term Vision
                   </h4>
-                  <p className="text-[13px] leading-relaxed text-[#6b7280]">
+                  <p className={`${type.body} text-[#6b7280]`}>
                     To grow across the GCC and become a recognized leader in construction equipment rental and machinery services, known for reliability and innovation.
                   </p>
                 </div>
@@ -208,7 +206,7 @@ export default function About() {
             </div>
 
             <div className="lg:col-span-6 bg-white rounded-xl border border-[#e2e8f0] p-6 md:p-8">
-              <h3 className="text-center font-extrabold text-sm uppercase tracking-wide mb-8" style={{ color: NAVY }}>
+              <h3 className={`text-center ${type.cardTitle} mb-8`} style={{ color: NAVY }}>
                 OUR CORE VALUES
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pb-6 border-b border-[#e8ecf1]">
@@ -217,10 +215,10 @@ export default function About() {
                     <div className="flex justify-center mb-3" style={{ color: NAVY }}>
                       {val.icon}
                     </div>
-                    <h4 className="font-bold text-[11px] md:text-xs uppercase tracking-tight mb-1.5" style={{ color: NAVY }}>
+                    <h4 className={`${type.micro} mb-1.5`} style={{ color: NAVY }}>
                       {val.title}
                     </h4>
-                    <p className="text-[11px] leading-snug text-[#6b7280]">{val.desc}</p>
+                    <p className={`${type.caption} text-[#6b7280]`}>{val.desc}</p>
                   </div>
                 ))}
               </div>
@@ -230,17 +228,17 @@ export default function About() {
                     <div className="flex justify-center mb-3" style={{ color: NAVY }}>
                       {val.icon}
                     </div>
-                    <h4 className="font-bold text-[11px] md:text-xs uppercase tracking-tight mb-1.5" style={{ color: NAVY }}>
+                    <h4 className={`${type.micro} mb-1.5`} style={{ color: NAVY }}>
                       {val.title}
                     </h4>
-                    <p className="text-[11px] leading-snug text-[#6b7280]">{val.desc}</p>
+                    <p className={`${type.caption} text-[#6b7280]`}>{val.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="lg:col-span-3 bg-white rounded-xl border border-[#e2e8f0] p-6 md:p-7">
-              <h3 className="flex items-center gap-2 font-extrabold text-sm uppercase tracking-wide mb-6 leading-snug" style={{ color: NAVY }}>
+              <h3 className={`flex items-center gap-2 ${type.cardTitle} mb-6`} style={{ color: NAVY }}>
                 <Award size={18} style={{ color: ACCENT }} />
                 STANDARDS THAT DEFINE US
               </h3>
@@ -248,7 +246,7 @@ export default function About() {
                 {standards.map((item) => (
                   <li key={item} className="flex gap-2.5 items-start">
                     <CheckCircle2 size={17} className="shrink-0 mt-0.5" style={{ color: ACCENT }} />
-                    <p className="text-[13px] leading-snug text-[#6b7280]">{item}</p>
+                    <p className={`${type.body} text-[#6b7280]`}>{item}</p>
                   </li>
                 ))}
               </ul>
@@ -270,8 +268,8 @@ export default function About() {
               >
                 <div className="opacity-95 shrink-0">{item.icon}</div>
                 <div>
-                  <p className="text-xl md:text-2xl font-extrabold leading-none">{item.value}</p>
-                  <p className="text-white/70 text-xs mt-1">{item.label}</p>
+                  <p className={`${type.stat} text-white`}>{item.value}</p>
+                  <p className={`text-white/70 ${type.caption} mt-1`}>{item.label}</p>
                 </div>
               </div>
             ))}
@@ -287,15 +285,15 @@ export default function About() {
               className="lg:w-[33%] xl:w-[32%] p-8 md:p-10 lg:p-11 text-white flex flex-col justify-center text-left"
               style={{ backgroundColor: NAVY }}
             >
-              <h3 className="text-xl md:text-[1.65rem] font-extrabold leading-tight mb-3">
+              <h3 className={`${type.panelTitle} text-white mb-3`}>
                 Let&apos;s Power Your Success
               </h3>
-              <p className="text-sm text-white/90 leading-relaxed mb-8 max-w-xs">
+              <p className={`${type.body} text-white/90 mb-8 max-w-xs`}>
                 Partner with us for reliable equipment, expert support, and complete peace of mind.
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-white font-bold text-sm px-6 py-3 rounded-lg w-fit transition-opacity hover:opacity-90"
+                className={`inline-flex items-center gap-2 bg-white ${type.btn} px-6 py-3 rounded-lg w-fit transition-opacity hover:opacity-90`}
                 style={{ color: NAVY }}
               >
                 Get a Quote <ArrowRight size={15} strokeWidth={2.5} />
@@ -310,7 +308,7 @@ export default function About() {
                   content: (
                     <a
                       href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
-                      className="font-bold text-sm md:text-[15px] hover:opacity-80 transition-opacity"
+                      className={`${type.contactValue} hover:opacity-80 transition-opacity`}
                       style={{ color: NAVY }}
                     >
                       {companyData.contact.tel}
@@ -323,7 +321,7 @@ export default function About() {
                   content: (
                     <a
                       href={`tel:${salesPrimary.replace(/\s+/g, "")}`}
-                      className="font-bold text-sm md:text-[15px] hover:opacity-80 transition-opacity"
+                      className={`${type.contactValue} hover:opacity-80 transition-opacity`}
                       style={{ color: NAVY }}
                     >
                       {salesPrimary}
@@ -336,7 +334,7 @@ export default function About() {
                   content: (
                     <a
                       href={`mailto:${companyData.contact.email}`}
-                      className="font-bold text-sm md:text-[15px] hover:opacity-80 transition-opacity break-all"
+                      className={`${type.contactValue} hover:opacity-80 transition-opacity break-all`}
                       style={{ color: NAVY }}
                     >
                       {companyData.contact.email}
@@ -347,7 +345,7 @@ export default function About() {
                   icon: <MapPin size={22} strokeWidth={1.5} />,
                   label: "Head Office",
                   content: (
-                    <p className="font-bold text-sm md:text-[15px] leading-snug" style={{ color: NAVY }}>
+                    <p className={type.contactValue} style={{ color: NAVY }}>
                       PO BOX: {companyData.contact.address.poBox}
                       <br />
                       {companyData.contact.address.city.replace("/", " / ")}
@@ -365,7 +363,7 @@ export default function About() {
                   >
                     {item.icon}
                   </div>
-                  <span className="text-[11px] font-bold mb-1.5" style={{ color: NAVY }}>
+                  <span className={`${type.contactLabel} mb-1.5`} style={{ color: NAVY }}>
                     {item.label}
                   </span>
                   {item.content}

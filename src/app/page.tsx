@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import companyData from "@/content/company.json";
 import { PageHero } from "@/components/PageHero";
+import { type } from "@/lib/typography";
 
 export default function Home() {
   // Callback Form State
@@ -348,12 +349,12 @@ export default function Home() {
         imageAlt="UAE Skyline and Soundproof Generator"
         imageObjectPosition="18% center"
         eyebrow={
-          <span className="font-sans font-bold text-[11px] md:text-xs tracking-[0.22em] uppercase text-inherit">
+          <span className={`${type.eyebrow} text-inherit`}>
             Powering Today.
           </span>
         }
         title={
-          <h1 className="text-[1.75rem] sm:text-4xl md:text-[2.75rem] lg:text-[2.85rem] xl:text-5xl font-sans font-extrabold leading-[1.15] tracking-tight uppercase break-words">
+          <h1 className={`${type.hero} break-words`}>
             Reliable Solutions. Stronger Future.
           </h1>
         }
@@ -362,13 +363,13 @@ export default function Home() {
           <>
             <Link
               href="#complete-solutions"
-              className="bg-[#001C55] hover:bg-[#002d7a] text-white px-7 py-3.5 rounded-md font-bold text-[11px] tracking-wider uppercase transition-colors duration-200 flex items-center gap-2"
+              className={`bg-[#001C55] hover:bg-[#002d7a] text-white px-7 py-3.5 rounded-md ${type.btn} transition-colors duration-200 flex items-center gap-2`}
             >
               Explore Services <ArrowRight size={14} />
             </Link>
             <Link
               href="/contact"
-              className="bg-white border-2 border-[#001C55] text-[#001C55] hover:bg-[#f4f5f7] max-md:bg-white/15 max-md:border-white max-md:text-white max-md:hover:bg-white/25 max-md:shadow-[0_2px_8px_rgba(0,0,0,0.4)] px-7 py-3.5 rounded-md font-bold text-[11px] tracking-wider uppercase transition-colors duration-200 flex items-center gap-2"
+              className={`bg-white border-2 border-[#001C55] text-[#001C55] hover:bg-[#f4f5f7] max-md:bg-white/15 max-md:border-white max-md:text-white max-md:hover:bg-white/25 max-md:shadow-[0_2px_8px_rgba(0,0,0,0.4)] px-7 py-3.5 rounded-md ${type.btn} transition-colors duration-200 flex items-center gap-2`}
             >
               Contact Us
               <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
@@ -392,10 +393,10 @@ export default function Home() {
               >
                 {badge.icon}
                 <div>
-                  <h4 className="font-sans font-bold text-sm leading-tight" style={{ color: navy }}>
+                  <h4 className={type.cardTitle} style={{ color: navy }}>
                     {badge.title}
                   </h4>
-                  <span className="text-[#6b7280] font-medium text-xs block mt-0.5">
+                  <span className={`text-[#6b7280] ${type.caption} block mt-0.5`}>
                     {badge.desc}
                   </span>
                 </div>
@@ -414,16 +415,10 @@ export default function Home() {
 
             {/* Left — services grid */}
             <div className="lg:col-span-8 flex flex-col text-left">
-              <span
-                className="font-sans font-bold text-[11px] tracking-[0.22em] uppercase block mb-2"
-                style={{ color: navy }}
-              >
+              <span className={`${type.eyebrow} block mb-2`} style={{ color: navy }}>
                 OUR SERVICES
               </span>
-              <h2
-                className="text-2xl md:text-[1.65rem] lg:text-[1.85rem] font-sans font-extrabold leading-tight uppercase tracking-tight mb-7"
-                style={{ color: navy }}
-              >
+              <h2 className={`${type.sectionTitle} mb-7`} style={{ color: navy }}>
                 COMPLETE SOLUTIONS UNDER ONE ROOF
               </h2>
 
@@ -444,14 +439,11 @@ export default function Home() {
                       />
                     </div>
                     <div className="px-2 py-3 text-center">
-                      <h4
-                        className="font-sans font-bold text-[10px] md:text-[11px] uppercase tracking-wide leading-tight"
-                        style={{ color: navy }}
-                      >
+                      <h4 className={type.micro} style={{ color: navy }}>
                         {srv.title}
                       </h4>
                       {srv.subtitle ? (
-                        <span className="text-[#6b7280] font-medium text-[9px] md:text-[10px] block mt-1">
+                        <span className={`text-[#6b7280] ${type.caption} block mt-1`}>
                           {srv.subtitle}
                         </span>
                       ) : null}
@@ -463,7 +455,7 @@ export default function Home() {
               <div className="flex justify-center">
                 <Link
                   href="/equipment-services"
-                  className="bg-white border-2 border-[#001C55] text-[#001C55] hover:bg-[#001C55] hover:text-white px-8 py-3 rounded-md font-bold text-[11px] tracking-wider uppercase transition-colors duration-200 flex items-center gap-2"
+                  className={`bg-white border-2 border-[#001C55] text-[#001C55] hover:bg-[#001C55] hover:text-white px-8 py-3 rounded-md ${type.btn} transition-colors duration-200 flex items-center gap-2`}
                 >
                   View All Services <ArrowRight size={14} />
                 </Link>
@@ -475,7 +467,7 @@ export default function Home() {
               className="lg:col-span-4 rounded-xl p-6 lg:p-8 flex flex-col justify-center text-left"
               style={{ backgroundColor: navy }}
             >
-              <h3 className="text-white font-sans font-extrabold text-lg lg:text-xl tracking-wide uppercase mb-6 lg:mb-8">
+              <h3 className={`text-white ${type.panelTitle} mb-6 lg:mb-8`}>
                 WHY CHOOSE US?
               </h3>
 
@@ -486,10 +478,10 @@ export default function Home() {
                       {str.icon}
                     </div>
                     <div>
-                      <h4 className="text-white font-sans font-bold text-sm leading-tight">
+                      <h4 className={`text-white ${type.cardTitle}`}>
                         {str.title}
                       </h4>
-                      <p className="text-white/75 font-normal text-xs leading-snug mt-1">
+                      <p className={`text-white/75 ${type.caption} mt-1`}>
                         {str.desc}
                       </p>
                     </div>
@@ -517,10 +509,10 @@ export default function Home() {
               >
                 <div className="shrink-0 opacity-95">{st.icon}</div>
                 <div className="flex flex-col text-left">
-                  <span className="text-2xl lg:text-[26px] font-sans font-extrabold text-white leading-none">
+                  <span className={`${type.stat} text-white`}>
                     {st.value}
                   </span>
-                  <span className="text-white/70 font-medium text-xs mt-1">
+                  <span className={`text-white/70 ${type.caption} mt-1`}>
                     {st.label}
                   </span>
                 </div>
@@ -555,10 +547,10 @@ export default function Home() {
 
         <div className="container mx-auto px-6 md:px-12 max-w-[1400px] relative z-10">
           <div className="w-full md:max-w-[68%] lg:max-w-[62%]">
-            <span className="text-[#1a56db] font-sans font-bold text-[11px] tracking-[0.22em] uppercase block mb-2">
+            <span className={`text-[#1a56db] ${type.eyebrow} block mb-2`}>
               INDUSTRIES WE SERVE
             </span>
-            <h2 className="text-2xl md:text-[1.75rem] lg:text-[2rem] font-sans font-extrabold text-[#001C55] uppercase tracking-tight mb-10 md:mb-12 leading-tight">
+            <h2 className={`${type.sectionTitle} text-[#001C55] mb-10 md:mb-12`}>
               POWERING EVERY INDUSTRY
             </h2>
 
@@ -571,7 +563,7 @@ export default function Home() {
                   <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 mb-2.5 flex items-center justify-center">
                     {ind.svg}
                   </div>
-                  <h4 className="font-sans font-bold text-[8px] sm:text-[9px] md:text-[10px] leading-tight text-center">
+                  <h4 className={`${type.micro} text-center text-[#001C55]`}>
                     {ind.name}
                   </h4>
                 </div>
@@ -605,7 +597,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
 
             <div className="lg:col-span-5 flex flex-col justify-center text-left">
-              <h2 className="text-xl sm:text-2xl md:text-[1.65rem] lg:text-[1.85rem] font-sans font-extrabold text-white uppercase tracking-tight leading-[1.15] mb-8 md:mb-10">
+              <h2 className={`${type.sectionTitle} text-white mb-8 md:mb-10`}>
                 NEED POWER. NEED SOLUTIONS.
                 <br />
                 WE&apos;RE HERE TO HELP.
@@ -617,11 +609,11 @@ export default function Home() {
                   <div>
                     <a
                       href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
-                      className="text-white hover:text-white/80 font-bold text-[15px] md:text-base leading-snug block transition-colors"
+                      className={`text-white hover:text-white/80 ${type.contactValue} block transition-colors`}
                     >
                       {companyData.contact.tel}
                     </a>
-                    <span className="text-white/65 font-medium text-[11px] uppercase tracking-wide mt-1 block">
+                    <span className={`text-white/65 ${type.contactLabel} mt-1 block`}>
                       Customer Service
                     </span>
                   </div>
@@ -635,13 +627,13 @@ export default function Home() {
                         <a
                           key={i}
                           href={`tel:${num.replace(/\s+/g, "")}`}
-                          className="text-white hover:text-white/80 font-bold text-[15px] md:text-base leading-snug block transition-colors"
+                          className={`text-white hover:text-white/80 ${type.contactValue} block transition-colors`}
                         >
                           {num}
                         </a>
                       ))}
                     </div>
-                    <span className="text-white/65 font-medium text-[11px] uppercase tracking-wide mt-1 block">
+                    <span className={`text-white/65 ${type.contactLabel} mt-1 block`}>
                       Sales Department
                     </span>
                   </div>
@@ -652,11 +644,11 @@ export default function Home() {
                   <div>
                     <a
                       href={`mailto:${companyData.contact.email}`}
-                      className="text-white hover:text-white/80 font-bold text-[15px] md:text-base leading-snug block transition-colors break-all"
+                      className={`text-white hover:text-white/80 ${type.contactValue} block transition-colors break-all`}
                     >
                       {companyData.contact.email}
                     </a>
-                    <span className="text-white/65 font-medium text-[11px] uppercase tracking-wide mt-1 block">
+                    <span className={`text-white/65 ${type.contactLabel} mt-1 block`}>
                       Send Us An E-mail
                     </span>
                   </div>
@@ -665,10 +657,10 @@ export default function Home() {
                 <div className="flex gap-3.5 items-start">
                   <MapPin size={24} strokeWidth={1.5} className="shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-white font-bold text-[15px] md:text-base leading-snug">
+                    <p className={`text-white ${type.contactValue}`}>
                       PO BOX: {companyData.contact.address.poBox} {companyData.contact.address.city}
                     </p>
-                    <span className="text-white/65 font-medium text-[11px] uppercase tracking-wide mt-1 block">
+                    <span className={`text-white/65 ${type.contactLabel} mt-1 block`}>
                       Head Office Address
                     </span>
                   </div>
@@ -677,10 +669,10 @@ export default function Home() {
             </div>
 
             <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 md:p-9 text-[#4a5568] shadow-lg">
-              <h3 className="text-lg md:text-xl font-sans font-extrabold text-[#001C55] uppercase tracking-tight mb-1">
+              <h3 className={`${type.panelTitle} text-[#001C55] mb-1`}>
                 GET A CALL BACK
               </h3>
-              <p className="text-[#6b7280] text-xs md:text-sm font-normal leading-relaxed mb-6">
+              <p className={`text-[#6b7280] ${type.body} mb-6`}>
                 Fill out the form below and our team will call you back within 2 hours.
               </p>
 
@@ -696,10 +688,10 @@ export default function Home() {
                     <div className="w-11 h-11 rounded-full bg-[#001C55]/10 flex items-center justify-center text-[#001C55]">
                       <CheckCircle2 size={22} />
                     </div>
-                    <h4 className="text-[#001C55] font-extrabold text-base uppercase tracking-wide">
+                    <h4 className={`text-[#001C55] ${type.cardTitle}`}>
                       Request Received
                     </h4>
-                    <p className="text-[#6b7280] text-sm max-w-sm leading-relaxed">
+                    <p className={`text-[#6b7280] ${type.body} max-w-sm`}>
                       Thank you, <span className="text-[#001C55] font-bold">{formName}</span>. We&apos;ll call you at{" "}
                       <span className="text-[#001C55] font-bold">{formPhone}</span> about{" "}
                       <span className="text-[#001C55] font-bold">{formService || "your inquiry"}</span> shortly.
@@ -707,7 +699,7 @@ export default function Home() {
                     <button
                       onClick={resetForm}
                       type="button"
-                      className="mt-2 border border-[#e2e5ea] hover:bg-[#f4f5f7] text-[#4a5568] px-6 py-2.5 rounded-md font-bold text-[11px] tracking-wider uppercase transition-colors"
+                      className={`mt-2 border border-[#e2e5ea] hover:bg-[#f4f5f7] text-[#4a5568] px-6 py-2.5 rounded-md ${type.btn} transition-colors`}
                     >
                       Submit Another Request
                     </button>
@@ -784,7 +776,7 @@ export default function Home() {
 
                     <button
                       type="submit"
-                      className="w-full bg-[#001C55] hover:bg-[#002d7a] text-white font-bold py-3.5 rounded-md text-sm md:text-[15px] flex items-center justify-center gap-2 transition-colors mt-1"
+                      className={`w-full bg-[#001C55] hover:bg-[#002d7a] text-white py-3.5 rounded-md ${type.btn} flex items-center justify-center gap-2 transition-colors mt-1`}
                     >
                       Request a Call Back <ArrowRight size={16} />
                     </button>

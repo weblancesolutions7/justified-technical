@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Globe, MapPin, Phone, Smartphone } from "lucide-react";
 import companyData from "@/content/company.json";
+import { type } from "@/lib/typography";
 
 const NAVY = "#001030";
 const NAVY_BORDER = "rgba(255,255,255,0.12)";
@@ -75,7 +76,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col leading-[1.2] pt-0.5">
                 {companyData.legalName.lines.map((line) => (
-                  <span key={line} className="font-bold text-[11px] md:text-xs tracking-wide uppercase text-white">
+                  <span key={line} className={`${type.navBrand} text-white`}>
                     {line}
                   </span>
                 ))}
@@ -122,7 +123,7 @@ export default function Footer() {
             className="lg:px-6 lg:border-r flex flex-col w-full lg:w-auto lg:min-w-[7.5rem] lg:max-w-[9.5rem]"
             style={{ borderColor: NAVY_BORDER }}
           >
-            <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-5">QUICK LINKS</h4>
+            <h4 className={`text-white ${type.cardTitle} mb-5`}>QUICK LINKS</h4>
             <ul className="space-y-2.5">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -139,7 +140,7 @@ export default function Footer() {
             className="lg:px-8 lg:border-r flex flex-col"
             style={{ borderColor: NAVY_BORDER }}
           >
-            <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-5">OUR SERVICES</h4>
+            <h4 className={`text-white ${type.cardTitle} mb-5`}>OUR SERVICES</h4>
             <ul className="space-y-2.5">
               {servicesLinks.map((name) => (
                 <li key={name}>
@@ -156,14 +157,14 @@ export default function Footer() {
 
           {/* Column 4 — Contact */}
           <div className="lg:pl-8 flex flex-col">
-            <h4 className="text-white font-bold text-sm uppercase tracking-wide mb-5">CONTACT US</h4>
+            <h4 className={`text-white ${type.cardTitle} mb-5`}>CONTACT US</h4>
             <ul className="flex flex-col gap-5">
               <li className="flex gap-3 items-start">
                 <Phone size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
                 <div>
                   <a
                     href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
-                    className="text-white font-semibold text-sm leading-snug block hover:text-white/80"
+                    className={`text-white ${type.contactValue} block hover:text-white/80`}
                   >
                     {companyData.contact.tel}
                   </a>
@@ -175,11 +176,11 @@ export default function Footer() {
                 <div>
                   <a
                     href={`mailto:${companyData.contact.email}`}
-                    className="text-white font-semibold text-sm leading-snug block hover:text-white/80 break-all"
+                    className={`text-white ${type.contactValue} block hover:text-white/80 break-all`}
                   >
                     {companyData.contact.email}
                   </a>
-                  <span className="text-white/60 text-[11px] mt-1 block">Sales Department</span>
+                  <span className={`text-white/60 ${type.caption} mt-1 block`}>Sales Department</span>
                 </div>
               </li>
 
@@ -188,21 +189,21 @@ export default function Footer() {
                 <div>
                   <a
                     href={`tel:${salesPrimary.replace(/\s+/g, "")}`}
-                    className="text-white font-semibold text-sm leading-snug block hover:text-white/80"
+                    className={`text-white ${type.contactValue} block hover:text-white/80`}
                   >
                     {salesPrimary}
                   </a>
-                  <span className="text-white/60 text-[11px] mt-1 block">Sales Department</span>
+                  <span className={`text-white/60 ${type.caption} mt-1 block`}>Sales Department</span>
                 </div>
               </li>
 
               <li className="flex gap-3 items-start">
                 <MapPin size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
                 <div>
-                  <p className="text-white font-semibold text-sm leading-snug">
+                  <p className={`text-white ${type.contactValue}`}>
                     PO BOX: {companyData.contact.address.poBox} {companyData.contact.address.city}
                   </p>
-                  <span className="text-white/60 text-[11px] mt-1 block">Head Office Address</span>
+                  <span className={`text-white/60 ${type.caption} mt-1 block`}>Head Office Address</span>
                 </div>
               </li>
             </ul>
@@ -210,7 +211,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t mt-12 py-5 text-center" style={{ borderColor: NAVY_BORDER }}>
-          <p className="text-white/80 text-xs md:text-[13px]">
+          <p className={`text-white/80 ${type.caption}`}>
             &copy; {new Date().getFullYear()} {companyData.legalName.full}. All Rights Reserved.
           </p>
         </div>

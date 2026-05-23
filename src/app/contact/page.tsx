@@ -19,6 +19,7 @@ import {
 import companyData from "@/content/company.json";
 import { HeroEyebrowLabel, PageHero } from "@/components/PageHero";
 import { ACCENT, NAVY } from "@/lib/theme";
+import { type } from "@/lib/typography";
 
 const inputClass =
   "w-full bg-white border border-[#d1d5db] rounded-lg pl-11 pr-4 py-3.5 text-[#374151] text-sm placeholder-[#9ca3af] focus:outline-none focus:border-[#001C55] focus:ring-1 focus:ring-[#001C55] transition-colors";
@@ -49,7 +50,7 @@ function ContactRow({
         {icon}
       </div>
       <div className="min-w-0 pt-0.5">
-        <span className="text-[11px] font-semibold uppercase tracking-wide text-[#6b7280] block mb-1">
+        <span className={`${type.contactLabel} text-[#6b7280] block mb-1`}>
           {label}
         </span>
         {children}
@@ -113,7 +114,7 @@ function ContactContent() {
         imageAlt="Generator with UAE skyline"
         eyebrow={<HeroEyebrowLabel>CONTACT US</HeroEyebrowLabel>}
         title={
-          <h1 className="text-3xl md:text-[2.5rem] lg:text-[2.75rem] font-extrabold uppercase tracking-tight leading-[1.1]">
+          <h1 className={type.hero}>
             WE&apos;RE HERE
             <br />
             <span style={{ color: ACCENT }}>TO HELP YOU</span>
@@ -133,17 +134,17 @@ function ContactContent() {
         <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             <div className="lg:col-span-5">
-              <span className="font-bold text-[11px] tracking-[0.2em] uppercase block mb-2" style={{ color: ACCENT }}>
+              <span className={`${type.eyebrow} block mb-2`} style={{ color: ACCENT }}>
                 GET IN TOUCH
               </span>
-              <h2 className="text-2xl md:text-[1.75rem] font-extrabold mb-8 leading-tight" style={{ color: NAVY }}>
+              <h2 className={`${type.sectionTitle} mb-8`} style={{ color: NAVY }}>
                 Let&apos;s Power Your Success
               </h2>
 
               <ContactRow icon={<Phone size={18} strokeWidth={2} />} label="Customer Service">
                 <a
                   href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
-                  className="font-bold text-base md:text-lg hover:opacity-80 transition-opacity"
+                  className={`${type.contactValue} hover:opacity-80 transition-opacity`}
                   style={{ color: NAVY }}
                 >
                   {companyData.contact.tel}
@@ -156,7 +157,7 @@ function ContactContent() {
                     <a
                       key={i}
                       href={`tel:${num.replace(/\s+/g, "")}`}
-                      className="font-bold text-base md:text-lg hover:opacity-80 transition-opacity"
+                      className={`${type.contactValue} hover:opacity-80 transition-opacity`}
                       style={{ color: NAVY }}
                     >
                       {num}
@@ -176,7 +177,7 @@ function ContactContent() {
               </ContactRow>
 
               <ContactRow icon={<MapPin size={18} strokeWidth={2} />} label="Head Office Address">
-                <p className="font-bold text-sm md:text-base leading-relaxed" style={{ color: NAVY }}>
+                <p className={`${type.contactValue} leading-relaxed`} style={{ color: NAVY }}>
                   PO BOX: {companyData.contact.address.poBox}
                   <br />
                   {companyData.contact.address.city.replace("/", " / ")}
@@ -188,7 +189,7 @@ function ContactContent() {
                   href={companyData.contact.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-bold text-base md:text-lg hover:opacity-80 transition-opacity"
+                  className={`${type.contactValue} hover:opacity-80 transition-opacity`}
                   style={{ color: NAVY }}
                 >
                   LinkedIn
@@ -198,11 +199,11 @@ function ContactContent() {
 
             <div className="lg:col-span-7">
               <div className="bg-white border border-[#e2e8f0] rounded-xl p-6 md:p-9 shadow-[0_4px_24px_rgba(0,28,85,0.06)]">
-                <h3 className="text-lg md:text-xl font-extrabold uppercase tracking-tight" style={{ color: NAVY }}>
+                <h3 className={type.panelTitle} style={{ color: NAVY }}>
                   SEND US A MESSAGE
                 </h3>
                 <span className="block w-12 h-[3px] mt-3 mb-3" style={{ backgroundColor: NAVY }} />
-                <p className="text-sm text-[#6b7280] mb-6">
+                <p className={`${type.body} text-[#6b7280] mb-6`}>
                   Fill out the form below and our team will get back to you within 2 hours.
                 </p>
 
@@ -210,10 +211,10 @@ function ContactContent() {
                   <div className="bg-[#eef2f7] border border-[#d8dee8] rounded-lg p-4 mb-6 flex items-start gap-3">
                     <Sliders size={16} style={{ color: ACCENT }} className="shrink-0 mt-0.5" />
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider block" style={{ color: ACCENT }}>
+                      <span className={`${type.micro} block`} style={{ color: ACCENT }}>
                         Estimator configuration detected
                       </span>
-                      <span className="text-xs font-bold mt-1 block" style={{ color: NAVY }}>
+                      <span className={`${type.caption} font-bold mt-1 block`} style={{ color: NAVY }}>
                         Capacity: {formData.kva ? `${formData.kva} kVA` : "Not specified"} · Sector: {formData.sector || "—"}
                       </span>
                     </div>
@@ -228,16 +229,16 @@ function ContactContent() {
                     >
                       <ShieldCheck size={28} />
                     </div>
-                    <h4 className="font-extrabold uppercase tracking-wide" style={{ color: NAVY }}>
+                    <h4 className={type.cardTitle} style={{ color: NAVY }}>
                       Request Received Successfully
                     </h4>
-                    <p className="text-sm text-[#6b7280] max-w-md leading-relaxed">
+                    <p className={`${type.body} text-[#6b7280] max-w-md`}>
                       Thank you, <span className="font-bold" style={{ color: NAVY }}>{formData.name}</span>. Our team will contact you shortly.
                     </p>
                     <button
                       type="button"
                       onClick={resetForm}
-                      className="mt-2 border border-[#d1d5db] text-[#4a5568] px-6 py-2.5 rounded-md text-[11px] font-bold uppercase tracking-wider hover:bg-[#f4f5f7] transition-colors"
+                      className={`mt-2 border border-[#d1d5db] text-[#4a5568] px-6 py-2.5 rounded-md ${type.btn} hover:bg-[#f4f5f7] transition-colors`}
                     >
                       Submit Another Message
                     </button>
@@ -324,7 +325,7 @@ function ContactContent() {
 
                     <button
                       type="submit"
-                      className="w-full text-white font-bold text-sm py-3.5 rounded-lg flex items-center justify-center gap-2 transition-opacity hover:opacity-90"
+                      className={`w-full text-white ${type.btn} py-3.5 rounded-lg flex items-center justify-center gap-2 transition-opacity hover:opacity-90`}
                       style={{ backgroundColor: NAVY }}
                     >
                       Send Message <ArrowRight size={16} />
@@ -356,15 +357,15 @@ function ContactContent() {
                 <div className="flex items-start gap-3 mb-4">
                   <MapPin size={22} style={{ color: NAVY }} className="shrink-0 mt-0.5" />
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider block mb-1" style={{ color: ACCENT }}>
+                    <span className={`${type.eyebrow} block mb-1`} style={{ color: ACCENT }}>
                       OUR LOCATION
                     </span>
-                    <h3 className="text-xl md:text-2xl font-extrabold uppercase tracking-tight" style={{ color: NAVY }}>
+                    <h3 className={type.panelTitle} style={{ color: NAVY }}>
                       {companyData.contact.address.city.replace("/", " / ")}
                     </h3>
                   </div>
                 </div>
-                <p className="text-sm font-semibold pl-9" style={{ color: NAVY }}>
+                <p className={`${type.contactValue} pl-9`} style={{ color: NAVY }}>
                   PO BOX: {companyData.contact.address.poBox}
                   <br />
                   {companyData.contact.address.city.replace("/", " / ")}
@@ -376,10 +377,10 @@ function ContactContent() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div>
                   <MapPin size={22} className="mb-3" style={{ color: NAVY }} />
-                  <h4 className="font-bold text-xs uppercase tracking-wide mb-2" style={{ color: NAVY }}>
+                  <h4 className={`${type.cardTitle} mb-2`} style={{ color: NAVY }}>
                     Strategic Location
                   </h4>
-                  <p className="text-[12px] text-[#6b7280] leading-relaxed">
+                  <p className={`${type.body} text-[#6b7280]`}>
                     Conveniently located to serve all Emirates with fast response.
                   </p>
                 </div>
@@ -401,19 +402,19 @@ function ContactContent() {
                     <path d="M5 20V10l7-6 7 6v10" />
                     <path d="M9 20v-6h6v6" />
                   </svg>
-                  <h4 className="font-bold text-xs uppercase tracking-wide mb-2" style={{ color: NAVY }}>
+                  <h4 className={`${type.cardTitle} mb-2`} style={{ color: NAVY }}>
                     Easy Access
                   </h4>
-                  <p className="text-[12px] text-[#6b7280] leading-relaxed">
+                  <p className={`${type.body} text-[#6b7280]`}>
                     Easy access to major highways and industrial areas.
                   </p>
                 </div>
                 <div>
                   <Truck size={22} className="mb-3" style={{ color: NAVY }} />
-                  <h4 className="font-bold text-xs uppercase tracking-wide mb-2" style={{ color: NAVY }}>
+                  <h4 className={`${type.cardTitle} mb-2`} style={{ color: NAVY }}>
                     On-Time Delivery
                   </h4>
-                  <p className="text-[12px] text-[#6b7280] leading-relaxed">
+                  <p className={`${type.body} text-[#6b7280]`}>
                     Ensuring quick delivery and support wherever you need us.
                   </p>
                 </div>

@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import companyData from "@/content/company.json";
+import { type } from "@/lib/typography";
 
 const NAVY = "#001C55";
 
@@ -76,7 +77,7 @@ export default function Navbar() {
               {companyData.legalName.lines.map((line) => (
                 <span
                   key={line}
-                  className="font-bold text-[10px] md:text-[11px] lg:text-xs tracking-wide uppercase"
+                  className={type.navBrand}
                   style={{ color: NAVY }}
                 >
                   {line}
@@ -93,7 +94,7 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="relative py-1 text-[15px] font-semibold transition-colors"
+                    className={`relative py-1 ${type.nav} transition-colors`}
                     style={{ color: isActive ? NAVY : NAVY }}
                   >
                     {link.name}
@@ -110,7 +111,7 @@ export default function Navbar() {
 
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-2.5 rounded-full transition-colors hover:opacity-90"
+              className={`inline-flex items-center gap-2 text-white ${type.btn} px-6 py-2.5 rounded-full transition-colors hover:opacity-90`}
               style={{ backgroundColor: NAVY }}
             >
               Get a Quote
@@ -148,7 +149,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-semibold"
+                  className={type.nav}
                   style={{ color: getIsActive(link) ? NAVY : "#374151" }}
                 >
                   {link.name}
@@ -157,7 +158,7 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-2 inline-flex items-center gap-2 text-white text-sm font-semibold px-6 py-2.5 rounded-full"
+                className={`mt-2 inline-flex items-center gap-2 text-white ${type.btn} px-6 py-2.5 rounded-full`}
                 style={{ backgroundColor: NAVY }}
               >
                 Get a Quote →
