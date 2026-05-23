@@ -60,24 +60,27 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white">
-      <div className="container mx-auto px-6 md:px-10 lg:px-12 max-w-[1400px]">
-        <div className="flex items-center justify-between gap-4 py-3.5 md:py-4">
-          <Link href="/" className="flex items-center gap-3 shrink-0 z-50">
-            <div className="relative h-12 w-12 sm:h-[52px] sm:w-[52px] rounded-full overflow-hidden shrink-0 border border-[#e8eaed] bg-white">
+      <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-12 max-w-[1400px]">
+        <div className="flex items-center justify-between gap-2 sm:gap-4 py-3.5 md:py-4">
+          <Link
+            href="/"
+            className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 lg:flex-initial lg:max-w-none mr-2 z-50"
+          >
+            <div className="relative h-10 w-10 sm:h-12 sm:w-12 md:h-[52px] md:w-[52px] rounded-full overflow-hidden shrink-0 border border-[#e8eaed] bg-white">
               <Image
                 src="/images/justified-logo.jpeg"
                 alt={`${companyData.legalName.full} logo`}
                 fill
-                sizes="52px"
+                sizes="(max-width: 640px) 40px, 52px"
                 className="object-cover"
                 priority
               />
             </div>
-            <div className="hidden sm:flex flex-col leading-[1.15] text-left">
+            <div className="flex flex-col leading-[1.08] sm:leading-[1.15] text-left min-w-0">
               {companyData.legalName.lines.map((line) => (
                 <span
                   key={line}
-                  className={type.navBrand}
+                  className="font-bold uppercase tracking-wide text-[8px] leading-tight sm:text-[10px] md:text-xs"
                   style={{ color: NAVY }}
                 >
                   {line}
@@ -123,7 +126,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="lg:hidden z-50 p-1"
+            className="lg:hidden z-50 shrink-0 p-1"
             style={{ color: NAVY }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
