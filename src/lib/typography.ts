@@ -1,6 +1,7 @@
 /**
- * Shared typography — sizes & weights defined in globals.css (.type-*)
- * Titles: hero & sections bold (700); eyebrows semibold (600)
+ * Justified typography — Sansation only (300 / 400 / 700)
+ * Base: html 18px, body 1rem Regular, line-height 1.6
+ * Sizes & weights: globals.css (.type-*)
  */
 export const type = {
   eyebrow: "type-eyebrow",

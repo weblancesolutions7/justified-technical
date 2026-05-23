@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Sansation } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -8,10 +8,10 @@ import companyData from "@/content/company.json";
 
 import themeData from "@/content/theme.json";
 
-const poppins = Poppins({
-  variable: "--font-poppins",
+const sansation = Sansation({
+  variable: "--font-sansation",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "700"],
   display: "swap",
 });
 
@@ -48,7 +48,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body style={themeVars} className={`${poppins.variable} font-sans antialiased flex flex-col min-h-screen`}>
+      <body style={themeVars} className={`${sansation.variable} font-sans antialiased flex flex-col min-h-screen`}>
         <SmoothScroll>
           <Navbar />
           <main className="flex-grow">

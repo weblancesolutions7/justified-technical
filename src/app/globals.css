@@ -13,8 +13,8 @@
   --color-section: #f4f5f7;
   --color-body: #4a5568;
 
-  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sansation), sans-serif;
+  --font-heading: var(--font-sansation), sans-serif;
 }
 
 @layer base {
@@ -23,78 +23,90 @@
     --foreground: #3B3C89;
   }
 
+  html {
+    font-size: 18px;
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading), sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
     font-weight: 700;
-    line-height: 1.15;
+    line-height: 1.2;
     color: var(--color-navy);
   }
 }
 
 @layer components {
   .type-eyebrow {
-    font-family: var(--font-heading), sans-serif;
-    @apply text-xs font-semibold tracking-[0.2em] uppercase;
+    font-family: var(--font-heading);
+    @apply text-xs font-bold tracking-[0.2em] uppercase;
   }
 
   .type-hero {
-    font-family: var(--font-heading), sans-serif;
+    font-family: var(--font-heading);
     color: var(--color-navy);
     @apply text-3xl sm:text-4xl md:text-[2.75rem] lg:text-5xl font-bold uppercase tracking-tight leading-[1.12];
   }
 
   .type-section-title {
-    font-family: var(--font-heading), sans-serif;
+    font-family: var(--font-heading);
     color: var(--color-navy);
     @apply text-2xl md:text-3xl font-bold uppercase tracking-tight leading-tight;
   }
 
   .type-panel-title {
-    font-family: var(--font-heading), sans-serif;
+    font-family: var(--font-heading);
     color: var(--color-navy);
     @apply text-lg md:text-xl font-bold uppercase tracking-tight;
   }
 
   .type-card-title {
-    font-family: var(--font-heading), sans-serif;
+    font-family: var(--font-heading);
     color: var(--color-navy);
     @apply text-sm font-bold uppercase tracking-wide leading-tight;
   }
 
   .type-micro {
-    font-family: var(--font-heading), sans-serif;
+    font-family: var(--font-heading);
     color: var(--color-navy);
-    @apply text-[10px] sm:text-xs font-bold leading-tight;
+    @apply text-[0.625rem] sm:text-xs font-bold leading-tight;
   }
 
   .type-body {
-    @apply text-sm md:text-base font-normal leading-relaxed;
+    @apply text-base font-normal leading-[1.6];
   }
 
   .type-caption {
-    @apply text-xs font-medium leading-snug;
+    @apply text-xs font-light leading-snug;
   }
 
   .type-stat {
-    font-family: var(--font-heading), sans-serif;
+    font-family: var(--font-heading);
     @apply text-2xl md:text-3xl font-bold leading-none;
   }
 
   .type-contact-value {
-    @apply text-sm md:text-base font-bold leading-snug;
+    @apply text-base font-bold leading-snug;
   }
 
   .type-contact-label {
-    @apply text-xs font-medium uppercase tracking-wide;
+    @apply text-xs font-light uppercase tracking-wide;
   }
 
   .type-btn {
@@ -102,11 +114,11 @@
   }
 
   .type-nav {
-    @apply text-sm font-bold;
+    @apply text-base font-bold;
   }
 
   .type-nav-brand {
-    font-family: var(--font-heading), sans-serif;
+    font-family: var(--font-heading);
     @apply text-xs font-bold tracking-wide uppercase;
   }
 }
