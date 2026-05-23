@@ -21,6 +21,7 @@ import { IndustryIcon } from "@/components/IndustryIcon";
 import { industriesList } from "@/content/industries";
 import companyData from "@/content/company.json";
 import { HeroEyebrowLabel, HeroOutlineButton, PageHero } from "@/components/PageHero";
+import { siteContainerClass } from "@/lib/layout";
 import { ACCENT, NAVY } from "@/lib/theme";
 import { type } from "@/lib/typography";
 const PANEL = "#eef2f7";
@@ -58,7 +59,7 @@ export default function IndustriesPage() {
 
       {/* Intro */}
       <section className="py-12 md:py-14 bg-white">
-        <div className="container mx-auto px-6 md:px-12 max-w-[1400px] text-center">
+        <div className={`${siteContainerClass} text-center`}>
           <div className="flex items-center justify-center gap-4 mb-3">
             <span className="h-px w-12 bg-[#d1d5db]" />
             <span className={type.eyebrow} style={{ color: ACCENT }}>
@@ -77,7 +78,7 @@ export default function IndustriesPage() {
 
       {/* Industry cards — 4×2 grid */}
       <section id="industries-list" className="py-10 md:py-14" style={{ backgroundColor: PANEL }}>
-        <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
+        <div className={siteContainerClass}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
             {industriesList.map((ind) => (
               <article
@@ -121,7 +122,7 @@ export default function IndustriesPage() {
 
       {/* Capabilities */}
       <section className="py-12 md:py-14 bg-white">
-        <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
+        <div className={siteContainerClass}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
               <span className={`${type.eyebrow} block mb-2`} style={{ color: ACCENT }}>
@@ -159,7 +160,7 @@ export default function IndustriesPage() {
 
       {/* Why choose us */}
       <section className="py-12 md:py-14" style={{ backgroundColor: PANEL }}>
-        <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
+        <div className={siteContainerClass}>
           <h3 className={`text-center ${type.cardTitle} tracking-[0.2em] mb-10`} style={{ color: NAVY }}>
             WHY PARTNER WITH US?
           </h3>
@@ -193,10 +194,10 @@ export default function IndustriesPage() {
 
       {/* Stats */}
       <section className="py-9 md:py-10 text-white" style={{ backgroundColor: NAVY }}>
-        <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
+        <div className={siteContainerClass}>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-4">
             {[
-              { value: "2018", label: "Established", icon: <Calendar className="w-7 h-7" /> },
+              { value: String(companyData.established), label: "Established", icon: <Calendar className="w-7 h-7" /> },
               { value: "1250+", label: "kVA Capacity", icon: <Zap className="w-7 h-7" /> },
               { value: "24/7", label: "Support Available", icon: <Headphones className="w-7 h-7" /> },
               { value: "100%", label: "Quality Commitment", icon: <ShieldCheck className="w-7 h-7" /> },
@@ -219,8 +220,8 @@ export default function IndustriesPage() {
       </section>
 
       {/* CTA card */}
-      <section className="bg-white py-10 md:py-14 px-6 md:px-12">
-        <div className="container mx-auto max-w-[1400px]">
+      <section className="bg-white py-10 md:py-14">
+        <div className={siteContainerClass}>
           <div className="flex flex-col lg:flex-row rounded-2xl border border-[#e2e8f0] overflow-hidden shadow-[0_4px_24px_rgba(0,28,85,0.06)]">
             <div
               className="lg:w-[33%] p-8 md:p-10 text-white flex flex-col justify-center"
@@ -240,11 +241,11 @@ export default function IndustriesPage() {
                 Get a Quote <ArrowRight size={15} />
               </Link>
             </div>
-            <div className="flex-1 bg-white flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-[#e8ecf1]">
+            <div className="flex-1 bg-white grid grid-cols-2 divide-x divide-y divide-[#e8ecf1] lg:flex lg:flex-row lg:divide-y-0">
               {[
                 {
                   icon: <Phone size={22} strokeWidth={1.5} />,
-                  label: "Customer Service",
+                  label: companyData.contact.telLabel,
                   content: (
                     <a href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`} className={type.contactValue} style={{ color: NAVY }}>
                       {companyData.contact.tel}
@@ -271,17 +272,24 @@ export default function IndustriesPage() {
                 },
                 {
                   icon: <MapPin size={22} strokeWidth={1.5} />,
-                  label: "Head Office",
+                  label: "Abu Dhabi Branch",
                   content: (
-                    <p className={type.contactValue} style={{ color: NAVY }}>
-                      PO BOX: {companyData.contact.address.poBox}
-                      <br />
-                      {companyData.contact.address.city.replace("/", " / ")}
-                    </p>
+                    <a
+                      href={companyData.contact.mapLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${type.contactValue} hover:opacity-80 transition-opacity`}
+                      style={{ color: NAVY }}
+                    >
+                      {companyData.contact.address.city}
+                    </a>
                   ),
                 },
               ].map((item) => (
-                <div key={item.label} className="flex-1 flex flex-col items-center justify-center text-center px-5 py-8 md:py-10 min-w-0">
+                <div
+                  key={item.label}
+                  className="flex flex-col items-center justify-center text-center px-3 py-8 sm:px-5 md:py-10 min-w-0 lg:flex-1"
+                >
                   <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4" style={{ backgroundColor: "#e8f1fa", color: NAVY }}>
                     {item.icon}
                   </div>

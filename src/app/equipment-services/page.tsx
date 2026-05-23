@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import companyData from "@/content/company.json";
 import { HeroEyebrowLabel, HeroOutlineButton, PageHero } from "@/components/PageHero";
+import { siteContainerClass } from "@/lib/layout";
 import { ACCENT, NAVY } from "@/lib/theme";
 import { type } from "@/lib/typography";
 
@@ -104,7 +105,7 @@ const whyChoose = [
 ];
 
 const stats = [
-  { value: "2018", label: "Established", icon: <Calendar className="w-7 h-7" /> },
+  { value: String(companyData.established), label: "Established", icon: <Calendar className="w-7 h-7" /> },
   { value: "1250+", label: "kVA Capacity", icon: <Zap className="w-7 h-7" /> },
   { value: "24/7", label: "Support Available", icon: <Headphones className="w-7 h-7" /> },
   { value: "100%", label: "Quality Commitment", icon: <ShieldCheck className="w-7 h-7" /> },
@@ -134,7 +135,7 @@ export default function EquipmentServicesPage() {
 
       {/* Services grid */}
       <section id="services-grid" className="py-14 md:py-16 bg-white">
-        <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
+        <div className={siteContainerClass}>
           <div className="text-center max-w-2xl mx-auto mb-12 md:mb-14">
             <div className="flex items-center justify-center gap-4 mb-3">
               <span className="h-px w-12 bg-[#d1d5db]" />
@@ -204,7 +205,7 @@ export default function EquipmentServicesPage() {
 
       {/* Why choose us */}
       <section className="py-12 md:py-14" style={{ backgroundColor: "#eef2f7" }}>
-        <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
+        <div className={siteContainerClass}>
           <h3 className={`text-center ${type.cardTitle} tracking-[0.2em] mb-10`} style={{ color: NAVY }}>
             WHY CHOOSE US?
           </h3>
@@ -242,7 +243,7 @@ export default function EquipmentServicesPage() {
           />
         </div>
 
-        <div className="container mx-auto px-6 md:px-12 max-w-[1400px] relative z-10">
+        <div className={`${siteContainerClass} relative z-10`}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 py-10 md:py-12 items-center">
             <div className="lg:col-span-5 text-white text-left">
               <p className={`${type.eyebrow} mb-1`} style={{ color: ACCENT }}>
@@ -262,7 +263,7 @@ export default function EquipmentServicesPage() {
                   <PhoneCall size={18} strokeWidth={1.5} />
                 </div>
                 <div className="text-left">
-                  <span className={`${type.contactLabel} text-white/60 block`}>Call Us</span>
+                  <span className={`${type.contactLabel} text-white/60 block`}>{companyData.contact.telLabel}</span>
                   <a
                     href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
                     className={`${type.contactValue} text-white hover:text-white/80 transition-colors`}

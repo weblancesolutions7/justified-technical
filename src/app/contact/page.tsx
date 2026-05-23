@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import companyData from "@/content/company.json";
 import { HeroEyebrowLabel, PageHero } from "@/components/PageHero";
+import { siteContainerClass } from "@/lib/layout";
 import { ACCENT, NAVY } from "@/lib/theme";
 import { type } from "@/lib/typography";
 
@@ -32,6 +33,16 @@ function LinkedInIcon() {
   );
 }
 
+function WhatsAppIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.733-1.458L0 24zm6.704-4.248c1.601.95 3.115 1.485 4.908 1.487 5.379 0 9.751-4.373 9.754-9.759.001-2.61-1.011-5.064-2.848-6.903C16.68 2.73 14.216 1.719 11.611 1.719 6.236 1.719 1.861 6.091 1.858 11.48c-.001 1.859.489 3.411 1.464 5.01l-.995 3.636 3.73-.974z" />
+    </svg>
+  );
+}
+
+const salesWhatsApp = companyData.contact.sales.split(", ")[0].replace(/[-+\s]/g, "");
+
 function ContactRow({
   icon,
   label,
@@ -42,7 +53,7 @@ function ContactRow({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex items-start gap-4 py-5 border-b border-[#e8ecf1] last:border-b-0">
+    <div className="flex items-start gap-4 py-5 border-b border-[#e8ecf1] last:border-b-0 sm:border-0 sm:py-4 lg:border-b lg:py-5 lg:last:border-b-0">
       <div
         className="w-11 h-11 rounded-full text-white flex items-center justify-center shrink-0"
         style={{ backgroundColor: NAVY }}
@@ -131,17 +142,18 @@ function ContactContent() {
 
       {/* Contact info + form */}
       <section className="py-12 md:py-16 bg-white">
-        <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
+        <div className={siteContainerClass}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             <div className="lg:col-span-5">
               <span className={`${type.eyebrow} block mb-2`} style={{ color: ACCENT }}>
                 GET IN TOUCH
               </span>
-              <h2 className={`${type.sectionTitle} mb-8`} style={{ color: NAVY }}>
+              <h2 className={`${type.sectionTitle} mb-6 sm:mb-8`} style={{ color: NAVY }}>
                 Let&apos;s Power Your Success
               </h2>
 
-              <ContactRow icon={<Phone size={18} strokeWidth={2} />} label="Customer Service">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-x-6 sm:gap-x-8">
+              <ContactRow icon={<Phone size={18} strokeWidth={2} />} label={companyData.contact.telLabel}>
                 <a
                   href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
                   className={`${type.contactValue} hover:opacity-80 transition-opacity`}
@@ -166,6 +178,16 @@ function ContactContent() {
                 </div>
               </ContactRow>
 
+              <ContactRow icon={<Phone size={18} strokeWidth={2} />} label="Accounts Department">
+                <a
+                  href={`tel:${companyData.contact.accounts.replace(/\s+/g, "")}`}
+                  className={`${type.contactValue} hover:opacity-80 transition-opacity`}
+                  style={{ color: NAVY }}
+                >
+                  {companyData.contact.accounts}
+                </a>
+              </ContactRow>
+
               <ContactRow icon={<Mail size={18} strokeWidth={2} />} label="Email Us">
                 <a
                   href={`mailto:${companyData.contact.email}`}
@@ -176,25 +198,41 @@ function ContactContent() {
                 </a>
               </ContactRow>
 
-              <ContactRow icon={<MapPin size={18} strokeWidth={2} />} label="Head Office Address">
-                <p className={`${type.contactValue} leading-relaxed`} style={{ color: NAVY }}>
-                  PO BOX: {companyData.contact.address.poBox}
-                  <br />
-                  {companyData.contact.address.city.replace("/", " / ")}
-                </p>
+              <ContactRow icon={<MapPin size={18} strokeWidth={2} />} label="Abu Dhabi Branch">
+                <a
+                  href={companyData.contact.mapLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${type.contactValue} leading-relaxed hover:opacity-80 transition-opacity`}
+                  style={{ color: NAVY }}
+                >
+                  {companyData.contact.address.city}
+                </a>
               </ContactRow>
 
               <ContactRow icon={<LinkedInIcon />} label="Connect With Us">
-                <a
-                  href={companyData.contact.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${type.contactValue} hover:opacity-80 transition-opacity`}
-                  style={{ color: NAVY }}
-                >
-                  LinkedIn
-                </a>
+                <div className="flex gap-3 items-center">
+                  <a
+                    href={companyData.contact.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-[#0077B5] text-white flex items-center justify-center hover:opacity-90 transition-opacity"
+                    aria-label="LinkedIn"
+                  >
+                    <LinkedInIcon />
+                  </a>
+                  <a
+                    href={`https://wa.me/${salesWhatsApp}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 transition-opacity"
+                    aria-label="WhatsApp"
+                  >
+                    <WhatsAppIcon />
+                  </a>
+                </div>
               </ContactRow>
+              </div>
             </div>
 
             <div className="lg:col-span-7">
@@ -340,7 +378,7 @@ function ContactContent() {
           <div className="mt-12 md:mt-14 border border-[#e2e8f0] rounded-xl overflow-hidden bg-white shadow-[0_4px_24px_rgba(0,28,85,0.05)] grid grid-cols-1 lg:grid-cols-2">
             <div className="relative min-h-[300px] lg:min-h-[380px]">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115403.49129532551!2d55.4347596!3d25.325725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f403dfbf8c1%3A0x64319a9f242096e5!2sSharjah%20University%20City!5e0!3m2!1sen!2sae!4v1716388000000!5m2!1sen!2sae"
+                src={companyData.contact.mapEmbedUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -348,7 +386,7 @@ function ContactContent() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 className="absolute inset-0 w-full h-full"
-                title="Office location map"
+                title="Justified Technical — Abu Dhabi location"
               />
             </div>
 
@@ -361,15 +399,19 @@ function ContactContent() {
                       OUR LOCATION
                     </span>
                     <h3 className={type.panelTitle} style={{ color: NAVY }}>
-                      {companyData.contact.address.city.replace("/", " / ")}
+                      {companyData.contact.address.city}
                     </h3>
                   </div>
                 </div>
-                <p className={`${type.contactValue} pl-9`} style={{ color: NAVY }}>
-                  PO BOX: {companyData.contact.address.poBox}
-                  <br />
-                  {companyData.contact.address.city.replace("/", " / ")}
-                </p>
+                <a
+                  href={companyData.contact.mapLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`${type.contactValue} pl-9 hover:opacity-80 transition-opacity`}
+                  style={{ color: NAVY }}
+                >
+                  View on Google Maps
+                </a>
               </div>
 
               <div className="border-t border-[#e8ecf1] my-8" />
@@ -381,7 +423,7 @@ function ContactContent() {
                     Strategic Location
                   </h4>
                   <p className={`${type.body} text-[#6b7280]`}>
-                    Conveniently located to serve all Emirates with fast response.
+                    Our Abu Dhabi workshop and office support projects across the UAE.
                   </p>
                 </div>
                 <div>

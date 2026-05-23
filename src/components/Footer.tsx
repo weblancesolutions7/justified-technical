@@ -13,12 +13,6 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-const YoutubeIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-    <path d="M23.498 6.163c-.272-.98-1.04-1.748-2.02-2.02C19.716 3.645 12 3.645 12 3.645s-7.716 0-9.478.498c-.98.272-1.748 1.04-2.02 2.02C0 7.925 0 11.666 0 11.666s0 3.742.498 5.503c.272.98 1.04 1.748 2.02 2.02 1.762.498 9.478.498 9.478.498s7.716 0 9.478-.498c.98-.272 1.748-1.04 2.02-2.02.498-1.761.498-5.503.498-5.503s0-3.741-.498-5.503zM9.545 15.568V7.763l6.818 3.903-6.818 3.902z" />
-  </svg>
-);
-
 const WhatsAppIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.733-1.458L0 24zm6.704-4.248c1.601.95 3.115 1.485 4.908 1.487 5.379 0 9.751-4.373 9.754-9.759.001-2.61-1.011-5.064-2.848-6.903C16.68 2.73 14.216 1.719 11.611 1.719 6.236 1.719 1.861 6.091 1.858 11.48c-.001 1.859.489 3.411 1.464 5.01l-.995 3.636 3.73-.974z" />
@@ -98,15 +92,6 @@ export default function Footer() {
                 <LinkedInIcon />
               </a>
               <a
-                href={companyData.contact.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-[#FF0000] text-white flex items-center justify-center hover:opacity-90 transition-opacity"
-                aria-label="YouTube"
-              >
-                <YoutubeIcon />
-              </a>
-              <a
                 href={`https://wa.me/${salesPrimary.replace(/[-+\s]/g, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -168,6 +153,36 @@ export default function Footer() {
                   >
                     {companyData.contact.tel}
                   </a>
+                  <span className={`text-white/60 ${type.caption} mt-1 block`}>{companyData.contact.telLabel}</span>
+                </div>
+              </li>
+
+              <li className="flex gap-3 items-start">
+                <Smartphone size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
+                <div>
+                  {companyData.contact.sales.split(", ").map((num) => (
+                    <a
+                      key={num}
+                      href={`tel:${num.replace(/\s+/g, "")}`}
+                      className={`text-white ${type.contactValue} block hover:text-white/80`}
+                    >
+                      {num}
+                    </a>
+                  ))}
+                  <span className={`text-white/60 ${type.caption} mt-1 block`}>Sales</span>
+                </div>
+              </li>
+
+              <li className="flex gap-3 items-start">
+                <Smartphone size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
+                <div>
+                  <a
+                    href={`tel:${companyData.contact.accounts.replace(/\s+/g, "")}`}
+                    className={`text-white ${type.contactValue} block hover:text-white/80`}
+                  >
+                    {companyData.contact.accounts}
+                  </a>
+                  <span className={`text-white/60 ${type.caption} mt-1 block`}>Accounts</span>
                 </div>
               </li>
 
@@ -180,30 +195,21 @@ export default function Footer() {
                   >
                     {companyData.contact.email}
                   </a>
-                  <span className={`text-white/60 ${type.caption} mt-1 block`}>Sales Department</span>
-                </div>
-              </li>
-
-              <li className="flex gap-3 items-start">
-                <Smartphone size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
-                <div>
-                  <a
-                    href={`tel:${salesPrimary.replace(/\s+/g, "")}`}
-                    className={`text-white ${type.contactValue} block hover:text-white/80`}
-                  >
-                    {salesPrimary}
-                  </a>
-                  <span className={`text-white/60 ${type.caption} mt-1 block`}>Sales Department</span>
                 </div>
               </li>
 
               <li className="flex gap-3 items-start">
                 <MapPin size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
                 <div>
-                  <p className={`text-white ${type.contactValue}`}>
-                    PO BOX: {companyData.contact.address.poBox} {companyData.contact.address.city}
-                  </p>
-                  <span className={`text-white/60 ${type.caption} mt-1 block`}>Head Office Address</span>
+                  <a
+                    href={companyData.contact.mapLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-white ${type.contactValue} block hover:text-white/80`}
+                  >
+                    {companyData.contact.address.city}
+                  </a>
+                  <span className={`text-white/60 ${type.caption} mt-1 block`}>Abu Dhabi — View on map</span>
                 </div>
               </li>
             </ul>

@@ -122,7 +122,7 @@ export default function Home() {
 
   // Statistics Data
   const stats = [
-    { label: "Established", value: "2018", icon: <Calendar className="w-9 h-9 md:w-10 md:h-10 text-white" /> },
+    { label: "Established", value: String(companyData.established), icon: <Calendar className="w-9 h-9 md:w-10 md:h-10 text-white" /> },
     { label: "kVA Capacity", value: "1250+", icon: <Zap className="w-9 h-9 md:w-10 md:h-10 text-white" /> },
     { label: "Support Available", value: "24/7", icon: <Headset className="w-9 h-9 md:w-10 md:h-10 text-white" /> },
     { label: "Quality Commitment", value: "100%", icon: <ShieldCheck className="w-9 h-9 md:w-10 md:h-10 text-white" /> }
@@ -614,7 +614,7 @@ export default function Home() {
                       {companyData.contact.tel}
                     </a>
                     <span className={`text-white/65 ${type.contactLabel} mt-1 block`}>
-                      Customer Service
+                      {companyData.contact.telLabel}
                     </span>
                   </div>
                 </div>
@@ -655,13 +655,33 @@ export default function Home() {
                 </div>
 
                 <div className="flex gap-3.5 items-start">
+                  <Smartphone size={24} strokeWidth={1.5} className="shrink-0 mt-0.5" />
+                  <div>
+                    <a
+                      href={`tel:${companyData.contact.accounts.replace(/\s+/g, "")}`}
+                      className={`text-white hover:text-white/80 ${type.contactValue} block transition-colors`}
+                    >
+                      {companyData.contact.accounts}
+                    </a>
+                    <span className={`text-white/65 ${type.contactLabel} mt-1 block`}>
+                      Accounts Department
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex gap-3.5 items-start sm:col-span-2">
                   <MapPin size={24} strokeWidth={1.5} className="shrink-0 mt-0.5" />
                   <div>
-                    <p className={`text-white ${type.contactValue}`}>
-                      PO BOX: {companyData.contact.address.poBox} {companyData.contact.address.city}
-                    </p>
+                    <a
+                      href={companyData.contact.mapLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`text-white hover:text-white/80 ${type.contactValue} block transition-colors`}
+                    >
+                      {companyData.contact.address.city}
+                    </a>
                     <span className={`text-white/65 ${type.contactLabel} mt-1 block`}>
-                      Head Office Address
+                      Abu Dhabi — View on map
                     </span>
                   </div>
                 </div>

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: `%s | ${companyData.shortName}`
   },
   description: companyData.mission,
-  keywords: ["Machinery rental UAE", "Generator rental Dubai", "Construction equipment rental UAE", "Equipment hire Sharjah"],
+  keywords: ["Equipment rental Abu Dhabi", "Equipment repair UAE", "Machinery rental Abu Dhabi", "Industrial equipment UAE"],
   icons: {
     icon: "/images/justified-logo.jpeg",
     shortcut: "/images/justified-logo.jpeg",

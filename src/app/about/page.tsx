@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import companyData from "@/content/company.json";
 import { HeroEyebrowLabel, HeroOutlineButton, PageHero } from "@/components/PageHero";
+import { siteContainerClass } from "@/lib/layout";
 import { ACCENT, NAVY } from "@/lib/theme";
 import { type } from "@/lib/typography";
 const PANEL = "#eef2f7";
@@ -35,8 +36,8 @@ const salesPrimary = companyData.contact.sales.split(", ")[0];
 export default function About() {
   const timeline = [
     {
-      title: "Founded in 2018",
-      desc: "We began our journey with a clear purpose — to provide dependable construction equipment and power solutions.",
+      title: `Founded in ${companyData.established}`,
+      desc: "We began in Abu Dhabi with a clear purpose — to provide dependable equipment rental and repair services.",
       icon: <Calendar size={16} strokeWidth={2} />,
     },
     {
@@ -77,7 +78,7 @@ export default function About() {
   ];
 
   const stats = [
-    { value: "2018", label: "Established", icon: <Calendar className="w-8 h-8" /> },
+    { value: String(companyData.established), label: "Established", icon: <Calendar className="w-8 h-8" /> },
     { value: "1250+", label: "kVA Capacity", icon: <Zap className="w-8 h-8" /> },
     { value: "24/7", label: "Support Available", icon: <Headphones className="w-8 h-8" /> },
     { value: "UAE Wide", label: "Coverage", icon: <Globe className="w-8 h-8" /> },
@@ -113,7 +114,7 @@ export default function About() {
 
       {/* ── Intro + Our Story ── */}
       <section id="about-intro" className="py-14 md:py-16 bg-white">
-        <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
+        <div className={siteContainerClass}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
             <div>
               <span className={`${type.eyebrow} block mb-2`} style={{ color: ACCENT }}>
@@ -126,13 +127,13 @@ export default function About() {
 
               <div className={`space-y-5 ${type.body} text-[#4a5568] mb-8 max-w-xl`}>
                 <p>
-                  As a leading provider of machinery and power solutions in the UAE, we deliver high-performance equipment and services tailored to meet demanding project needs.
+                  {companyData.legalName.full} has served the UAE since {companyData.established} from our base in {companyData.headquarters}.
                 </p>
                 <p>
-                  With capabilities exceeding 1250kVA+, we are backed by a strong reputation for reliability, efficiency, and excellence.
+                  We specialize in {companyData.servicesSummary.toLowerCase()}, delivering dependable machinery and power solutions tailored to demanding project needs.
                 </p>
                 <p>
-                  We supply premium generators, heavy machinery, cooling systems, and complete power distribution solutions for construction projects, industrial operations, and large-scale events across Dubai, Abu Dhabi, and across the UAE.
+                  Our Abu Dhabi branch combines a workshop and office to support construction, industrial, and event projects across the Emirates with reliability, efficiency, and excellence.
                 </p>
               </div>
 
@@ -177,7 +178,7 @@ export default function About() {
 
       {/* ── Vision / Values / Standards ── */}
       <section className="py-12 md:py-14" style={{ backgroundColor: PANEL }}>
-        <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
+        <div className={siteContainerClass}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             <div className="lg:col-span-3 bg-white rounded-xl border border-[#e2e8f0] p-6 md:p-7">
               <h3 className={`flex items-center gap-2 ${type.cardTitle} mb-6`} style={{ color: NAVY }}>
@@ -257,7 +258,7 @@ export default function About() {
 
       {/* ── Stats bar ── */}
       <section className="py-9 md:py-10 text-white" style={{ backgroundColor: NAVY }}>
-        <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
+        <div className={siteContainerClass}>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-8 gap-x-4">
             {stats.map((item, idx) => (
               <div
@@ -278,8 +279,8 @@ export default function About() {
       </section>
 
       {/* ── CTA + Contact card ── */}
-      <section className="bg-white py-10 md:py-14 px-6 md:px-12">
-        <div className="container mx-auto max-w-[1400px]">
+      <section className="bg-white py-10 md:py-14">
+        <div className={siteContainerClass}>
           <div className="flex flex-col lg:flex-row rounded-2xl border border-[#e2e8f0] overflow-hidden shadow-[0_4px_24px_rgba(0,28,85,0.06)]">
             <div
               className="lg:w-[33%] xl:w-[32%] p-8 md:p-10 lg:p-11 text-white flex flex-col justify-center text-left"
@@ -300,11 +301,11 @@ export default function About() {
               </Link>
             </div>
 
-            <div className="flex-1 bg-white flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-[#e8ecf1]">
+            <div className="flex-1 bg-white grid grid-cols-2 divide-x divide-y divide-[#e8ecf1] lg:flex lg:flex-row lg:divide-y-0">
               {[
                 {
                   icon: <Phone size={22} strokeWidth={1.5} />,
-                  label: "Customer Service",
+                  label: companyData.contact.telLabel,
                   content: (
                     <a
                       href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
@@ -343,19 +344,23 @@ export default function About() {
                 },
                 {
                   icon: <MapPin size={22} strokeWidth={1.5} />,
-                  label: "Head Office",
+                  label: "Abu Dhabi Branch",
                   content: (
-                    <p className={type.contactValue} style={{ color: NAVY }}>
-                      PO BOX: {companyData.contact.address.poBox}
-                      <br />
-                      {companyData.contact.address.city.replace("/", " / ")}
-                    </p>
+                    <a
+                      href={companyData.contact.mapLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`${type.contactValue} hover:opacity-80 transition-opacity`}
+                      style={{ color: NAVY }}
+                    >
+                      {companyData.contact.address.city}
+                    </a>
                   ),
                 },
               ].map((item) => (
                 <div
                   key={item.label}
-                  className="flex-1 flex flex-col items-center justify-center text-center px-5 py-8 md:py-10 min-w-0"
+                  className="flex flex-col items-center justify-center text-center px-3 py-8 sm:px-5 md:py-10 min-w-0 lg:flex-1"
                 >
                   <div
                     className="w-12 h-12 rounded-full flex items-center justify-center mb-4"

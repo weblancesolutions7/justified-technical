@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import companyData from "@/content/company.json";
+import { siteContainerClass } from "@/lib/layout";
 import { type } from "@/lib/typography";
 
 const NAVY = "#001C55";
@@ -60,7 +61,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-12 max-w-[1400px]">
+      <div className={siteContainerClass}>
         <div className="flex items-center justify-between gap-2 sm:gap-4 py-3.5 md:py-4">
           <Link
             href="/"
