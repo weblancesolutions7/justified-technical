@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import companyData from "@/content/company.json";
 import { PageHero } from "@/components/PageHero";
+import { IndustryIcon } from "@/components/IndustryIcon";
+import { StatsBar } from "@/components/StatsBar";
 import { type } from "@/lib/typography";
 
 export default function Home() {
@@ -89,6 +91,21 @@ export default function Home() {
       image: "/images/new-equipment/Distribution boards and change over switch board.png"
     },
     {
+      title: "Automatic Transfer Switches",
+      subtitle: "(ATS)",
+      image: "/images/new-equipment/Distribution boards and change over switch board.png"
+    },
+    {
+      title: "Synchronizing Panels",
+      subtitle: "",
+      image: "/images/Smart & Efficient Operations.jpg.jpeg"
+    },
+    {
+      title: "Welding Machines",
+      subtitle: "",
+      image: "/images/equipment/Welding Machines.jpg.jpeg"
+    },
+    {
       title: "Tower Lights",
       subtitle: "",
       image: "/images/new-equipment/Tower light night.png"
@@ -122,10 +139,10 @@ export default function Home() {
 
   // Statistics Data
   const stats = [
-    { label: "Established", value: String(companyData.established), icon: <Calendar className="w-9 h-9 md:w-10 md:h-10 text-white" /> },
-    { label: "kVA Capacity", value: "1250+", icon: <Zap className="w-9 h-9 md:w-10 md:h-10 text-white" /> },
-    { label: "Support Available", value: "24/7", icon: <Headset className="w-9 h-9 md:w-10 md:h-10 text-white" /> },
-    { label: "Quality Commitment", value: "100%", icon: <ShieldCheck className="w-9 h-9 md:w-10 md:h-10 text-white" /> }
+    { label: "Established", value: String(companyData.established), icon: <Calendar className="text-white" /> },
+    { label: "kVA Capacity", value: "1250+", icon: <Zap className="text-white" /> },
+    { label: "Support Available", value: "24/7", icon: <Headset className="text-white" /> },
+    { label: "Quality Commitment", value: "100%", icon: <ShieldCheck className="text-white" /> }
   ];
 
   // Industries Data
@@ -312,6 +329,18 @@ export default function Home() {
       )
     },
     {
+      name: "Data Centers",
+      svg: <IndustryIcon id="data-centers" />
+    },
+    {
+      name: "Film Productions",
+      svg: <IndustryIcon id="film-productions" />
+    },
+    {
+      name: "Marines & Ports",
+      svg: <IndustryIcon id="marine-ports" />
+    },
+    {
       name: "All Industries",
       svg: (
         <svg className="w-full h-full text-current" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
@@ -369,7 +398,7 @@ export default function Home() {
             </Link>
             <Link
               href="/contact"
-              className={`bg-white border-2 border-[#001C55] text-[#001C55] hover:bg-[#f4f5f7] max-md:bg-white/15 max-md:border-white max-md:text-white max-md:hover:bg-white/25 max-md:shadow-[0_2px_8px_rgba(0,0,0,0.4)] px-7 py-3.5 rounded-md ${type.btn} transition-colors duration-200 flex items-center gap-2`}
+              className={`bg-white border-2 border-[#001C55] text-[#001C55] hover:bg-[#f4f5f7] max-lg:bg-white/15 max-lg:border-white max-lg:text-white max-lg:hover:bg-white/25 max-lg:shadow-[0_2px_8px_rgba(0,0,0,0.4)] px-7 py-3.5 rounded-md ${type.btn} transition-colors duration-200 flex items-center gap-2`}
             >
               Contact Us
               <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
@@ -499,26 +528,7 @@ export default function Home() {
       ═══════════════════════════════════════════════════════ */}
       <section className="py-9 md:py-11 text-white" style={{ backgroundColor: navy }}>
         <div className="container mx-auto px-6 md:px-12 max-w-[1400px]">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6">
-            {stats.map((st, idx) => (
-              <div
-                key={idx}
-                className={`flex items-center gap-4 justify-center lg:justify-start ${
-                  idx < stats.length - 1 ? "lg:border-r lg:border-white/15 lg:pr-8" : ""
-                }`}
-              >
-                <div className="shrink-0 opacity-95">{st.icon}</div>
-                <div className="flex flex-col text-left">
-                  <span className={`${type.stat} text-white`}>
-                    {st.value}
-                  </span>
-                  <span className={`text-white/70 ${type.caption} mt-1`}>
-                    {st.label}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <StatsBar stats={stats.map((st) => ({ value: st.value, label: st.label, icon: st.icon }))} />
         </div>
       </section>
 

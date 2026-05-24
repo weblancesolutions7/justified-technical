@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import companyData from "@/content/company.json";
 import { HeroEyebrowLabel, HeroOutlineButton, PageHero } from "@/components/PageHero";
+import { StatsBar } from "@/components/StatsBar";
 import { siteContainerClass } from "@/lib/layout";
 import { ACCENT, NAVY } from "@/lib/theme";
 import { type } from "@/lib/typography";
@@ -78,11 +79,11 @@ export default function About() {
   ];
 
   const stats = [
-    { value: String(companyData.established), label: "Established", icon: <Calendar className="w-8 h-8" /> },
-    { value: "1250+", label: "kVA Capacity", icon: <Zap className="w-8 h-8" /> },
-    { value: "24/7", label: "Support Available", icon: <Headphones className="w-8 h-8" /> },
-    { value: "UAE Wide", label: "Coverage", icon: <Globe className="w-8 h-8" /> },
-    { value: "100%", label: "Quality Commitment", icon: <ShieldCheck className="w-8 h-8" /> },
+    { value: String(companyData.established), label: "Established", icon: <Calendar className="text-white" /> },
+    { value: "1250+", label: "kVA Capacity", icon: <Zap className="text-white" /> },
+    { value: "24/7", label: "Support Available", icon: <Headphones className="text-white" /> },
+    { value: "UAE Wide", label: "Coverage", icon: <Globe className="text-white" /> },
+    { value: "100%", label: "Quality Commitment", icon: <ShieldCheck className="text-white" /> },
   ];
 
   return (
@@ -259,22 +260,7 @@ export default function About() {
       {/* ── Stats bar ── */}
       <section className="py-9 md:py-10 text-white" style={{ backgroundColor: NAVY }}>
         <div className={siteContainerClass}>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-8 gap-x-4">
-            {stats.map((item, idx) => (
-              <div
-                key={item.label}
-                className={`flex items-center gap-3 justify-center lg:justify-start ${
-                  idx < stats.length - 1 ? "lg:border-r lg:border-white/15 lg:pr-6" : ""
-                }`}
-              >
-                <div className="opacity-95 shrink-0">{item.icon}</div>
-                <div>
-                  <p className={`${type.stat} text-white`}>{item.value}</p>
-                  <p className={`text-white/70 ${type.caption} mt-1`}>{item.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <StatsBar stats={stats} variant="5" />
         </div>
       </section>
 

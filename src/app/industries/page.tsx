@@ -17,6 +17,7 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+import { StatsBar } from "@/components/StatsBar";
 import { IndustryIcon } from "@/components/IndustryIcon";
 import { industriesList } from "@/content/industries";
 import companyData from "@/content/company.json";
@@ -31,8 +32,17 @@ const salesPrimary = companyData.contact.sales.split(", ")[0];
 const capabilities = [
   "Silent generators from 5 kVA to 1500 kVA",
   "Cables, distribution boards & change-over panels",
+  "Automatic transfer switches (ATS) & synchronizing panels",
+  "Industrial field welding machines",
   "Air compressors, tower lights & diesel tanks",
   "Load bank testing & 24/7 maintenance support",
+];
+
+const stats = [
+  { value: String(companyData.established), label: "Established", icon: <Calendar className="text-white" /> },
+  { value: "1250+", label: "kVA Capacity", icon: <Zap className="text-white" /> },
+  { value: "24/7", label: "Support Available", icon: <Headphones className="text-white" /> },
+  { value: "100%", label: "Quality Commitment", icon: <ShieldCheck className="text-white" /> },
 ];
 
 export default function IndustriesPage() {
@@ -195,27 +205,7 @@ export default function IndustriesPage() {
       {/* Stats */}
       <section className="py-9 md:py-10 text-white" style={{ backgroundColor: NAVY }}>
         <div className={siteContainerClass}>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-4">
-            {[
-              { value: String(companyData.established), label: "Established", icon: <Calendar className="w-7 h-7" /> },
-              { value: "1250+", label: "kVA Capacity", icon: <Zap className="w-7 h-7" /> },
-              { value: "24/7", label: "Support Available", icon: <Headphones className="w-7 h-7" /> },
-              { value: "100%", label: "Quality Commitment", icon: <ShieldCheck className="w-7 h-7" /> },
-            ].map((item, idx, arr) => (
-              <div
-                key={item.label}
-                className={`flex items-center gap-3 justify-center lg:justify-start ${
-                  idx < arr.length - 1 ? "lg:border-r lg:border-white/15 lg:pr-8" : ""
-                }`}
-              >
-                <div className="shrink-0 opacity-95">{item.icon}</div>
-                <div>
-                  <p className={`${type.stat} text-white`}>{item.value}</p>
-                  <p className={`text-white/70 ${type.caption} mt-1`}>{item.label}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <StatsBar stats={stats} />
         </div>
       </section>
 

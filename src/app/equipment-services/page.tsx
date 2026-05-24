@@ -6,94 +6,24 @@ import {
   ArrowRight,
   Award,
   Calendar,
-  Cable,
   Clock,
-  Cpu,
-  Database,
   Headphones,
-  Lightbulb,
   Mail,
   MapPin,
   PhoneCall,
   ShieldCheck,
-  Sliders,
   Users,
-  Wind,
-  Wrench,
   Zap,
 } from "lucide-react";
 import companyData from "@/content/company.json";
+import { servicesList } from "@/content/services";
 import { HeroEyebrowLabel, HeroOutlineButton, PageHero } from "@/components/PageHero";
+import { StatsBar } from "@/components/StatsBar";
 import { siteContainerClass } from "@/lib/layout";
 import { ACCENT, NAVY } from "@/lib/theme";
 import { type } from "@/lib/typography";
 
-const services = [
-  {
-    id: "generators",
-    title: "SOUND PROOF GENERATORS",
-    subtitle: "(5 KVA - 1500 KVA)",
-    desc: "Wide range of soundproof generators from 5 KVA to 1500 KVA to ensure uninterrupted power for any project.",
-    image: "/images/new-equipment/soundproof generator.png",
-    icon: <Zap size={18} strokeWidth={2} />,
-  },
-  {
-    id: "cables",
-    title: "CABLES",
-    subtitle: "UP TO 5000 METER",
-    desc: "High quality cables for power distribution and connections available up to 5000 meter.",
-    image: "/images/new-equipment/cables.png",
-    icon: <Cable size={18} strokeWidth={2} />,
-  },
-  {
-    id: "distribution",
-    title: "DISTRIBUTION BOARD &",
-    subtitle: "CHANGE OVER SWITCH BOARD",
-    desc: "Reliable distribution boards and change over switch boards for safe and efficient power management.",
-    image: "/images/new-equipment/Distribution boards and change over switch board.png",
-    icon: <Sliders size={18} strokeWidth={2} />,
-  },
-  {
-    id: "compressors",
-    title: "AIR COMPRESSORS",
-    subtitle: "(150 CFM - 950 CFM)",
-    desc: "High performance air compressors ranging from 150 CFM to 950 CFM for industrial applications.",
-    image: "/images/new-equipment/Air compressor (services).png",
-    icon: <Wind size={18} strokeWidth={2} />,
-  },
-  {
-    id: "lights",
-    title: "TOWER LIGHTS",
-    subtitle: "",
-    desc: "High illumination tower lights for enhanced visibility and safety at project sites.",
-    image: "/images/new-equipment/Tower light night.png",
-    icon: <Lightbulb size={18} strokeWidth={2} />,
-  },
-  {
-    id: "tanks",
-    title: "DIESEL TANKS",
-    subtitle: "",
-    desc: "Durable and compliant diesel tanks for safe fuel storage and supply.",
-    image: "/images/new-equipment/diesel tank.png",
-    icon: <Database size={18} strokeWidth={2} />,
-  },
-  {
-    id: "loadbank",
-    title: "LOAD BANK",
-    subtitle: "",
-    desc: "Advanced load bank solutions for testing and maintaining generator performance.",
-    image: "/images/new-equipment/load bank (services).png",
-    icon: <Cpu size={18} strokeWidth={2} />,
-  },
-  {
-    id: "support",
-    title: "MAINTENANCE & SUPPORT",
-    subtitle: "",
-    desc: "Expert maintenance and 24/7 support to ensure maximum uptime and reliable operation.",
-    image: "/images/new-equipment/Maintenance and support (2).png",
-    icon: <Wrench size={18} strokeWidth={2} />,
-  },
-];
+const services = servicesList;
 
 const whyChoose = [
   { title: "Reliable Equipment", desc: "Well-maintained and high-performance equipment.", icon: <ShieldCheck size={28} strokeWidth={1.5} /> },
@@ -105,10 +35,10 @@ const whyChoose = [
 ];
 
 const stats = [
-  { value: String(companyData.established), label: "Established", icon: <Calendar className="w-7 h-7" /> },
-  { value: "1250+", label: "kVA Capacity", icon: <Zap className="w-7 h-7" /> },
-  { value: "24/7", label: "Support Available", icon: <Headphones className="w-7 h-7" /> },
-  { value: "100%", label: "Quality Commitment", icon: <ShieldCheck className="w-7 h-7" /> },
+  { value: String(companyData.established), label: "Established", icon: <Calendar className="text-white" /> },
+  { value: "1250+", label: "kVA Capacity", icon: <Zap className="text-white" /> },
+  { value: "24/7", label: "Support Available", icon: <Headphones className="text-white" /> },
+  { value: "100%", label: "Quality Commitment", icon: <ShieldCheck className="text-white" /> },
 ];
 
 export default function EquipmentServicesPage() {
@@ -302,22 +232,7 @@ export default function EquipmentServicesPage() {
 
           {/* Stats row */}
           <div className="border-t border-white/15 py-8 md:py-9">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-6 gap-x-4">
-              {stats.map((item, idx) => (
-                <div
-                  key={item.label}
-                  className={`flex items-center gap-3 justify-center lg:justify-start text-white ${
-                    idx < stats.length - 1 ? "lg:border-r lg:border-white/15 lg:pr-8" : ""
-                  }`}
-                >
-                  <div className="opacity-90 shrink-0">{item.icon}</div>
-                  <div>
-                    <p className={type.stat}>{item.value}</p>
-                    <p className={`text-white/65 ${type.caption} mt-1`}>{item.label}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <StatsBar stats={stats} />
           </div>
         </div>
       </section>

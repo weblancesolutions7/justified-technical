@@ -138,6 +138,42 @@ export function IndustryIcon({ id }: { id: string }) {
           <path d="M32 12l4.5 9.1 10.1 1.5-7.3 7.1 1.7 10.1L32 34.5l-9 4.7 1.7-10.1-7.3-7.1 10.1-1.5L32 12z" />
         </svg>
       );
+    case "data-centers":
+      return (
+        <svg {...strokeProps}>
+          <path d="M6 54h52" />
+          <rect x="14" y="18" width="36" height="28" rx="2" />
+          <path d="M20 26h24" />
+          <path d="M20 32h24" />
+          <path d="M20 38h16" />
+          <circle cx="42" cy="38" r="2" fill="currentColor" />
+          <path d="M26 14v4" />
+          <path d="M38 14v4" />
+        </svg>
+      );
+    case "film-productions":
+      return (
+        <svg {...strokeProps}>
+          <path d="M6 54h52" />
+          <rect x="12" y="20" width="40" height="24" rx="2" />
+          <path d="M12 28h40" />
+          <path d="M20 20v-6h24v6" />
+          <circle cx="22" cy="36" r="3" />
+          <circle cx="32" cy="36" r="3" />
+          <circle cx="42" cy="36" r="3" />
+        </svg>
+      );
+    case "marine-ports":
+      return (
+        <svg {...strokeProps}>
+          <path d="M6 54h52" />
+          <path d="M10 42h44" />
+          <path d="M18 42V28l14-8l14 8v14" />
+          <path d="M32 20v22" />
+          <path d="M24 34h16" />
+          <path d="M46 46c-4-2-8-2-14-2s-10 0-14 2" />
+        </svg>
+      );
     default:
       return (
         <svg {...strokeProps}>

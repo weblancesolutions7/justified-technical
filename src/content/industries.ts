@@ -109,6 +109,39 @@ export const industriesList: Industry[] = [
     highlights: ["Outdoor event power", "Silent generator grids", "Rapid deployment"],
     image: "/images/Powering every industry.png",
   }),
+  industry({
+    id: "data-centers",
+    name: "Data Centers",
+    subtitle: "Critical IT & Cloud Infrastructure",
+    description:
+      "Providing redundant power systems, ATS solutions, and synchronizing panels to keep data centers and colocation facilities online without interruption.",
+    cardDescription:
+      "Reliable backup power and distribution solutions for data centers and critical IT infrastructure.",
+    highlights: ["N+1 redundancy", "ATS & sync panels", "24/7 uptime support"],
+    image: "/images/industrial_generator_hero.png",
+  }),
+  industry({
+    id: "film-productions",
+    name: "Film Productions",
+    subtitle: "Film, TV & Media Sets",
+    description:
+      "Powering film sets, production studios, and location shoots with silent generators, tower lights, and flexible distribution across the UAE.",
+    cardDescription:
+      "Power and lighting solutions for film, television, and media production sets.",
+    highlights: ["Silent generator grids", "Tower lights & cables", "Flexible rental terms"],
+    image: "/images/new-equipment/Tower light night.png",
+  }),
+  industry({
+    id: "marine-ports",
+    name: "Marines & Ports",
+    subtitle: "Maritime & Port Operations",
+    description:
+      "Supporting ports, marine yards, and offshore-adjacent operations with rugged generators, welding equipment, and power distribution built for harsh environments.",
+    cardDescription:
+      "Dependable equipment and power solutions for marine, port, and coastal operations.",
+    highlights: ["Corrosion-ready equipment", "Field welding support", "Port-side deployment"],
+    image: "/images/dredging_cutout.png",
+  }),
 ];
 
 /** @deprecated Use `industriesList` */

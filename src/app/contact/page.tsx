@@ -17,6 +17,7 @@ import {
   Wrench,
 } from "lucide-react";
 import companyData from "@/content/company.json";
+import { servicesList } from "@/content/services";
 import { HeroEyebrowLabel, PageHero } from "@/components/PageHero";
 import { siteContainerClass } from "@/lib/layout";
 import { ACCENT, NAVY } from "@/lib/theme";
@@ -24,24 +25,6 @@ import { type } from "@/lib/typography";
 
 const inputClass =
   "w-full bg-white border border-[#d1d5db] rounded-lg pl-11 pr-4 py-3.5 text-[#374151] text-sm placeholder-[#9ca3af] focus:outline-none focus:border-[#001C55] focus:ring-1 focus:ring-[#001C55] transition-colors";
-
-function LinkedInIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-    </svg>
-  );
-}
-
-function WhatsAppIcon() {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.733-1.458L0 24zm6.704-4.248c1.601.95 3.115 1.485 4.908 1.487 5.379 0 9.751-4.373 9.754-9.759.001-2.61-1.011-5.064-2.848-6.903C16.68 2.73 14.216 1.719 11.611 1.719 6.236 1.719 1.861 6.091 1.858 11.48c-.001 1.859.489 3.411 1.464 5.01l-.995 3.636 3.73-.974z" />
-    </svg>
-  );
-}
-
-const salesWhatsApp = companyData.contact.sales.split(", ")[0].replace(/[-+\s]/g, "");
 
 function ContactRow({
   icon,
@@ -53,7 +36,7 @@ function ContactRow({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex items-start gap-4 py-5 border-b border-[#e8ecf1] last:border-b-0 sm:border-0 sm:py-4 lg:border-b lg:py-5 lg:last:border-b-0">
+    <div className="flex items-start gap-4 py-5 border-b border-[#e8ecf1] last:border-b-0">
       <div
         className="w-11 h-11 rounded-full text-white flex items-center justify-center shrink-0"
         style={{ backgroundColor: NAVY }}
@@ -152,7 +135,7 @@ function ContactContent() {
                 Let&apos;s Power Your Success
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-x-6 sm:gap-x-8">
+              <div className="flex flex-col">
               <ContactRow icon={<Phone size={18} strokeWidth={2} />} label={companyData.contact.telLabel}>
                 <a
                   href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
@@ -208,29 +191,6 @@ function ContactContent() {
                 >
                   {companyData.contact.address.city}
                 </a>
-              </ContactRow>
-
-              <ContactRow icon={<LinkedInIcon />} label="Connect With Us">
-                <div className="flex gap-3 items-center">
-                  <a
-                    href={companyData.contact.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-[#0077B5] text-white flex items-center justify-center hover:opacity-90 transition-opacity"
-                    aria-label="LinkedIn"
-                  >
-                    <LinkedInIcon />
-                  </a>
-                  <a
-                    href={`https://wa.me/${salesWhatsApp}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:opacity-90 transition-opacity"
-                    aria-label="WhatsApp"
-                  >
-                    <WhatsAppIcon />
-                  </a>
-                </div>
               </ContactRow>
               </div>
             </div>
@@ -335,14 +295,11 @@ function ContactContent() {
                           <option value="" disabled>
                             Select Service *
                           </option>
-                          <option value="generators">Silent Generators</option>
-                          <option value="cables">Cables</option>
-                          <option value="distribution">Distribution Boards</option>
-                          <option value="compressors">Air Compressors</option>
-                          <option value="lights">Tower Lights</option>
-                          <option value="tanks">Diesel Tanks</option>
-                          <option value="loadbank">Load Bank</option>
-                          <option value="maintenance">Maintenance & Support</option>
+                          {servicesList.map((service) => (
+                            <option key={service.id} value={service.id}>
+                              {service.contactLabel}
+                            </option>
+                          ))}
                         </select>
                         <ChevronDown size={17} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#9ca3af] pointer-events-none" />
                       </div>
