@@ -13,6 +13,7 @@ const sansation = Sansation({
   subsets: ["latin"],
   weight: ["300", "400", "700"],
   display: "swap",
+  adjustFontFallback: false,
 });
 
 export const metadata: Metadata = {

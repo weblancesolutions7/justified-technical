@@ -89,14 +89,19 @@ export default function About() {
   return (
     <div className="bg-white text-[#374151] min-h-screen font-sans overflow-x-hidden">
       <PageHero
-        imageSrc="/images/About us hero.png"
+        imageSrc="/images/About.png"
         imageAlt="Generator with UAE skyline"
-        eyebrow={<HeroEyebrowLabel>ABOUT US</HeroEyebrowLabel>}
+        eyebrow={
+          <div className="flex items-center gap-3.5 mb-4 justify-center lg:justify-start">
+            <span className="type-eyebrow text-base sm:text-lg md:text-xl font-black tracking-[0.25em] text-white lg:text-inherit">
+              ABOUT US
+            </span>
+            <span className="w-12 h-[4px] shrink-0" style={{ backgroundColor: ACCENT }} />
+          </div>
+        }
         title={
-          <h1 className={type.hero}>
-            POWER YOU CAN
-            <br />
-            <span style={{ color: ACCENT }}>RELY ON</span>
+          <h1 className="text-2xl sm:text-3xl md:text-[2.4rem] font-extrabold uppercase tracking-tight leading-tight text-white lg:text-inherit">
+            Power You Can <span style={{ color: ACCENT }}>Rely On</span>
           </h1>
         }
         description={
@@ -191,7 +196,7 @@ export default function About() {
                   <h4 className={`${type.cardTitle} mb-2`} style={{ color: NAVY }}>
                     Short-Term Vision
                   </h4>
-                  <p className={`${type.body} text-[#6b7280]`}>
+                  <p className="text-sm text-[#6b7280] leading-relaxed">
                     To expand our equipment fleet with advanced and efficient machinery while maintaining high service standards and fast response across the UAE.
                   </p>
                 </div>
@@ -200,7 +205,7 @@ export default function About() {
                   <h4 className={`${type.cardTitle} mb-2`} style={{ color: NAVY }}>
                     Long-Term Vision
                   </h4>
-                  <p className={`${type.body} text-[#6b7280]`}>
+                  <p className="text-sm text-[#6b7280] leading-relaxed">
                     To grow across the GCC and become a recognized leader in construction equipment rental and machinery services, known for reliability and innovation.
                   </p>
                 </div>
@@ -217,10 +222,10 @@ export default function About() {
                     <div className="flex justify-center mb-3" style={{ color: NAVY }}>
                       {val.icon}
                     </div>
-                    <h4 className={`${type.micro} mb-1.5`} style={{ color: NAVY }}>
+                    <h4 className={`${type.cardTitle} mb-1.5`} style={{ color: NAVY }}>
                       {val.title}
                     </h4>
-                    <p className={`${type.caption} text-[#6b7280]`}>{val.desc}</p>
+                    <p className="text-sm text-[#6b7280] leading-relaxed">{val.desc}</p>
                   </div>
                 ))}
               </div>
@@ -230,10 +235,10 @@ export default function About() {
                     <div className="flex justify-center mb-3" style={{ color: NAVY }}>
                       {val.icon}
                     </div>
-                    <h4 className={`${type.micro} mb-1.5`} style={{ color: NAVY }}>
+                    <h4 className={`${type.cardTitle} mb-1.5`} style={{ color: NAVY }}>
                       {val.title}
                     </h4>
-                    <p className={`${type.caption} text-[#6b7280]`}>{val.desc}</p>
+                    <p className="text-sm text-[#6b7280] leading-relaxed">{val.desc}</p>
                   </div>
                 ))}
               </div>
@@ -248,7 +253,7 @@ export default function About() {
                 {standards.map((item) => (
                   <li key={item} className="flex gap-2.5 items-start">
                     <CheckCircle2 size={17} className="shrink-0 mt-0.5" style={{ color: ACCENT }} />
-                    <p className={`${type.body} text-[#6b7280]`}>{item}</p>
+                    <p className="text-sm text-[#6b7280] leading-relaxed">{item}</p>
                   </li>
                 ))}
               </ul>

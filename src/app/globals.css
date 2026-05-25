@@ -127,11 +127,16 @@
   .text-balance {
     text-wrap: balance;
   }
+
   .glass {
     background: rgba(159, 160, 205, 0.7);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(159, 160, 205, 0.2);
+  }
+
+  .text-shadow-hero {
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.95), 0 2px 4px rgba(0, 0, 0, 0.95), 0 0 40px rgba(0, 0, 0, 0.5);
   }
 }
 

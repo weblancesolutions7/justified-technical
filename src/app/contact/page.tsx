@@ -106,12 +106,17 @@ function ContactContent() {
       <PageHero
         imageSrc="/images/contact_hero_generator.png"
         imageAlt="Generator with UAE skyline"
-        eyebrow={<HeroEyebrowLabel>CONTACT US</HeroEyebrowLabel>}
+        eyebrow={
+          <div className="flex items-center gap-3.5 mb-4 justify-center lg:justify-start">
+            <span className="type-eyebrow text-base sm:text-lg md:text-xl font-black tracking-[0.25em] text-white lg:text-inherit">
+              CONTACT US
+            </span>
+            <span className="w-12 h-[4px] shrink-0" style={{ backgroundColor: ACCENT }} />
+          </div>
+        }
         title={
-          <h1 className={type.hero}>
-            WE&apos;RE HERE
-            <br />
-            <span style={{ color: ACCENT }}>TO HELP YOU</span>
+          <h1 className="text-2xl sm:text-3xl md:text-[2.4rem] font-extrabold uppercase tracking-tight leading-tight text-white lg:text-inherit">
+            We&apos;re Here <span style={{ color: ACCENT }}>To Help You</span>
           </h1>
         }
         description={
@@ -128,7 +133,7 @@ function ContactContent() {
         <div className={siteContainerClass}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
             <div className="lg:col-span-5">
-              <span className={`${type.eyebrow} block mb-2`} style={{ color: ACCENT }}>
+              <span className="type-eyebrow text-sm sm:text-[0.95rem] md:text-base font-extrabold tracking-[0.22em] block mb-2" style={{ color: ACCENT }}>
                 GET IN TOUCH
               </span>
               <h2 className={`${type.sectionTitle} mb-6 sm:mb-8`} style={{ color: NAVY }}>
@@ -136,62 +141,62 @@ function ContactContent() {
               </h2>
 
               <div className="flex flex-col">
-              <ContactRow icon={<Phone size={18} strokeWidth={2} />} label={companyData.contact.telLabel}>
-                <a
-                  href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
-                  className={`${type.contactValue} hover:opacity-80 transition-opacity`}
-                  style={{ color: NAVY }}
-                >
-                  {companyData.contact.tel}
-                </a>
-              </ContactRow>
+                <ContactRow icon={<Phone size={18} strokeWidth={2} />} label={companyData.contact.telLabel}>
+                  <a
+                    href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
+                    className={`${type.contactValue} hover:opacity-80 transition-opacity`}
+                    style={{ color: NAVY }}
+                  >
+                    {companyData.contact.tel}
+                  </a>
+                </ContactRow>
 
-              <ContactRow icon={<Phone size={18} strokeWidth={2} />} label="Sales Department">
-                <div className="flex flex-col gap-0.5">
-                  {companyData.contact.sales.split(", ").map((num, i) => (
-                    <a
-                      key={i}
-                      href={`tel:${num.replace(/\s+/g, "")}`}
-                      className={`${type.contactValue} hover:opacity-80 transition-opacity`}
-                      style={{ color: NAVY }}
-                    >
-                      {num}
-                    </a>
-                  ))}
-                </div>
-              </ContactRow>
+                <ContactRow icon={<Phone size={18} strokeWidth={2} />} label="Sales Department">
+                  <div className="flex flex-col gap-0.5">
+                    {companyData.contact.sales.split(", ").map((num, i) => (
+                      <a
+                        key={i}
+                        href={`tel:${num.replace(/\s+/g, "")}`}
+                        className={`${type.contactValue} hover:opacity-80 transition-opacity`}
+                        style={{ color: NAVY }}
+                      >
+                        {num}
+                      </a>
+                    ))}
+                  </div>
+                </ContactRow>
 
-              <ContactRow icon={<Phone size={18} strokeWidth={2} />} label="Accounts Department">
-                <a
-                  href={`tel:${companyData.contact.accounts.replace(/\s+/g, "")}`}
-                  className={`${type.contactValue} hover:opacity-80 transition-opacity`}
-                  style={{ color: NAVY }}
-                >
-                  {companyData.contact.accounts}
-                </a>
-              </ContactRow>
+                <ContactRow icon={<Phone size={18} strokeWidth={2} />} label="Accounts Department">
+                  <a
+                    href={`tel:${companyData.contact.accounts.replace(/\s+/g, "")}`}
+                    className={`${type.contactValue} hover:opacity-80 transition-opacity`}
+                    style={{ color: NAVY }}
+                  >
+                    {companyData.contact.accounts}
+                  </a>
+                </ContactRow>
 
-              <ContactRow icon={<Mail size={18} strokeWidth={2} />} label="Email Us">
-                <a
-                  href={`mailto:${companyData.contact.email}`}
-                  className="font-bold text-base md:text-lg hover:opacity-80 transition-opacity break-all"
-                  style={{ color: NAVY }}
-                >
-                  {companyData.contact.email}
-                </a>
-              </ContactRow>
+                <ContactRow icon={<Mail size={18} strokeWidth={2} />} label="Email Us">
+                  <a
+                    href={`mailto:${companyData.contact.email}`}
+                    className="font-bold text-base md:text-lg hover:opacity-80 transition-opacity break-all"
+                    style={{ color: NAVY }}
+                  >
+                    {companyData.contact.email}
+                  </a>
+                </ContactRow>
 
-              <ContactRow icon={<MapPin size={18} strokeWidth={2} />} label="Abu Dhabi Branch">
-                <a
-                  href={companyData.contact.mapLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`${type.contactValue} leading-relaxed hover:opacity-80 transition-opacity`}
-                  style={{ color: NAVY }}
-                >
-                  {companyData.contact.address.city}
-                </a>
-              </ContactRow>
+                <ContactRow icon={<MapPin size={18} strokeWidth={2} />} label="Abu Dhabi Branch">
+                  <a
+                    href={companyData.contact.mapLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${type.contactValue} leading-relaxed hover:opacity-80 transition-opacity`}
+                    style={{ color: NAVY }}
+                  >
+                    {companyData.contact.address.city}
+                  </a>
+                </ContactRow>
               </div>
             </div>
 

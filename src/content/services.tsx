@@ -35,7 +35,7 @@ export const servicesList: ServiceItem[] = [
   },
   {
     id: "cables",
-    title: "CABLES",
+    title: "High-Insulation Power Cables",
     subtitle: "UP TO 5000 METER",
     desc: "High quality cables for power distribution and connections available up to 5000 meter.",
     image: "/images/new-equipment/cables.png",
@@ -98,12 +98,12 @@ export const servicesList: ServiceItem[] = [
   },
   {
     id: "tanks",
-    title: "DIESEL TANKS",
+    title: "Auxiliary Industrial Diesel Fuel Tanks",
     subtitle: "",
     desc: "Durable and compliant diesel tanks for safe fuel storage and supply.",
     image: "/images/new-equipment/diesel tank.png",
     icon: <Database size={18} strokeWidth={2} />,
-    contactLabel: "Diesel Tanks",
+    contactLabel: "Auxiliary Industrial Diesel Fuel Tanks",
   },
   {
     id: "loadbank",

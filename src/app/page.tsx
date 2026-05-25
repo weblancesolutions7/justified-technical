@@ -6,7 +6,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ShieldCheck, Clock, Headset, Award, Calendar, Zap,
-  MapPin, PhoneCall, Mail, ArrowRight,   CheckCircle2,
+  MapPin, PhoneCall, Mail, ArrowRight, CheckCircle2,
   UserCheck, CheckSquare, Network,
   Smartphone
 } from "lucide-react";
@@ -81,7 +81,7 @@ export default function Home() {
       image: "/images/new-equipment/Air compressor (services).png"
     },
     {
-      title: "Cables",
+      title: "High-Insulation Power Cables",
       subtitle: "Up to 5000 Meter",
       image: "/images/new-equipment/cables.png"
     },
@@ -111,7 +111,7 @@ export default function Home() {
       image: "/images/new-equipment/Tower light night.png"
     },
     {
-      title: "Diesel Tanks",
+      title: "Auxiliary Industrial Diesel Fuel Tanks",
       subtitle: "",
       image: "/images/new-equipment/diesel tank.png"
     },
@@ -374,17 +374,16 @@ export default function Home() {
 
       <PageHero
         desktopVariant="white"
-        imageSrc="/images/Right side home page.png"
+        imageSrc="/images/Home.png"
         imageAlt="UAE Skyline and Soundproof Generator"
-        imageObjectPosition="18% center"
         eyebrow={
-          <span className={`${type.eyebrow} text-inherit`}>
+          <span className={`${type.eyebrow} text-white tracking-[0.25em] font-extrabold text-xs sm:text-sm text-shadow-hero uppercase`}>
             Powering Today.
           </span>
         }
         title={
-          <h1 className={`${type.hero} break-words`}>
-            Reliable Solutions. Stronger Future.
+          <h1 className={`${type.hero} break-words text-shadow-hero`}>
+            Reliable Solutions.<br className="hidden sm:inline" /> Stronger Future.
           </h1>
         }
         description="We provide high-performance equipment and technical solutions that power industries and drive progress across the UAE and beyond."
@@ -392,16 +391,16 @@ export default function Home() {
           <>
             <Link
               href="#complete-solutions"
-              className={`bg-[#001C55] hover:bg-[#002d7a] text-white px-7 py-3.5 rounded-md ${type.btn} transition-colors duration-200 flex items-center gap-2`}
+              className="bg-[#001C55] hover:bg-[#002570] text-white border border-[#001C55] hover:border-[#002570] px-8 py-4 rounded-md shadow-lg transition-all duration-200 flex items-center gap-2 font-bold tracking-wider uppercase text-xs"
             >
               Explore Services <ArrowRight size={14} />
             </Link>
             <Link
               href="/contact"
-              className={`bg-white border-2 border-[#001C55] text-[#001C55] hover:bg-[#f4f5f7] max-lg:bg-white/15 max-lg:border-white max-lg:text-white max-lg:hover:bg-white/25 max-lg:shadow-[0_2px_8px_rgba(0,0,0,0.4)] px-7 py-3.5 rounded-md ${type.btn} transition-colors duration-200 flex items-center gap-2`}
+              className="bg-transparent border-2 border-white hover:bg-white/15 text-white px-8 py-4 rounded-md shadow-lg transition-all duration-200 flex items-center gap-2 font-bold tracking-wider uppercase text-xs"
             >
               Contact Us
-              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
+              <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
             </Link>
           </>
         }
@@ -416,9 +415,8 @@ export default function Home() {
             {trustBadges.map((badge, idx) => (
               <div
                 key={idx}
-                className={`flex items-center gap-4 text-left ${
-                  idx < trustBadges.length - 1 ? "lg:border-r lg:border-[#e8eaed] lg:pr-8" : ""
-                }`}
+                className={`flex items-center gap-4 text-left ${idx < trustBadges.length - 1 ? "lg:border-r lg:border-[#e8eaed] lg:pr-8" : ""
+                  }`}
               >
                 {badge.icon}
                 <div>
@@ -467,12 +465,12 @@ export default function Home() {
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
                     </div>
-                    <div className="px-2 py-3 text-center">
-                      <h4 className={type.micro} style={{ color: navy }}>
+                    <div className="px-3 py-4 text-center">
+                      <h4 className="type-micro text-xs sm:text-[0.95rem] font-bold leading-snug" style={{ color: navy }}>
                         {srv.title}
                       </h4>
                       {srv.subtitle ? (
-                        <span className={`text-[#6b7280] ${type.caption} block mt-1`}>
+                        <span className="text-[#6b7280] text-[0.68rem] sm:text-[0.8rem] font-medium block mt-1">
                           {srv.subtitle}
                         </span>
                       ) : null}
@@ -564,11 +562,11 @@ export default function Home() {
               POWERING EVERY INDUSTRY
             </h2>
 
-            <div className="grid grid-cols-4 md:flex md:flex-wrap md:justify-between gap-y-6 gap-x-2 md:gap-x-3 lg:gap-x-4">
+            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-y-8 gap-x-4 md:gap-x-6 lg:gap-x-8 w-full">
               {industries.map((ind, idx) => (
                 <div
                   key={idx}
-                  className="flex flex-col items-center text-[#001C55] md:flex-1 md:min-w-0 md:max-w-[120px]"
+                  className="flex flex-col items-center text-center text-[#001C55] w-full hover:scale-[1.03] transition-transform duration-200 cursor-default"
                 >
                   <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 mb-2.5 flex items-center justify-center">
                     {ind.svg}

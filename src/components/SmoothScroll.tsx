@@ -1,12 +1,19 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
     // Check if we are in the browser
     if (typeof window === "undefined") return;
+
+    // Force initial scroll state to top immediately on reload
+    window.scrollTo(0, 0);
 
     const lenis = new Lenis({
       duration: 1.2,
@@ -17,6 +24,11 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
       wheelMultiplier: 1,
       infinite: false,
     });
+
+    lenisRef.current = lenis;
+
+    // Reset Lenis scroll tracker state on mount
+    lenis.scrollTo(0, { immediate: true });
 
     function raf(time: number) {
       lenis.raf(time);
@@ -56,10 +68,24 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
 
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
       document.removeEventListener("click", handleAnchorClick);
       document.documentElement.classList.remove("lenis");
     };
   }, []);
+
+  // Force scroll reset on route redirection / navigation
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    // Reset standard window scroll position
+    window.scrollTo(0, 0);
+    
+    // Reset Lenis active scroll instance
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    }
+  }, [pathname]);
 
   return <>{children}</>;
 }
