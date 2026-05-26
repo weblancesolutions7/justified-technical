@@ -30,7 +30,7 @@ export const industriesList: Industry[] = [
     cardDescription:
       "Reliable equipment and power solutions to keep construction projects on schedule and on budget.",
     highlights: ["Tower cranes & site power", "Heavy-duty generators", "24/7 emergency dispatch"],
-    image: "/images/excavator_cutout.png",
+    image: "/images/Construction.png",
   }),
   industry({
     id: "events",
@@ -41,7 +41,7 @@ export const industriesList: Industry[] = [
     cardDescription:
       "Powering events, exhibitions, and large gatherings with uninterrupted energy and support.",
     highlights: ["Super-silent enclosures", "Synchronized power", "Rapid setup & teardown"],
-    image: "/images/new-equipment/Tower light night.png",
+    image: "/images/Events.png",
   }),
   industry({
     id: "oil-gas",
@@ -52,7 +52,7 @@ export const industriesList: Industry[] = [
     cardDescription:
       "Durable and high-performance equipment for demanding oil & gas operations.",
     highlights: ["Certified safe equipment", "High-pressure compressors", "Extreme environment ready"],
-    image: "/images/lifting_cutout.png",
+    image: "/images/oil and gas.png",
   }),
   industry({
     id: "industrial",
@@ -63,7 +63,7 @@ export const industriesList: Industry[] = [
     cardDescription:
       "Supporting industrial facilities with efficient machinery for smooth day-to-day operations.",
     highlights: ["1250+ kVA capacity", "Load banks & testing", "ATS & distribution boards"],
-    image: "/images/compaction_cutout.png",
+    image: "/images/Industrial Operation.png",
   }),
   industry({
     id: "infrastructure",
@@ -74,7 +74,7 @@ export const industriesList: Industry[] = [
     cardDescription:
       "Ensuring continuous power and reliable equipment for essential infrastructure and public services.",
     highlights: ["Mission-critical uptime", "Expert engineering support", "Safety-first operations"],
-    image: "/images/new-equipment/Distribution boards and change over switch board.png",
+    image: "/images/Hospital.png",
   }),
   industry({
     id: "manufacturing",
@@ -85,7 +85,7 @@ export const industriesList: Industry[] = [
     cardDescription:
       "Enhancing productivity with dependable machinery solutions for manufacturing and logistics operations.",
     highlights: ["High-capacity generators", "Fuel management", "Maintenance & support"],
-    image: "/images/dump_truck_cutout.png",
+    image: "/images/Manfuacturing.png",
   }),
   industry({
     id: "hotels",
@@ -96,7 +96,7 @@ export const industriesList: Industry[] = [
     cardDescription:
       "Providing power and equipment solutions for hotels, resorts, and hospitality venues.",
     highlights: ["Low-noise solutions", "Flexible rental terms", "UAE-wide coverage"],
-    image: "/images/new-equipment/soundproof generator.png",
+    image: "/images/Hotel.png",
   }),
   industry({
     id: "entertainment",
@@ -107,7 +107,7 @@ export const industriesList: Industry[] = [
     cardDescription:
       "Delivering safe and reliable power for concerts, festivals, and large-scale entertainment events.",
     highlights: ["Outdoor event power", "Silent generator grids", "Rapid deployment"],
-    image: "/images/Powering every industry.png",
+    image: "/images/Entertainment and Events.png",
   }),
   industry({
     id: "data-centers",
@@ -118,7 +118,7 @@ export const industriesList: Industry[] = [
     cardDescription:
       "Reliable backup power and distribution solutions for data centers and critical IT infrastructure.",
     highlights: ["N+1 redundancy", "ATS & sync panels", "24/7 uptime support"],
-    image: "/images/industrial_generator_hero.png",
+    image: "/images/data-centers-industry.png",
   }),
   industry({
     id: "film-productions",
@@ -129,7 +129,7 @@ export const industriesList: Industry[] = [
     cardDescription:
       "Power and lighting solutions for film, television, and media production sets.",
     highlights: ["Silent generator grids", "Tower lights & cables", "Flexible rental terms"],
-    image: "/images/new-equipment/Tower light night.png",
+    image: "/images/film-productions-industry.png",
   }),
   industry({
     id: "marine-ports",
@@ -140,7 +140,7 @@ export const industriesList: Industry[] = [
     cardDescription:
       "Dependable equipment and power solutions for marine, port, and coastal operations.",
     highlights: ["Corrosion-ready equipment", "Field welding support", "Port-side deployment"],
-    image: "/images/dredging_cutout.png",
+    image: "/images/marine-ports-industry.png",
   }),
 ];
 

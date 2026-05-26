@@ -1,14 +1,27 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd, contactPageJsonLd, contactPageMetadata, webPageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact Our Engineering Teams | Justified Technical",
-  description: "Get in touch with Justified Technical's 24/7 industrial machinery depots and power coordinators. Request quotes for synchronized generator rentals, load tests, and emergency dispatch across the UAE.",
-};
+export const metadata: Metadata = contactPageMetadata;
 
-export default function ContactLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+export default function ContactLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <JsonLd
+        data={[
+          contactPageJsonLd(),
+          webPageJsonLd({
+            path: "/contact",
+            title: "Contact Us",
+            description: contactPageMetadata.description as string,
+          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+        ]}
+      />
+      {children}
+    </>
+  );
 }

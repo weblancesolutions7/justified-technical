@@ -1,14 +1,32 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  breadcrumbJsonLd,
+  servicesItemListJsonLd,
+  servicesPageMetadata,
+  webPageJsonLd,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Equipment & Technical Services | Justified Technical",
-  description: "Explore UAE's premier industrial equipment rental fleet, including high-capacity synchronized diesel generators, air compressors, and welding grids.",
-};
+export const metadata: Metadata = servicesPageMetadata;
 
-export default function EquipmentServicesLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return <>{children}</>;
+export default function EquipmentServicesLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <>
+      <JsonLd
+        data={[
+          webPageJsonLd({
+            path: "/equipment-services",
+            title: "Equipment & Services",
+            description: servicesPageMetadata.description as string,
+          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/equipment-services" },
+          ]),
+          servicesItemListJsonLd(),
+        ]}
+      />
+      {children}
+    </>
+  );
 }

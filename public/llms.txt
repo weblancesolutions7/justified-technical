@@ -1,0 +1,23 @@
+# Justified Technical Solutions — https://www.justifiedtechnical.ae
+
+> Equipment rental and repair in Abu Dhabi, UAE since 2013.
+
+## Services
+- Soundproof diesel generator rental (5 kVA – 1500 kVA)
+- Air compressors (150–950 CFM)
+- Tower lights, diesel tanks, load banks
+- Distribution boards, ATS, synchronizing panels
+- Cables, industrial welding machines
+- Maintenance and 24/7 support
+
+## Pages
+- Home: /
+- About: /about
+- Industries: /industries
+- Equipment & Services: /equipment-services
+- Contact: /contact
+
+## Contact
+- Email: justtech@eim.ae
+- Location: Abu Dhabi, U.A.E.
+- LinkedIn: https://www.linkedin.com/company/justified-technical

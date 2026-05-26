@@ -18,7 +18,8 @@ import {
 } from "lucide-react";
 import companyData from "@/content/company.json";
 import { servicesList } from "@/content/services";
-import { HeroEyebrowLabel, PageHero } from "@/components/PageHero";
+import { sendContactEmail } from "@/lib/email/contactEmail";
+import { PageHero } from "@/components/PageHero";
 import { siteContainerClass } from "@/lib/layout";
 import { ACCENT, NAVY } from "@/lib/theme";
 import { type } from "@/lib/typography";
@@ -68,6 +69,8 @@ function ContactContent() {
     sector: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [showConfigSummary, setShowConfigSummary] = useState(false);
 
   useEffect(() => {
@@ -90,14 +93,39 @@ function ContactContent() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setSubmitError(null);
+    setIsSending(true);
+
+    const serviceLabel =
+      servicesList.find((s) => s.id === formData.service)?.contactLabel ?? formData.service;
+
+    try {
+      await sendContactEmail({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        serviceLabel,
+        details: formData.details,
+        kva: formData.kva || undefined,
+        sector: formData.sector || undefined,
+      });
+      setIsSubmitted(true);
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Failed to send your message. Please try again or call us directly.";
+      setSubmitError(message);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const resetForm = () => {
     setFormData({ name: "", email: "", phone: "", service: "", details: "", kva: "", sector: "" });
     setIsSubmitted(false);
+    setSubmitError(null);
     setShowConfigSummary(false);
   };
 
@@ -248,6 +276,14 @@ function ContactContent() {
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    {submitError && (
+                      <div
+                        role="alert"
+                        className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800"
+                      >
+                        {submitError}
+                      </div>
+                    )}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="relative">
                         <User size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#9ca3af]" />
@@ -325,10 +361,11 @@ function ContactContent() {
 
                     <button
                       type="submit"
-                      className={`w-full text-white ${type.btn} py-3.5 rounded-lg flex items-center justify-center gap-2 transition-opacity hover:opacity-90`}
+                      disabled={isSending}
+                      className={`w-full text-white ${type.btn} py-3.5 rounded-lg flex items-center justify-center gap-2 transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed`}
                       style={{ backgroundColor: NAVY }}
                     >
-                      Send Message <ArrowRight size={16} />
+                      {isSending ? "Sending…" : "Send Message"} <ArrowRight size={16} />
                     </button>
                   </form>
                 )}

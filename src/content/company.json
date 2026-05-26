@@ -35,5 +35,35 @@
   },
   "vision": "To be the leading provider of reliable, high-performance machinery and power solutions across the UAE and beyond.",
   "mission": "Empowering industries with equipment rental and repair, unwavering support, and a commitment to safety, integrity, and operational excellence.",
-  "coreValues": ["Reliability", "Safety First", "Integrity"]
+  "coreValues": ["Reliability", "Safety First", "Integrity"],
+  "seo": {
+    "siteUrl": "https://www.justifiedtechnical.ae",
+    "locale": "en_AE",
+    "logo": "/images/justified-logo.jpeg",
+    "ogImage": "/images/Home.png",
+    "homeTitle": "Generator & Equipment Rental Abu Dhabi",
+    "homeDescription": "Justified Technical — UAE's trusted partner for diesel generator rental (5–1500 kVA), air compressors, tower lights, ATS panels, and industrial equipment hire. Abu Dhabi HQ, 24/7 support, UAE-wide delivery.",
+    "homeKeywords": [
+      "generator rental Abu Dhabi",
+      "equipment rental UAE",
+      "diesel generator hire",
+      "soundproof generator rental",
+      "industrial equipment rental Abu Dhabi",
+      "machinery rental UAE",
+      "power solutions UAE"
+    ],
+    "keywords": [
+      "generator rental Abu Dhabi",
+      "equipment rental UAE",
+      "industrial machinery rental",
+      "diesel generator hire UAE",
+      "air compressor rental Abu Dhabi",
+      "tower light rental",
+      "load bank rental UAE",
+      "ATS panel rental",
+      "equipment repair Abu Dhabi",
+      "Musaffah equipment rental"
+    ],
+    "contactDescription": "Contact Justified Technical for generator rental quotes, equipment hire, and 24/7 support in Abu Dhabi and across the UAE."
+  }
 }

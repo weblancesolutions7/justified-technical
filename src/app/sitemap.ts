@@ -1,32 +1,28 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
+import { getSiteUrl } from "@/lib/site";
+
+type SitemapRoute = {
+  path: string;
+  priority: number;
+  changeFrequency: NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
+};
+
+const routes: SitemapRoute[] = [
+  { path: "", priority: 1, changeFrequency: "weekly" },
+  { path: "/about", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/industries", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/equipment-services", priority: 0.95, changeFrequency: "weekly" },
+  { path: "/contact", priority: 0.9, changeFrequency: "monthly" },
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.evereasyllc.ae'
+  const baseUrl = getSiteUrl();
+  const lastModified = new Date();
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/equipment-services`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-  ]
+  return routes.map(({ path, priority, changeFrequency }) => ({
+    url: `${baseUrl}${path}`,
+    lastModified,
+    changeFrequency,
+    priority,
+  }));
 }

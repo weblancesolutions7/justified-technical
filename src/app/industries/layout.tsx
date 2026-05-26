@@ -1,11 +1,26 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbJsonLd, industriesPageMetadata, webPageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Industries We Serve | Justified Technical",
-  description:
-    "Power solutions for construction, oil & gas, events, manufacturing, hospitality, and critical infrastructure across the UAE.",
-};
+export const metadata: Metadata = industriesPageMetadata;
 
 export default function IndustriesLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <JsonLd
+        data={[
+          webPageJsonLd({
+            path: "/industries",
+            title: "Industries We Serve",
+            description: industriesPageMetadata.description as string,
+          }),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Industries", path: "/industries" },
+          ]),
+        ]}
+      />
+      {children}
+    </>
+  );
 }
