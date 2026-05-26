@@ -12,6 +12,11 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     // Check if we are in the browser
     if (typeof window === "undefined") return;
 
+    // Prevent default browser scroll restoration on reload
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
     // Force initial scroll state to top immediately on reload
     window.scrollTo(0, 0);
 
@@ -78,13 +83,32 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
   useEffect(() => {
     if (typeof window === "undefined") return;
     
-    // Reset standard window scroll position
+    // Reset standard window scroll position immediately
     window.scrollTo(0, 0);
     
-    // Reset Lenis active scroll instance
+    // Reset Lenis active scroll instance immediately
     if (lenisRef.current) {
       lenisRef.current.scrollTo(0, { immediate: true });
     }
+
+    // Create a helper to enforce scroll-to-top
+    const handleScroll = () => {
+      window.scrollTo(0, 0);
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      }
+    };
+
+    // In production, Next.js chunk loading, component rendering, or layout shifts 
+    // might occur slightly after the pathname change. Checking at 50ms and 150ms 
+    // ensures the scroll is successfully reset once the new layout paints.
+    const timer1 = setTimeout(handleScroll, 50);
+    const timer2 = setTimeout(handleScroll, 150);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+    };
   }, [pathname]);
 
   return <>{children}</>;
