@@ -25,7 +25,7 @@ import {
   Zap,
 } from "lucide-react";
 import companyData from "@/content/company.json";
-import { HeroEyebrowLabel, HeroOutlineButton, PageHero } from "@/components/PageHero";
+import { HeroOutlineButton, PageHero } from "@/components/PageHero";
 import { StatsBar } from "@/components/StatsBar";
 import { siteContainerClass } from "@/lib/layout";
 import { ACCENT, NAVY } from "@/lib/theme";

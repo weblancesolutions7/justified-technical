@@ -143,6 +143,3 @@ export const industriesList: Industry[] = [
     image: "/images/marine-ports-industry.png",
   }),
 ];
-
-/** @deprecated Use `industriesList` */
-export const industriesData = industriesList;
