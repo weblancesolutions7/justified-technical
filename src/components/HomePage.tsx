@@ -93,12 +93,12 @@ export default function HomePage() {
     {
       title: "Automatic Transfer Switches",
       subtitle: "(ATS)",
-      image: "/images/new-equipment/Distribution boards and change over switch board.png"
+      image: "/images/new-equipment/ATS.png"
     },
     {
       title: "Synchronizing Panels",
       subtitle: "",
-      image: "/images/Smart & Efficient Operations.jpg.jpeg"
+      image: "/images/new-equipment/ISP.png"
     },
     {
       title: "Welding Machines",
@@ -536,7 +536,7 @@ export default function HomePage() {
       <section id="industries" className="relative py-14 md:py-20 overflow-hidden bg-white text-[#001C55]">
         <div className="absolute inset-y-0 right-0 w-full md:w-[52%] lg:w-[50%] z-0">
           <Image
-            src="/images/Industries.png"
+            src="/images/Industries We Serve.png"
             alt="Industries we serve across the UAE"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"

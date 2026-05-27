@@ -56,7 +56,7 @@ export default function IndustriesPage() {
   return (
     <div className="bg-white text-[#374151] min-h-screen font-sans overflow-x-hidden">
       <PageHero
-        imageSrc="/images/Industries.png"
+        imageSrc="/images/Industries We Serve.png"
         imageAlt="Industries we serve across the UAE"
         eyebrow={
           <div className="flex items-center gap-3.5 mb-4 justify-center lg:justify-start">
@@ -225,7 +225,7 @@ export default function IndustriesPage() {
       <section className="relative overflow-hidden" style={{ backgroundColor: NAVY }}>
         <div className="absolute right-0 top-0 bottom-0 w-[40%] hidden lg:block opacity-[0.12]">
           <Image
-            src="/images/Industries.png"
+            src="/images/Industries We Serve.png"
             alt=""
             fill
             sizes="40vw"
