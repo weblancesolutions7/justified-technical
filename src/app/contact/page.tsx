@@ -132,8 +132,9 @@ function ContactContent() {
   return (
     <div className="bg-white text-[#374151] min-h-screen font-sans overflow-x-hidden">
       <PageHero
-        imageSrc="/images/contact_hero_generator.png"
+        imageSrc="/images/new-equipment/Contact_hero_img.png"
         imageAlt="Generator with UAE skyline"
+        imageObjectPosition="20% center"
         eyebrow={
           <div className="flex items-center gap-3.5 mb-4 justify-center lg:justify-start">
             <span className="type-eyebrow text-base sm:text-lg md:text-xl font-black tracking-[0.25em] text-white lg:text-inherit">

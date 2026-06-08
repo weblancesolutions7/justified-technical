@@ -8,7 +8,7 @@ import {
   ShieldCheck, Clock, Headset, Award, Calendar, Zap,
   MapPin, PhoneCall, Mail, ArrowRight, CheckCircle2,
   UserCheck, CheckSquare, Network,
-  Smartphone
+  Smartphone, Wrench
 } from "lucide-react";
 import companyData from "@/content/company.json";
 import { PageHero } from "@/components/PageHero";
@@ -71,14 +71,39 @@ export default function HomePage() {
   // 8 Services Data
   const services = [
     {
-      title: "Generators",
-      subtitle: "(5 KVA - 1500 KVA)",
+      title: "Power Generation Equipment",
+      subtitle: "(5 KVA - 1500 KVA+)",
       image: "/images/new-equipment/soundproof generator.png"
     },
     {
       title: "Air Compressors",
-      subtitle: "(150 CFM - 950 CFM)",
+      subtitle: "(150 CFM - 1200 CFM)",
       image: "/images/new-equipment/Air compressor (services).png"
+    },
+    {
+      title: "Tower Lights",
+      subtitle: "(4 x 320W LED)",
+      image: "/images/new-equipment/Tower light night.png"
+    },
+    {
+      title: "Welding Machines",
+      subtitle: "(400 A - 600 A)",
+      image: "/images/equipment/Welding Machines.jpg.jpeg"
+    },
+    {
+      title: "Diesel Tanks",
+      subtitle: "(1000 Ltr - 10000 Ltr)",
+      image: "/images/new-equipment/diesel tank.png"
+    },
+    {
+      title: "Distribution Boards",
+      subtitle: "(100 AMP - 1600 AMP)",
+      image: "/images/new-equipment/Distribution boards and change over switch board.png"
+    },
+    {
+      title: "Changeover Switch & ATS",
+      subtitle: "(100 AMP - 1600 AMP)",
+      image: "/images/new-equipment/ATS.png"
     },
     {
       title: "High-Insulation Power Cables",
@@ -86,44 +111,9 @@ export default function HomePage() {
       image: "/images/new-equipment/cables.png"
     },
     {
-      title: "Distribution Boards",
-      subtitle: "& Change Over Switch Board",
-      image: "/images/new-equipment/Distribution boards and change over switch board.png"
-    },
-    {
-      title: "Automatic Transfer Switches",
-      subtitle: "(ATS)",
-      image: "/images/new-equipment/ATS.png"
-    },
-    {
-      title: "Synchronizing Panels",
-      subtitle: "",
-      image: "/images/new-equipment/ISP.png"
-    },
-    {
-      title: "Welding Machines",
-      subtitle: "",
-      image: "/images/equipment/Welding Machines.jpg.jpeg"
-    },
-    {
-      title: "Tower Lights",
-      subtitle: "",
-      image: "/images/new-equipment/Tower light night.png"
-    },
-    {
-      title: "Auxiliary Industrial Diesel Fuel Tanks",
-      subtitle: "",
-      image: "/images/new-equipment/diesel tank.png"
-    },
-    {
       title: "Load Bank",
-      subtitle: "",
+      subtitle: "(100 KW - 2000 KW)",
       image: "/images/new-equipment/load bank (services).png"
-    },
-    {
-      title: "Maintenance & Support",
-      subtitle: "",
-      image: "/images/new-equipment/Maintenance and support (2).png"
     }
   ];
 
@@ -140,7 +130,7 @@ export default function HomePage() {
   // Statistics Data
   const stats = [
     { label: "Established", value: String(companyData.established), icon: <Calendar className="text-white" /> },
-    { label: "kVA Capacity", value: "1250+", icon: <Zap className="text-white" /> },
+    { label: "Units of equipment ", value: "500+", icon: <Zap className="text-white" /> },
     { label: "Support Available", value: "24/7", icon: <Headset className="text-white" /> },
     { label: "Quality Commitment", value: "100%", icon: <ShieldCheck className="text-white" /> }
   ];
@@ -449,7 +439,7 @@ export default function HomePage() {
                 COMPLETE SOLUTIONS UNDER ONE ROOF
               </h2>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 mb-8">
                 {services.map((srv, idx) => (
                   <Link
                     href="/equipment-services"
@@ -485,6 +475,29 @@ export default function HomePage() {
                   className={`bg-white border-2 border-[#001C55] text-[#001C55] hover:bg-[#001C55] hover:text-white px-8 py-3 rounded-md ${type.btn} transition-colors duration-200 flex items-center gap-2`}
                 >
                   View All Services <ArrowRight size={14} />
+                </Link>
+              </div>
+
+              {/* Repair & Maintenance Promo Banner */}
+              <div className="mt-8 bg-white border border-[#e2e5ea] rounded-xl p-5 md:p-6 flex flex-col sm:flex-row items-center justify-between gap-5 shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center gap-4 text-left">
+                  <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: `${navy}12`, color: navy }}>
+                    <Wrench size={20} className="stroke-[1.5]" />
+                  </div>
+                  <div>
+                    <h4 className="type-card-title text-sm sm:text-base font-extrabold uppercase" style={{ color: navy }}>
+                      EQUIPMENT REPAIR & MAINTENANCE
+                    </h4>
+                    <p className="text-[#6b7280] text-xs sm:text-sm mt-0.5 leading-relaxed max-w-xl">
+                      Need servicing or troubleshooting? We offer expert 24/7 on-site repair and workshop support focusing mainly on generators, air compressors, tower lights, and welding machines.
+                    </p>
+                  </div>
+                </div>
+                <Link
+                  href="/equipment-services#repair-services"
+                  className="shrink-0 bg-[#001C55] hover:bg-[#002570] text-white px-5 py-3.5 rounded-md text-xs font-bold tracking-wider uppercase shadow-md transition-colors w-full sm:w-auto text-center"
+                >
+                  Repair Services
                 </Link>
               </div>
             </div>
@@ -787,6 +800,7 @@ export default function HomePage() {
                           <option value="Air Compressors">Air Compressors</option>
                           <option value="Cables">Cables Up to 5000 Meter</option>
                           <option value="Distribution Boards">Distribution Boards</option>
+                          <option value="ATS">Changeover & ATS</option>
                           <option value="Tower Lights">Tower Lights</option>
                           <option value="Diesel Tanks">Diesel Tanks</option>
                           <option value="Load Bank">Load Bank</option>

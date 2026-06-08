@@ -30,16 +30,7 @@ export default function Footer() {
     { name: "Contact", href: "/contact" },
   ];
 
-  const servicesLinks = [
-    "Sound Proof Generators (5 KVA - 1500 KVA)",
-    "Cables Up to 5000 Meter",
-    "Distribution Board & Change Over Switch Board",
-    "Air Compressors (150 CFM - 950 CFM)",
-    "Tower Lights",
-    "Diesel Tanks",
-    "Load Bank",
-    "Maintenance & Support",
-  ];
+
 
   return (
     <footer className="relative text-white overflow-hidden" style={{ backgroundColor: NAVY }}>
@@ -123,22 +114,56 @@ export default function Footer() {
 
           {/* Column 3 — Services */}
           <div
-            className="lg:px-8 lg:border-r flex flex-col"
+            className="lg:px-8 lg:border-r flex flex-col text-left"
             style={{ borderColor: NAVY_BORDER }}
           >
             <h4 className={`text-white ${type.cardTitle} mb-5`}>OUR SERVICES</h4>
-            <ul className="space-y-2.5">
-              {servicesLinks.map((name) => (
-                <li key={name}>
+            
+            <div className="mb-5 flex flex-col text-left">
+              <span className="text-white/50 text-[0.75rem] font-bold tracking-[0.08em] uppercase mb-3 block">
+                Equipment Rental
+              </span>
+              <ul className="space-y-2.5">
+                {[
+                  { name: "Power Generation Equipment (5 KVA - 1500 KVA+)", id: "generators" },
+                  { name: "Air Compressors (150 CFM - 1200 CFM)", id: "compressors" },
+                  { name: "Tower Lights (4 x 320W LED)", id: "lights" },
+                  { name: "Welding Machines (400 A - 600 A)", id: "welding" },
+                  { name: "Diesel Tanks (1000 Ltr - 10000 Ltr)", id: "tanks" },
+                  { name: "Distribution Boards (100 AMP - 1600 AMP)", id: "distribution" },
+                  { name: "Changeover Switch & ATS (100 AMP - 1600 AMP)", id: "ats" },
+                  { name: "Cables up to 5000 Meter", id: "cables" },
+                  { name: "Load Bank (100 KW - 2000 KW)", id: "loadbank" },
+                ].map((item) => (
+                  <li key={item.id}>
+                    <Link
+                      href={`/equipment-services#${item.id}`}
+                      className="text-white/80 text-sm leading-snug hover:text-white transition-colors flex items-start"
+                    >
+                      <span className="text-white/40 mr-2 shrink-0 select-none">&rsaquo;</span>
+                      <span>{item.name}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="flex flex-col text-left">
+              <span className="text-white/50 text-[0.75rem] font-bold tracking-[0.08em] uppercase mb-3 mt-6 block">
+                Equipment Repair
+              </span>
+              <ul className="space-y-2.5">
+                <li>
                   <Link
-                    href="/equipment-services"
-                    className="text-white text-sm leading-snug hover:text-white/80 transition-colors block"
+                    href="/equipment-services#repair-services"
+                    className="text-white/80 text-sm leading-snug hover:text-white transition-colors flex items-start"
                   >
-                    {name}
+                    <span className="text-white/40 mr-2 shrink-0 select-none">&rsaquo;</span>
+                    <span>Maintenance & Support Services</span>
                   </Link>
                 </li>
-              ))}
-            </ul>
+              </ul>
+            </div>
           </div>
 
           {/* Column 4 — Contact */}
@@ -146,7 +171,9 @@ export default function Footer() {
             <h4 className={`text-white ${type.cardTitle} mb-5`}>CONTACT US</h4>
             <ul className="flex flex-col gap-5">
               <li className="flex gap-3 items-start">
-                <Phone size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
+                <div className="w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">
+                  <Phone size={18} strokeWidth={1.5} className="text-white" />
+                </div>
                 <div>
                   <a
                     href={`tel:${companyData.contact.tel.replace(/[-+\s]/g, "")}`}
@@ -159,7 +186,9 @@ export default function Footer() {
               </li>
 
               <li className="flex gap-3 items-start">
-                <Smartphone size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
+                <div className="w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">
+                  <Smartphone size={18} strokeWidth={1.5} className="text-white" />
+                </div>
                 <div>
                   {companyData.contact.sales.split(", ").map((num) => (
                     <a
@@ -175,7 +204,9 @@ export default function Footer() {
               </li>
 
               <li className="flex gap-3 items-start">
-                <Smartphone size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
+                <div className="w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">
+                  <Smartphone size={18} strokeWidth={1.5} className="text-white" />
+                </div>
                 <div>
                   <a
                     href={`tel:${companyData.contact.accounts.replace(/\s+/g, "")}`}
@@ -188,7 +219,9 @@ export default function Footer() {
               </li>
 
               <li className="flex gap-3 items-start">
-                <Globe size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
+                <div className="w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">
+                  <Globe size={18} strokeWidth={1.5} className="text-white" />
+                </div>
                 <div>
                   <a
                     href={`mailto:${companyData.contact.email}`}
@@ -200,7 +233,9 @@ export default function Footer() {
               </li>
 
               <li className="flex gap-3 items-start">
-                <MapPin size={20} strokeWidth={1.5} className="shrink-0 mt-0.5 text-white" />
+                <div className="w-5 h-5 flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin size={18} strokeWidth={1.5} className="text-white" />
+                </div>
                 <div>
                   <a
                     href={companyData.contact.mapLink}

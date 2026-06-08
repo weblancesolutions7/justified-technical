@@ -80,7 +80,7 @@ export default function About() {
 
   const stats = [
     { value: String(companyData.established), label: "Established", icon: <Calendar className="text-white" /> },
-    { value: "1250+", label: "kVA Capacity", icon: <Zap className="text-white" /> },
+    { value: "500+", label: "Units of equipment ", icon: <Zap className="text-white" /> },
     { value: "24/7", label: "Support Available", icon: <Headphones className="text-white" /> },
     { value: "UAE Wide", label: "Coverage", icon: <Globe className="text-white" /> },
     { value: "100%", label: "Quality Commitment", icon: <ShieldCheck className="text-white" /> },

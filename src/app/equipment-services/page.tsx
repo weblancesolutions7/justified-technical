@@ -17,6 +17,8 @@ import {
   Users,
   Zap,
   X,
+  Wrench,
+  CheckCircle2,
 } from "lucide-react";
 import companyData from "@/content/company.json";
 import { servicesList } from "@/content/services";
@@ -39,7 +41,7 @@ const whyChoose = [
 
 const stats = [
   { value: String(companyData.established), label: "Established", icon: <Calendar className="text-white" /> },
-  { value: "1250+", label: "kVA Capacity", icon: <Zap className="text-white" /> },
+  { value: "500+", label: "Units of equipment", icon: <Zap className="text-white" /> },
   { value: "24/7", label: "Support Available", icon: <Headphones className="text-white" /> },
   { value: "100%", label: "Quality Commitment", icon: <ShieldCheck className="text-white" /> },
 ];
@@ -50,33 +52,34 @@ const serviceDetails: Record<string, {
   details: { label: string; value: string }[];
 }> = {
   generators: {
-    title: "Soundproof & Heavy-Duty Generators",
+    title: "Power Generation Equipment",
     description: "Premium temporary and prime electricity generators engineered to support heavy cyclic facility loads, large-scale events, industrial plants, and noise-sensitive environments.",
     details: [
-      { label: "Technical Specification Profile", value: "Our comprehensive rental fleet delivers a highly versatile, single-unit power range spanning from 5 kVA up to 1,500 kVA, with multi-megawatt scaling capabilities." },
+      { label: "Technical Specification Profile", value: "Our comprehensive rental fleet delivers a highly versatile, single-unit power range spanning from 5 kVA up to 1,500 kVA+, with multi-megawatt scaling capabilities." },
       { label: "Available Engineering Builds", value: "Features open-skid layout designs for indoor mechanical plant installations alongside weather-sealed, fully sound-attenuated acoustic canopies optimized for public commercial venues." },
       { label: "Mobility & Field Utility", value: "Equipped with heavy-duty trolley or trailer wheel mounts for fast field repositioning, dual-frequency switchable systems (50 Hz / 60 Hz), and integrated copper grounding rod kits." }
     ]
   },
   compressors: {
     title: "Industrial Air Compressors",
-    description: "Heavy-duty variable pressure compression systems engineered to deliver reliable, non-stop air flow for construction tools, industrial manufacturing plants, civil blasting projects, structural sandblasting, and specialized hydrocarbon exploration environments.",
+    description: "Heavy-duty variable pressure compression systems engineered to deliver reliable, non-stop air flow for construction, drilling, structural sandblasting, civil blasting projects, and specialized industrial applications.",
     details: [
-      { label: "Technical Specification Profile", value: "This specialized fleet operates across a broad, targeted capacity envelope from 150 CFM up to 950 CFM configurations." },
+      { label: "Technical Specification Profile", value: "This specialized fleet operates across a broad, targeted capacity envelope from 150 CFM up to 1200 CFM configurations." },
       { label: "Safety Compliance Standard", value: "Units are available in standard robust field configurations as well as fully certified Zone II explosion-proof builds for hazardous oilfields." },
       { label: "Standard Fleet Inclusions", value: "Every asset comes complete with commercial-grade high-pressure delivery hoses, safety whip checks, and industrial quick-connect fittings." }
     ]
   },
   lights: {
-    title: "Mobile Tower Lights",
+    title: "Tower Lights",
     description: "High-intensity lighting arrays engineered to provide powerful site illumination for infrastructure developments, evening exhibitions, remote industrial zones, and night operations.",
     details: [
+      { label: "Technical Specification Profile", value: "Equipped with high-efficiency 4 x 320W LED lamps providing maximum illumination footprint and energy efficiency." },
       { label: "Power Supply Options", value: "Available in efficient clean-diesel engine models or eco-friendly, zero-emission solar-powered setups." },
       { label: "Safety Compliance Standard", value: "Built in standard commercial variations as well as spark-arrested, certified explosion-proof units for sensitive refinery and oilfield applications." }
     ]
   },
   welding: {
-    title: "Industrial Welding Machines",
+    title: "Welding Machines",
     description: "Rugged, heavy-duty welding systems built to provide stable current outputs for demanding structural modification, pipeline construction, and shipyard fabrication tasks.",
     details: [
       { label: "Technical Specification Profile", value: "Features fully adjustable current output capacities ranging from 400A to 600A models." },
@@ -84,26 +87,28 @@ const serviceDetails: Record<string, {
     ]
   },
   loadbank: {
-    title: "Load Banks & Commissioning",
+    title: "Load Bank",
     description: "Specialized diagnostic, verification testing, and calibration equipment designed for generator performance validation, regular building safety maintenance, strict site compliance, and factory commissioning audits.",
     details: [
-      { label: "Technical Specification Profile", value: "The testing fleet features isolated 500 kW testing modules alongside high-capacity 1,000 kW diagnostic load step arrays." },
+      { label: "Technical Specification Profile", value: "The testing fleet features configurations ranging from 100 kW up to 2,000 kW steps." },
       { label: "Control Infrastructure", value: "Managed via advanced wired or digital remote control boxes for high-precision load step adjustment." }
     ]
   },
   ats: {
-    title: "Automatic Transfer Switches (ATS)",
-    description: "Monitors utility inputs to deliver fully automated, sub-second power source switching between primary lines and backup generators when an outage occurs to protect sensitive hardware.",
+    title: "Changeover Switch & ATS",
+    description: "High-reliability mechanical transfer systems, including manual changeover switches and automatic transfer switches (ATS) that monitor power inputs to seamlessly switch sources and maintain critical power continuity.",
     details: [
-      { label: "Technical Capacity Range", value: "Stocked across a comprehensive range from 100A up to 1,600A main breaker capacities." }
+      { label: "Technical Capacity Range", value: "Stocked across a comprehensive range from 100 AMP up to 1,600 AMP main capacities." },
+      { label: "Operational Performance", value: "Features sub-second switching speed to prevent downtime and protect sensitive connected equipment during sudden power outages." }
     ]
   },
   distribution: {
-    title: "Distribution Boards & Changeover Switchboards",
-    description: "Heavy mechanical safety disconnect blocks and motorized transfer switches that allow site engineers to smoothly alter power pathways or swap grid lines between separate energy inputs safely.",
+    title: "Distribution Boards",
+    description: "Heavy-duty, weather-resistant distribution boards engineered to route electrical power safely and efficiently across multi-device site setups.",
     details: [
-      { label: "Technical Capacity Range", value: "Engineered heavily across standard ratings from 100A up to 1,600A capacities." },
-      { label: "Weatherproof Distribution Boards", value: "Premium weatherproof electrical enclosures configured with a variety of universal multi-pin industrial socket layouts built to strict BS and IEC compliance standards, protected by independent safety trip switches." }
+      { label: "Technical Capacity Range", value: "Engineered heavily across standard ratings from 100 AMP up to 1,600 AMP capacities." },
+      { label: "Weatherproof Enclosures", value: "Constructed with robust, weatherproof cabinets featuring universal multi-pin industrial socket layouts complying with BS and IEC standards." },
+      { label: "Electrical Protection", value: "Equipped with dedicated safety trip switches, miniature circuit breakers (MCBs), and residual current devices (RCDs) for maximum field protection." }
     ]
   },
   "sync-panels": {
@@ -114,10 +119,10 @@ const serviceDetails: Record<string, {
     ]
   },
   tanks: {
-    title: "Fuel Storage Solutions",
+    title: "Diesel Tanks",
     description: "High-capacity auxiliary fuel storage assets designed to extend generator running hours, optimize long-term continuous runs, and streamline field refueling schedules.",
     details: [
-      { label: "Volumetric Fleet Range", value: "Available in storage volumes starting from 50 Imperial Gallons up to massive 4,000 Imperial Gallons storage steps." },
+      { label: "Volumetric Fleet Range", value: "Available in storage volumes starting from 1,000 Ltr up to 10,000 Ltr configurations." },
       { label: "Environmental Protection Build", value: "Built using standard single-wall steel utility tanks or high-security, dual-containment double-bunded systems to completely isolate fluid leaks and safeguard site terrain." }
     ]
   },
@@ -127,6 +132,15 @@ const serviceDetails: Record<string, {
     details: [
       { label: "Technical Gauge Range", value: "Stocked heavily from 16 mm² single-core lines up to 240 mm² thick flexible multi-core configurations." },
       { label: "Mass Volume Readiness", value: "Maintained in massive warehouse volumes ready for rapid deployment, supporting continuous project run lines up to 5,000 meters in length." }
+    ]
+  },
+  support: {
+    title: "Equipment Repair & Maintenance Services",
+    description: "Our dedicated Abu Dhabi workshop and field technician fleet are fully equipped to handle major and minor repairs, diagnostics, and preventive maintenance for all types of industrial equipment and generators, specializing in diesel generators, air compressors, tower lights, and welding machines. We ensure minimum downtime and peak performance for your projects.",
+    details: [
+      { label: "24/7 Field Assistance", value: "Round-the-clock rapid response field troubleshooting and repairs to minimize downtime on critical project sites." },
+      { label: "Scheduled Maintenance", value: "Custom preventive service contracts including oil changes, filter replacements, calibration, and load testing for generator and compressor fleets." },
+      { label: "Certified Engineers", value: "All repairs are handled by skilled technicians utilizing genuine manufacturer parts and complying with strict safety regulations." }
     ]
   }
 };
@@ -188,15 +202,15 @@ export default function EquipmentServicesPage() {
               <span className="h-[2px] w-12 bg-[#d1d5db]" />
             </div>
             <h2 className={`${type.sectionTitle} mb-4`} style={{ color: NAVY }}>
-              OUR SERVICES
+              EQUIPMENT RENTAL
             </h2>
             <p className={`${type.body} text-[#6b7280]`}>
-              We offer a wide range of high performance equipment and technical solutions tailored to meet the needs of various industries and projects.
+              Explore our wide range of premium, high-performance machinery and power equipment ready for immediate rental across the UAE.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-7">
-            {services.map((srv) => (
+            {services.filter((srv) => srv.category === "rental").map((srv) => (
               <article
                 key={srv.id}
                 id={srv.id}
@@ -244,6 +258,84 @@ export default function EquipmentServicesPage() {
                 </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Repair & Maintenance section */}
+      <section id="repair-services" className="py-16 md:py-20 bg-[#f4f5f7] border-y border-[#e8ecf1]">
+        <div className={siteContainerClass}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            {/* Left side: Image with absolute details badge */}
+            <div className="lg:col-span-5 relative">
+              <div className="relative aspect-[1.3] rounded-2xl overflow-hidden shadow-lg border border-[#e2e8f0] bg-[#eef2f7]">
+                <Image
+                  src="/images/new-equipment/Maintenance and support (2).png"
+                  alt="Equipment Repair & Maintenance Services"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-5 -right-5 bg-white border border-[#e2e8f0] p-4 rounded-xl shadow-md hidden sm:flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full flex items-center justify-center text-white" style={{ backgroundColor: ACCENT }}>
+                  <Wrench size={18} />
+                </div>
+                <div>
+                  <span className="text-xs font-bold text-[#6b7280] block">TECHNICAL TEAM</span>
+                  <span className="text-sm font-extrabold" style={{ color: NAVY }}>24/7 Response</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right side: Content */}
+            <div className="lg:col-span-7 text-left">
+              <div className="flex items-center gap-3.5 mb-4">
+                <span className="type-eyebrow text-sm font-extrabold tracking-[0.22em]" style={{ color: ACCENT }}>
+                  SUPPORT & SOLUTIONS
+                </span>
+                <span className="w-8 h-[2px] bg-[#d1d5db]" />
+              </div>
+              <h2 className={`${type.sectionTitle} mb-5`} style={{ color: NAVY }}>
+                EQUIPMENT REPAIR & MAINTENANCE
+              </h2>
+              <p className={`${type.body} text-[#4a5568] mb-6 leading-relaxed`}>
+                Our dedicated Abu Dhabi workshop and field technician fleet are fully equipped to handle major and minor repairs, diagnostics, and preventive maintenance for all types of industrial equipment and generators, specializing in diesel generators, air compressors, tower lights, and welding machines. We ensure minimum downtime and peak performance for your projects.
+              </p>
+
+              {/* Key features of repair services */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-7">
+                {[
+                  { title: "24/7 Field Assistance", desc: "On-site troubleshooting, diagnostic service, and rapid emergency parts replacement." },
+                  { title: "Dedicated Workshop", desc: "Equipped Musaffah facility capable of full overhaul, testing, and heavy servicing." },
+                  { title: "Scheduled Maintenance", desc: "Preventive maintenance agreements tailored to extend asset operational lifespans." },
+                  { title: "Expert Engineers", desc: "Certified and highly trained technicians following international ISO standards." }
+                ].map((item, index) => (
+                  <div key={index} className="flex gap-3 items-start">
+                    <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" style={{ color: ACCENT }} />
+                    <div>
+                      <h4 className="text-sm font-extrabold" style={{ color: NAVY }}>{item.title}</h4>
+                      <p className="text-xs text-[#6b7280] mt-0.5 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={() => setActiveServiceId("support")}
+                  className="inline-flex items-center gap-2 bg-[#001C55] hover:bg-[#002570] text-white px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors shadow-md cursor-pointer"
+                >
+                  View Service Profile <ArrowRight size={14} />
+                </button>
+                <Link
+                  href="/contact?service=support"
+                  className="inline-flex items-center gap-2 bg-transparent hover:bg-black/5 text-[#001C55] border border-[#001C55] px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider transition-colors"
+                >
+                  Request Repair Quote
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -395,7 +487,7 @@ export default function EquipmentServicesPage() {
               </div>
 
               {/* Scrollable details area */}
-              <div 
+              <div
                 className="px-6 py-6 overflow-y-auto space-y-6 text-left"
                 data-lenis-prevent
               >

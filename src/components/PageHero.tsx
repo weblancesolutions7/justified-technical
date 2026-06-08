@@ -148,7 +148,8 @@ export function PageHero({
               fill
               priority={priority}
               sizes="(min-width: 1024px) 58vw"
-              className="object-cover object-center"
+              className="object-cover"
+              style={objectPositionStyle}
             />
           </div>
           <div

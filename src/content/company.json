@@ -1,7 +1,11 @@
 {
   "name": "Justified Technical",
   "legalName": {
-    "lines": ["JUSTIFIED TECHNICAL", "SOLUTIONS SOLE", "PROPRIETORSHIP L.L.C"],
+    "lines": [
+      "JUSTIFIED TECHNICAL",
+      "SOLUTIONS SOLE",
+      "PROPRIETORSHIP L.L.C"
+    ],
     "full": "Justified Technical Solutions Sole Proprietorship L.L.C"
   },
   "tagline": "Power and performance you can rely on... anytime, anywhere.",
@@ -18,7 +22,7 @@
   "contact": {
     "sales": "+971 50 7056397, +971 55 6805573",
     "accounts": "+971 56 5204834",
-    "tel": "025507626",
+    "tel": "+97125507626",
     "telLabel": "Telephone Number",
     "email": "justtech@eim.ae",
     "linkedin": "https://www.linkedin.com/company/justified-technical",
@@ -30,12 +34,16 @@
     }
   },
   "stats": {
-    "capacity": "1250+ kVA",
+    "capacity": "500+ units of equipment",
     "support": "24/7"
   },
   "vision": "To be the leading provider of reliable, high-performance machinery and power solutions across the UAE and beyond.",
   "mission": "Empowering industries with equipment rental and repair, unwavering support, and a commitment to safety, integrity, and operational excellence.",
-  "coreValues": ["Reliability", "Safety First", "Integrity"],
+  "coreValues": [
+    "Reliability",
+    "Safety First",
+    "Integrity"
+  ],
   "seo": {
     "siteUrl": "https://www.justifiedtechnical.ae",
     "locale": "en_AE",
